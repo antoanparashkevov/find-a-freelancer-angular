@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProposalsReceivedComponent } from './components/proposals-received/proposals-received.component';
+import { ProposalsReceivedComponent } from './pages/proposals-received/proposals-received.component';
+import { ProposalItemComponent } from './components/proposal-item/proposal-item.component';
 
 
 
 @NgModule({
   declarations: [
-    ProposalsReceivedComponent
+    ProposalsReceivedComponent,
+    ProposalItemComponent
   ],
   imports: [
     CommonModule
