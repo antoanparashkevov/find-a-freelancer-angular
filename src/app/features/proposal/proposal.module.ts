@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProposalsReceivedComponent } from './proposals-received/proposals-received.component';
+import { ProposalsReceivedComponent } from './components/proposals-received/proposals-received.component';
 
 
 

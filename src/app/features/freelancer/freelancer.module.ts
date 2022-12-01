@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FreelancerRegistrationComponent } from './freelancer-registration/freelancer-registration.component';
+import { FreelancerRegistrationComponent } from './components/freelancer-registration/freelancer-registration.component';
 
 
 
