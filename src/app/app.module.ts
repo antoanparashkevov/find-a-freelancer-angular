@@ -8,6 +8,8 @@ import { FreelancersListComponent } from './freelancer/freelancers-list/freelanc
 import { FreelancerDetailsComponent } from './freelancer/freelancer-details/freelancer-details.component';
 import { SendProposalComponent } from './freelancer/send-proposal/send-proposal.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TheHeaderComponent } from './core/components/the-header/the-header.component';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FreelancersListComponent,
     FreelancerDetailsComponent,
     SendProposalComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TheHeaderComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
