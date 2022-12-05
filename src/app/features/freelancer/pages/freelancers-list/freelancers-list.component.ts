@@ -14,7 +14,7 @@ export class FreelancersListComponent implements OnInit {
             'Parashkevov',
             'description', 
             12, 
-            ['js', 'nodejs', 'angular'], 
+            ['type1', 'type2', 'type3'], 
             ['Sofia University', 'Softuni'], 
             ['Bulgarian', 'English']
         ),
@@ -24,7 +24,7 @@ export class FreelancersListComponent implements OnInit {
             'Dolashka',
             'description',
             20,
-            ['art', 'design', 'book'],
+            ['type1', 'type2', 'type3'],
             ['Sofia University'],
             ['Bulgarian', 'Spain']
         )

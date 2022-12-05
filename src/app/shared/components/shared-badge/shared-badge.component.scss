@@ -1,0 +1,37 @@
+.badge{
+    background-color: #ccc;
+    color: #252525;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    display:inline-block;
+    border-radius: 30px;
+}
+
+.badge:hover {
+    border: 1px solid mediumpurple;
+}
+
+.type1{
+    background-color: yellowgreen;
+    color: white;
+}
+
+.type2 {
+    background-color: cadetblue;
+    color: white;
+}
+
+.type3 {
+    background-color: darkolivegreen;
+    color: white;
+}
+
+.type4 {
+    background-color: darkseagreen;
+    color: white;
+}
+
+.type5 {
+    background-color: springgreen;
+    color: white;
+}

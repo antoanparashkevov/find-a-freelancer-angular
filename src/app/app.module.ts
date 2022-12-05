@@ -13,6 +13,8 @@ import { FreelancerRegistrationComponent } from './features/freelancer/pages/fre
 import { TheHeaderComponent } from './core/components/the-header/the-header.component'
 import {FreelancerItemComponent} from "./features/freelancer/components/freelancer-item/freelancer-item.component";
 import {SharedCardComponent} from "./shared/components/shared-card/shared-card.component";
+import {SharedModule} from "./shared/shared.module";
+import {SharedBadgeComponent} from "./shared/components/shared-badge/shared-badge.component";
 //COMPONENT Registrations END
 
 const routes: Routes = [
@@ -33,14 +35,14 @@ const routes: Routes = [
     FreelancerDetailsComponent,
     ProposalsReceivedComponent,
     FreelancerRegistrationComponent,
-    FreelancerItemComponent,
-    SharedCardComponent
+    FreelancerItemComponent
   ],
-  imports: [
+    imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
-  ],
+    RouterModule.forRoot(routes),
+    SharedModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

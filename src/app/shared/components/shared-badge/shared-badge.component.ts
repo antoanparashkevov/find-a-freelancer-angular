@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-shared-badge',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shared-badge.component.scss']
 })
 export class SharedBadgeComponent implements OnInit {
-
+    @Input() type!: string;
+    @Input() badge!: string;
   constructor() { }
 
   ngOnInit(): void {

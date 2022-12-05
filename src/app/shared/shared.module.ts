@@ -9,15 +9,19 @@ import { SharedSpinnerComponent } from './components/shared-spinner/shared-spinn
 
 
 @NgModule({
-  declarations: [
-    SharedBadgeComponent,
-    SharedButtonComponent,
-    SharedCardComponent,
-    SharedDialogComponent,
-    SharedSpinnerComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+    declarations: [
+        SharedBadgeComponent,
+        SharedButtonComponent,
+        SharedCardComponent,
+        SharedDialogComponent,
+        SharedSpinnerComponent
+    ],
+    exports: [
+        SharedBadgeComponent,
+        SharedCardComponent
+    ],
+    imports: [
+        CommonModule
+    ]
 })
 export class SharedModule { }
