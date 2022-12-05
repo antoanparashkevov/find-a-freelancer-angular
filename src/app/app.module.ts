@@ -26,7 +26,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TheHeaderComponent    
+    TheHeaderComponent,
+    FreelancersListComponent,
+    FreelancerDetailsComponent,
+    ProposalsReceivedComponent,
+    FreelancerRegistrationComponent  
   ],
   imports: [
     BrowserModule,
