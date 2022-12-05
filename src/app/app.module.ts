@@ -3,11 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import {RouterModule, Routes} from "@angular/router";
 
 import { AppRoutingModule } from './app-routing.module';
+
+//COMPONENT Registrations START
 import { AppComponent } from './app.component';
 import { FreelancersListComponent } from './features/freelancer/pages/freelancers-list/freelancers-list.component'
 import { FreelancerDetailsComponent } from './features/freelancer/pages/freelancer-details/freelancer-details.component'
 import { ProposalsReceivedComponent } from './features/proposal/pages/proposals-received/proposals-received.component'
 import { FreelancerRegistrationComponent } from './features/freelancer/pages/freelancer-registration/freelancer-registration.component'
+import { TheHeaderComponent } from './core/components/the-header/the-header.component'
+//COMPONENT Registrations END
 
 const routes: Routes = [
     { path: '', redirectTo: '/freelancers', pathMatch: 'full' },
@@ -22,6 +26,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    TheHeaderComponent    
   ],
   imports: [
     BrowserModule,
