@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {Routes} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,7 @@ import { ProposalsReceivedComponent } from './features/proposal/pages/proposals-
 import { FreelancerRegistrationComponent } from './features/freelancer/pages/freelancer-registration/freelancer-registration.component'
 
 const routes: Routes = [
-    { path: '', redirectTo: '/freelancers' },
+    { path: '', redirectTo: '/freelancers', pathMatch: 'full' },
     { path: 'freelancers', component: FreelancersListComponent },
     { path: 'freelancers/:id', component: FreelancerDetailsComponent },
     { path: 'proposals', component: ProposalsReceivedComponent },
@@ -25,7 +25,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
