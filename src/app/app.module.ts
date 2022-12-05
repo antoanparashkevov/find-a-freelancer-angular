@@ -11,6 +11,7 @@ import { FreelancerDetailsComponent } from './features/freelancer/pages/freelanc
 import { ProposalsReceivedComponent } from './features/proposal/pages/proposals-received/proposals-received.component'
 import { FreelancerRegistrationComponent } from './features/freelancer/pages/freelancer-registration/freelancer-registration.component'
 import { TheHeaderComponent } from './core/components/the-header/the-header.component'
+import {FreelancerItemComponent} from "./features/freelancer/components/freelancer-item/freelancer-item.component";
 //COMPONENT Registrations END
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
     FreelancersListComponent,
     FreelancerDetailsComponent,
     ProposalsReceivedComponent,
-    FreelancerRegistrationComponent  
+    FreelancerRegistrationComponent,
+    FreelancerItemComponent
   ],
   imports: [
     BrowserModule,

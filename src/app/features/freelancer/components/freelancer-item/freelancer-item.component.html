@@ -1,1 +1,9 @@
-<p>freelancer-item works!</p>
+<li>
+    <h3>{{ freelancer.firstName }} {{ freelancer.lastName }}</h3>
+    <h4>${{freelancer.hourlyRate}}/hour</h4>
+    <span *ngFor="let skill of freelancer.skills">{{skill}}</span>
+    <div class="actions">
+        <button>Details</button>
+        <button>Contact</button>
+    </div>
+</li>

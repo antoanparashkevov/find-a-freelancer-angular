@@ -8,14 +8,17 @@ import { FreelancerFilterComponent } from './components/freelancer-filter/freela
 
 
 @NgModule({
-  declarations: [
-    FreelancerRegistrationComponent,
-    FreelancerFormComponent,
-    FreelancerItemComponent,
-    FreelancerFilterComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+    declarations: [
+        FreelancerRegistrationComponent,
+        FreelancerFormComponent,
+        FreelancerItemComponent,
+        FreelancerFilterComponent
+    ],
+    exports: [
+        FreelancerItemComponent
+    ],
+    imports: [
+        CommonModule
+    ]
 })
 export class FreelancerModule { }
