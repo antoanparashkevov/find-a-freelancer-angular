@@ -12,9 +12,8 @@ import { ProposalsReceivedComponent } from './features/proposal/pages/proposals-
 import { FreelancerRegistrationComponent } from './features/freelancer/pages/freelancer-registration/freelancer-registration.component'
 import { TheHeaderComponent } from './core/components/the-header/the-header.component'
 import {FreelancerItemComponent} from "./features/freelancer/components/freelancer-item/freelancer-item.component";
-import {SharedCardComponent} from "./shared/components/shared-card/shared-card.component";
 import {SharedModule} from "./shared/shared.module";
-import {SharedBadgeComponent} from "./shared/components/shared-badge/shared-badge.component";
+import {ProposalModule} from "./features/proposal/proposal.module";
 //COMPONENT Registrations END
 
 const routes: Routes = [
@@ -28,22 +27,23 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TheHeaderComponent,
-    FreelancersListComponent,
-    FreelancerDetailsComponent,
-    ProposalsReceivedComponent,
-    FreelancerRegistrationComponent,
-    FreelancerItemComponent
-  ],
-    imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot(routes),
-    SharedModule
+    declarations: [
+        AppComponent,
+        TheHeaderComponent,
+        FreelancersListComponent,
+        FreelancerDetailsComponent,
+        ProposalsReceivedComponent,
+        FreelancerRegistrationComponent,
+        FreelancerItemComponent
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule.forRoot(routes),
+        SharedModule,
+        ProposalModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
