@@ -10,6 +10,7 @@ export class FreelancersListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+      console.log('test')
   }
 
 }
