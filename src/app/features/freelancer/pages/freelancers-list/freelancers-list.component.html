@@ -10,11 +10,14 @@
 <!--</div>-->
 
 <div>
-    <ul>
-        <app-freelancer-item
-            *ngFor="let freelancer of freelancers; let i = index"
-            [freelancer]="freelancer"
-            [i]="i"
-        ></app-freelancer-item>
-    </ul>
+    <app-shared-card> 
+        <ul>
+            <app-freelancer-item
+                *ngFor="let freelancer of freelancers; let i = index"
+                [freelancer]="freelancer"
+                [i]="i"
+            ></app-freelancer-item>
+        </ul>
+    </app-shared-card>
+   
 </div>

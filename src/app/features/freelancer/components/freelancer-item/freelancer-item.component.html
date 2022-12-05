@@ -3,7 +3,8 @@
     <h4>${{freelancer.hourlyRate}}/hour</h4>
     <span *ngFor="let skill of freelancer.skills">{{skill}}</span>
     <div class="actions">
-        <button>Details</button>
+        <a [routerLink]="[index]">Details</a>
         <button>Contact</button>
     </div>
+    {{index}}
 </li>

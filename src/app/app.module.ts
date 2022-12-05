@@ -12,6 +12,7 @@ import { ProposalsReceivedComponent } from './features/proposal/pages/proposals-
 import { FreelancerRegistrationComponent } from './features/freelancer/pages/freelancer-registration/freelancer-registration.component'
 import { TheHeaderComponent } from './core/components/the-header/the-header.component'
 import {FreelancerItemComponent} from "./features/freelancer/components/freelancer-item/freelancer-item.component";
+import {SharedCardComponent} from "./shared/components/shared-card/shared-card.component";
 //COMPONENT Registrations END
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     FreelancerDetailsComponent,
     ProposalsReceivedComponent,
     FreelancerRegistrationComponent,
-    FreelancerItemComponent
+    FreelancerItemComponent,
+    SharedCardComponent
   ],
   imports: [
     BrowserModule,
