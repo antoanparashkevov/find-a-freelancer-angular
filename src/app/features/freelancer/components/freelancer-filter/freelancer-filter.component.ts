@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-freelancer-filter',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./freelancer-filter.component.scss']
 })
 export class FreelancerFilterComponent implements OnInit {
-
+    @Input('activeSkills') skills!: string[]
   constructor() { }
 
   ngOnInit(): void {

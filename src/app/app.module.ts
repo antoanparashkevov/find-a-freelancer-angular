@@ -14,6 +14,7 @@ import { TheHeaderComponent } from './core/components/the-header/the-header.comp
 import {FreelancerItemComponent} from "./features/freelancer/components/freelancer-item/freelancer-item.component";
 import {SharedModule} from "./shared/shared.module";
 import {ProposalModule} from "./features/proposal/proposal.module";
+import {FreelancerFilterComponent} from "./features/freelancer/components/freelancer-filter/freelancer-filter.component";
 //COMPONENT Registrations END
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
         FreelancersListComponent,
         FreelancerDetailsComponent,
         FreelancerRegistrationComponent,
-        FreelancerItemComponent
+        FreelancerItemComponent,
+        FreelancerFilterComponent
     ],
     imports: [
         BrowserModule,

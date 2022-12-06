@@ -11,13 +11,25 @@
 
 <div>
     <app-shared-card> 
-        <ul>
-            <app-freelancer-item
-                *ngFor="let freelancer of freelancers; let i = index"
-                [freelancer]="freelancer"
-                [i]="i"
-            ></app-freelancer-item>
-        </ul>
+        
+        <app-shared-card>
+            <app-freelancer-filter [activeSkills]="allSkills"></app-freelancer-filter>
+        </app-shared-card>
+        
+        <div class="controls">
+            <a routerLink="auth">Join us</a>
+            <a routerLink="/register">Register as a Freelancer</a>
+        </div>
+        <div>
+            <ul>
+                <app-freelancer-item
+                    *ngFor="let freelancer of freelancers; let i = index"
+                    [freelancer]="freelancer"
+                    [i]="i"
+                ></app-freelancer-item>
+            </ul>
+        </div>
+       
     </app-shared-card>
    
 </div>

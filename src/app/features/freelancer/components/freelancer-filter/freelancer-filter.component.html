@@ -1,1 +1,9 @@
-<p>freelancer-filter works!</p>
+<div>
+    <h2>Active Filters</h2>
+    
+    <span class='filter-option' *ngFor="let skill of skills; let i = index">
+        <input type='checkbox' [id]='skill' checked>
+        <label [for]='skill'>{{skill | uppercase}}</label>
+    </span>
+
+</div>

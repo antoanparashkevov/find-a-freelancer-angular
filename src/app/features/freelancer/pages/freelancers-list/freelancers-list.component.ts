@@ -29,6 +29,13 @@ export class FreelancersListComponent implements OnInit {
             ['Bulgarian', 'Spain']
         )
     ]
+    allSkills: string[] = [
+        'type1',
+        'type2',
+        'type3',
+        'type4',
+        'type5'
+    ]
     
     constructor() { }
 
