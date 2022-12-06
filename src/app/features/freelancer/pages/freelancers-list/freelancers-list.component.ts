@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Freelancer} from "../../models/freelancer.model";
+import { Freelancer } from "../../models/freelancer.model";
 
 @Component({
   selector: 'app-freelancers-list',

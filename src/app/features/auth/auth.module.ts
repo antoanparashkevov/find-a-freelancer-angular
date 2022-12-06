@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthUserComponent } from './auth-user.component';
+import {RouterModule} from "@angular/router";
 
 
 
@@ -9,7 +10,8 @@ import { AuthUserComponent } from './auth-user.component';
         AuthUserComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        RouterModule
     ],
     exports: [
         AuthUserComponent

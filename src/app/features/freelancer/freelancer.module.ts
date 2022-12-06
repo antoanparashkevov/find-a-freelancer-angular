@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from "@angular/router";
+import { SharedModule } from "../../shared/shared.module";
 
 //Components
 import { FreelancerRegistrationComponent } from './pages/freelancer-registration/freelancer-registration.component';
@@ -9,6 +11,7 @@ import { FreelancerFilterComponent } from './components/freelancer-filter/freela
 import { FreelancerDetailsComponent } from "./pages/freelancer-details/freelancer-details.component";
 import { FreelancersListComponent } from "./pages/freelancers-list/freelancers-list.component";
 import { SendProposalComponent } from "./pages/send-proposal/send-proposal.component";
+
 
 
 
@@ -23,7 +26,9 @@ import { SendProposalComponent } from "./pages/send-proposal/send-proposal.compo
         SendProposalComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        RouterModule,
+        SharedModule
     ],
     exports: [
         FreelancerFilterComponent,
