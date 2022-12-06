@@ -28,7 +28,7 @@ import { SendProposalComponent } from "./pages/send-proposal/send-proposal.compo
     imports: [
         CommonModule,
         RouterModule,
-        SharedModule
+        SharedModule,
     ],
     exports: [
         FreelancerFilterComponent,
