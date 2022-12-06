@@ -6,10 +6,17 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./freelancer-filter.component.scss']
 })
 export class FreelancerFilterComponent implements OnInit {
-    @Input('activeSkills') skills!: string[]
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+        skills: string[] = [
+            'type1',
+            'type2',
+            'type3',
+            'type4',
+            'type5',
+        ]
+    
+        constructor() { }
+        
+        ngOnInit(): void {
+        }
 
 }

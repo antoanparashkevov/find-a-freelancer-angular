@@ -5,10 +5,21 @@ import { NgModule } from "@angular/core";
 import {FreelancersListComponent} from "./pages/freelancers-list/freelancers-list.component";
 import {FreelancerDetailsComponent} from "./pages/freelancer-details/freelancer-details.component";
 import {FreelancerRegistrationComponent} from "./pages/freelancer-registration/freelancer-registration.component";
+import {FreelancerContactFormComponent} from "./pages/freelancer-contact-form/freelancer-contact-form.component";
 
 const routes: Routes = [
     { path: 'freelancers', component: FreelancersListComponent },
-    { path: 'freelancers/:id', component: FreelancerDetailsComponent },
+    { 
+        path: 'freelancers/:id', 
+        component: FreelancerDetailsComponent,
+        children: [
+            { 
+                path: 'contact',
+                component: FreelancerContactFormComponent
+            }
+    
+        ]
+    },
     { path: 'register', component: FreelancerRegistrationComponent },
 
 ]

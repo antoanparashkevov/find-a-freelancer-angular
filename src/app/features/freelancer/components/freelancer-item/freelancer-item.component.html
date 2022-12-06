@@ -6,7 +6,8 @@
     </div>
     <div class="actions">
         <a [routerLink]="[index]">Details</a>
-        <button>Contact</button>
+        <app-shared-button [link]="true" [to]="index" mode="flat"></app-shared-button>
+        <app-shared-button [link]="true" [to]="'/freelancers/' + index + '/contact'">Contact</app-shared-button>
     </div>
     {{index}}
 </li>

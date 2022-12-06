@@ -12,6 +12,7 @@ import { FreelancerFilterComponent } from './components/freelancer-filter/freela
 import { FreelancerDetailsComponent } from "./pages/freelancer-details/freelancer-details.component";
 import { FreelancersListComponent } from "./pages/freelancers-list/freelancers-list.component";
 import { SendProposalComponent } from "./pages/send-proposal/send-proposal.component";
+import { FreelancerContactFormComponent } from './pages/freelancer-contact-form/freelancer-contact-form.component';
 
 
 
@@ -24,7 +25,8 @@ import { SendProposalComponent } from "./pages/send-proposal/send-proposal.compo
         FreelancerDetailsComponent,
         FreelancerRegistrationComponent,
         FreelancersListComponent,
-        SendProposalComponent
+        SendProposalComponent,
+        FreelancerContactFormComponent
     ],
     imports: [
         CommonModule,
