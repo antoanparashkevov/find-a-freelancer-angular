@@ -1,4 +1,7 @@
-<div *ngFor="let proposal of proposals; let i = index">
-    {{proposal.message}}
-    {{proposal.email}}
-</div>
+<ul>
+    <app-proposal-item 
+        *ngFor="let proposal of proposals;let i = index"
+        [proposal]="proposal"
+        [i]="i"
+    ></app-proposal-item>
+</ul>

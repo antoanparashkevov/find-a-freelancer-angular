@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Proposal} from "../../models/proposal.model";
 
 @Component({
   selector: 'app-proposal-item',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./proposal-item.component.scss']
 })
 export class ProposalItemComponent implements OnInit {
-
+    @Input() proposal!: Proposal;
+    @Input('i') index!: number;
+    
   constructor() { }
 
   ngOnInit(): void {
