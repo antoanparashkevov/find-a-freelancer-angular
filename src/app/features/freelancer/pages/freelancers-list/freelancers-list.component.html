@@ -6,8 +6,8 @@
         </app-shared-card>
         
         <div class="controls">
-            <a routerLink="auth">Join us</a>
-            <a routerLink="/register">Register as a Freelancer</a>
+            <app-shared-button [link]="true" mode="flat" to="/auth">Join Us</app-shared-button>
+            <app-shared-button [link]="true" to="/register">Register now!</app-shared-button>
         </div>
         <div>
             <ul>

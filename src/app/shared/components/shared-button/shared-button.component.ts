@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SharedButtonComponent implements OnInit {
     @Input('to') location: string = '/coaches'
-    @Input('mode') currentMode: string = ''
+    @Input('mode') currentMode: string = 'outline'
     @Input('link') isLink: boolean = false;
     
   constructor() { }
