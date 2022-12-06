@@ -32,7 +32,6 @@ const routes: Routes = [
         TheHeaderComponent,
         FreelancersListComponent,
         FreelancerDetailsComponent,
-        ProposalsReceivedComponent,
         FreelancerRegistrationComponent,
         FreelancerItemComponent
     ],

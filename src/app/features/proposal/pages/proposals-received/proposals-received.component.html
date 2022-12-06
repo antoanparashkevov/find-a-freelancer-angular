@@ -1,1 +1,4 @@
-<p>proposals-received works!</p>
+<div *ngFor="let proposal of proposals; let i = index">
+    {{proposal.message}}
+    {{proposal.email}}
+</div>
