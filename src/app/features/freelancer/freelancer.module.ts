@@ -24,6 +24,15 @@ import { SendProposalComponent } from "./pages/send-proposal/send-proposal.compo
     ],
     imports: [
         CommonModule
+    ],
+    exports: [
+        FreelancerFilterComponent,
+        FreelancerFormComponent,
+        FreelancerItemComponent,
+        FreelancerDetailsComponent,
+        FreelancerRegistrationComponent,
+        FreelancersListComponent,
+        SendProposalComponent
     ]
 })
 export class FreelancerModule { }

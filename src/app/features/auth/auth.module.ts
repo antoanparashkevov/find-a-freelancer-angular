@@ -5,11 +5,14 @@ import { AuthUserComponent } from './auth-user.component';
 
 
 @NgModule({
-  declarations: [
-    AuthUserComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+    declarations: [
+        AuthUserComponent
+    ],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        AuthUserComponent
+    ]
 })
 export class AuthModule { }
