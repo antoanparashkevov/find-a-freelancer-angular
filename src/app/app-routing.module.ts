@@ -7,8 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     { path: '', redirectTo: '/freelancers', pathMatch: 'full' },
-    // {path: 'auth', component},
-    // {path: ''}//notFound page
 ]
 
 @NgModule({

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "../../shared/shared.module";
+import { FormsModule } from "@angular/forms";
 
 //Components
 import { FreelancerRegistrationComponent } from './pages/freelancer-registration/freelancer-registration.component';
@@ -29,6 +30,7 @@ import { SendProposalComponent } from "./pages/send-proposal/send-proposal.compo
         CommonModule,
         RouterModule,
         SharedModule,
+        FormsModule
     ],
     exports: [
         FreelancerFilterComponent,
