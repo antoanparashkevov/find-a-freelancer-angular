@@ -1,7 +1,14 @@
-<ul>
-    <app-proposal-item 
-        *ngFor="let proposal of proposals;let i = index"
-        [proposal]="proposal"
-        [i]="i"
-    ></app-proposal-item>
-</ul>
+<app-shared-card>
+    <header>
+        <h2>Messages</h2>
+    </header>
+    <div>
+        <ul>
+            <app-proposal-item
+                *ngFor="let proposal of proposals;let i = index"
+                [proposal]="proposal"
+                [i]="i"
+            ></app-proposal-item>
+        </ul>
+    </div>
+</app-shared-card>
