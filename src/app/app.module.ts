@@ -15,6 +15,7 @@ import {FreelancerItemComponent} from "./features/freelancer/components/freelanc
 import {SharedModule} from "./shared/shared.module";
 import {ProposalModule} from "./features/proposal/proposal.module";
 import {FreelancerFilterComponent} from "./features/freelancer/components/freelancer-filter/freelancer-filter.component";
+import {HttpClientModule} from "@angular/common/http";
 //COMPONENT Registrations END
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
         BrowserModule,
         AppRoutingModule,
         RouterModule.forRoot(routes),
+        HttpClientModule,
         SharedModule,
         ProposalModule
     ],
