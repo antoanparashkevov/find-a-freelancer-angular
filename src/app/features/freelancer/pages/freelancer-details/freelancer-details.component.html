@@ -1,2 +1,20 @@
-<p>freelancer-details works!</p>
-<router-outlet></router-outlet>
+<div>
+        <app-shared-card>
+            <h3>Antoan Parashkevov</h3>
+            <h4>$14/hour</h4>
+        </app-shared-card>
+        <app-shared-card>
+<!--            <app-shared-badge *ngFor="let skill of skills" [badge]="skill"></app-shared-badge>-->
+            <p> simple desc</p>
+        </app-shared-card>
+    <div>
+        <app-shared-card>
+            <header>
+                <h2>Interested? Reach them out!</h2>
+                <app-shared-button [link]="true" [to]="'contact'">Contact</app-shared-button>
+            </header>
+            <!--      for contact page... -->
+            <router-outlet></router-outlet>
+        </app-shared-card>
+    </div>
+</div>

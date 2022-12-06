@@ -5,9 +5,7 @@
         <app-shared-badge *ngFor="let skill of freelancer.skills" [badge]="skill" [type]="skill"></app-shared-badge>
     </div>
     <div class="actions">
-        <a [routerLink]="[index]">Details</a>
-        <app-shared-button [link]="true" [to]="index" mode="flat"></app-shared-button>
+        <app-shared-button [link]="true" [to]="index" mode="flat">Details</app-shared-button>
         <app-shared-button [link]="true" [to]="'/freelancers/' + index + '/contact'">Contact</app-shared-button>
     </div>
-    {{index}}
 </li>
