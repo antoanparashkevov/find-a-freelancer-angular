@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 //Routes
 import {FreelancerRouting} from "./features/freelancer/freelancer-routing.module";
+import {ProposalRouting} from "./features/proposal/proposal-routing.module";
 
 
 //Custom Modules
@@ -29,6 +30,7 @@ import { TheHeaderComponent } from './core/components/the-header/the-header.comp
         AppRoutingModule,
         HttpClientModule,
         FreelancerRouting,
+        ProposalRouting,
         FreelancerModule,
         ProposalModule,
         SharedModule,
