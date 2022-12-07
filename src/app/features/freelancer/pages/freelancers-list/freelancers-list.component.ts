@@ -25,10 +25,9 @@ export class FreelancersListComponent implements OnInit {
     }
     
     newFilterCriteria(newFilters:{[id: string]: boolean}) {
-        console.log('updatedFilter', newFilters)
-        this.freelancers.forEach(freelancer=>console.log('has type1 ? >>>',freelancer.skills.includes('type1')))
-        console.log('all freelancers', this.freelancers)
         this.skills = newFilters
+        this.freelancers = this.freelancerService.getFreelancer(newFilters)
+        
     }
 
 }

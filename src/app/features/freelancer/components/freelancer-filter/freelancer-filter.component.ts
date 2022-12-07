@@ -37,7 +37,7 @@ export class FreelancerFilterComponent implements OnInit {
                 ...this.skills,
                 [filterId]: isChecked
             }
-            console.log(updatedFilter)
+            this.skills = updatedFilter
             
             //emit the updatedFilters to the Parent Component (freelancers-list.component)
             this.changeFilter.emit(updatedFilter)

@@ -32,7 +32,6 @@ export class FreelancerService {
     
     getFreelancer(activeFilters?: {[id: string]: boolean}) {
         if(activeFilters) {
-            console.log('activeeeeeeee', activeFilters)
             return this.freelancers.filter(freelancer =>  {
                 if(activeFilters['type1'] && freelancer.skills.includes('type1')) {
                     return true;
