@@ -2,7 +2,7 @@
     <app-shared-card> 
         
         <app-shared-card>
-            <app-freelancer-filter></app-freelancer-filter>
+            <app-freelancer-filter (changeFilter)="newFilterCriteria($event)"></app-freelancer-filter>
         </app-shared-card>
         
         <div class="controls">

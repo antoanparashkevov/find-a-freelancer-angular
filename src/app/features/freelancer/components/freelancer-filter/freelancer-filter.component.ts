@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {filter} from "rxjs";
 
 @Component({
@@ -14,6 +14,8 @@ export class FreelancerFilterComponent implements OnInit {
                 type4: true,
                 type5: true,
             }
+            
+        @Output() changeFilter = new EventEmitter<{[id: string]: boolean}> ()
     
         constructor() { }
         
@@ -36,6 +38,9 @@ export class FreelancerFilterComponent implements OnInit {
                 [filterId]: isChecked
             }
             console.log(updatedFilter)
+            
+            //emit the updatedFilters to the Parent Component (freelancers-list.component)
+            this.changeFilter.emit(updatedFilter)
         }
 
 }
