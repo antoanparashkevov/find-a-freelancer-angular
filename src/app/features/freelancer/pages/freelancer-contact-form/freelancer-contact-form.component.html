@@ -1,19 +1,14 @@
 <form (ngSubmit)="onSubmit(formRef, email, message)" #formRef="ngForm">
     <div class="form-control">
-<!--         [ngClass]="{invalid:email.isValid === false}"-->
         <label for='email' [ngClass]="{invalid_field: email.invalid && email.touched}">E-mail</label>
         <input type='email' id='email' name="email" placeholder="example@gmail.com" email required #email="ngModel" ngModel>
-<!--        v-model.trim='email.val'-->
     </div>
     <div class="form-control">
-<!--         [ngClass]="{invalid:message.isValid === false}"-->
         <label for='message' [ngClass]="{invalid_field: message.invalid && message.touched}">Message</label>
         <textarea id='message' rows='5' name="message" required ngModel (blur)="clearInvalidClass('message')" #message="ngModel"></textarea>
-<!--        v-model.trim='message.val' -->
     </div>
     <p class='errors' *ngIf="!formIsValid">Please enter a valid email and non-empty message!</p>
     <div class='actions'>
-<!--        <app-shared-button>Send a message</app-shared-button>-->
         <button>Send A Message</button>
     </div>
 </form>
