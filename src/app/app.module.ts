@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
+import { CoreModule } from "./core/core.module";
+
 
 //Routes
 import { FreelancerRouting } from "./features/freelancer/freelancer-routing.module";
@@ -36,6 +38,7 @@ import { TheHeaderComponent } from './core/components/the-header/the-header.comp
         FreelancerModule,
         ProposalModule,
         SharedModule,
+        CoreModule
     ],
     providers: [],
     bootstrap: [AppComponent]
