@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Proposal} from "../../models/proposal.model";
+import { Proposal } from "../../models/proposal.model";
+import { ProposalService } from "../../services/proposal.service";
 
 @Component({
   selector: 'app-proposals-received',
@@ -7,20 +8,11 @@ import {Proposal} from "../../models/proposal.model";
   styleUrls: ['./proposals-received.component.scss']
 })
 export class ProposalsReceivedComponent implements OnInit {
-    proposals: Proposal[] = [
-        new Proposal(
-            'An example message 1',
-            'antoanparashkevov@gmail.com'
-        ),
-        new Proposal(
-            'An example message 2',
-            'tonkata1505@gmail.com'
-        )
-        
-    ]
-  constructor() { }
+    proposals: Proposal[] = []
+  constructor(private proposalService: ProposalService) { }
 
   ngOnInit(): void {
+        this.proposals = this.proposalService.getProposals()
   }
 
 }
