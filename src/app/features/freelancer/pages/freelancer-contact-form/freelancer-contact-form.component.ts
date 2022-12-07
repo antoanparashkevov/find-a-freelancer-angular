@@ -16,6 +16,8 @@ export class FreelancerContactFormComponent implements OnInit {
     }
 
     onSubmit(formRef: NgForm, email: NgModel, message: NgModel) {
+        
+        //TODO remove logs
         console.log('Form >>> ', this.formRef)
         console.log('Email >>> ', email)
         console.log('Message >>> ', message)

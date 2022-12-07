@@ -50,9 +50,3 @@ div.form-control label.invalid_field {
 }
 
 
-div.form-control .ng-invalid.ng-dirty label[name='email'],
-div .ng-invalid.ng-dirty label[name='message'] {
-    color: red;
-    font-weight: bold;
-}
-
