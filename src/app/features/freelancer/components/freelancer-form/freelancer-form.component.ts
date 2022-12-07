@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {NgForm, NgModel, NgModelGroup} from "@angular/forms";
 
 @Component({
@@ -11,6 +11,7 @@ export class FreelancerFormComponent implements OnInit {
     checkboxIsValid: boolean = true;
     skills: string[] = ['type1', 'type2', 'type3']
     @ViewChild('skillGroupRef') skillRef!: NgModelGroup
+    @Output() saveData = new EventEmitter<boolean>()
     constructor() { }
 
     ngOnInit(): void {
@@ -40,6 +41,9 @@ export class FreelancerFormComponent implements OnInit {
         } else {
             this.formIsValid = true
         }
+        
+        //for demo purposes, just emit a boolean value
+        this.saveData.emit(this.checkboxIsValid)
     }
 
 }

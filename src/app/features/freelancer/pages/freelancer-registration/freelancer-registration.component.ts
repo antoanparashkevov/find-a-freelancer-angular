@@ -10,5 +10,9 @@ export class FreelancerRegistrationComponent implements OnInit {
     
     ngOnInit() {
     }
+    
+    saveData(data: boolean) {
+        console.log('checkboxIsValid', data)
+    }
 }
 
