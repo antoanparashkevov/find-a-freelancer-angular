@@ -34,5 +34,9 @@ export class FreelancerService {
         //we make a copy of this array because it is a reference type and we might modify the array from outside. Now we make a copy of this array
     }
     
+    getSelectedFreelancer(index: number) {
+        return this.freelancers[index]
+    }
+    
     constructor() { }
 }

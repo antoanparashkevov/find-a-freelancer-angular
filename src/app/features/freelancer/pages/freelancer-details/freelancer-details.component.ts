@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import {FreelancerService} from "../../services/freelancer.service";
+import {Freelancer} from "../../models/freelancer.model";
 
 @Component({
   selector: 'app-freelancer-details',
@@ -7,11 +9,20 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./freelancer-details.component.scss']
 })
 export class FreelancerDetailsComponent implements OnInit {
+    selectedFreelancer!: Freelancer;
+    index!: number;
     
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+      private route: ActivatedRoute,
+      private freelancerService: FreelancerService
+  ) { }
 
   ngOnInit(): void {
-      console.log('User id >>> ', this.route.snapshot.params['id'])
+      this.route.params.subscribe(value => {
+          this.index = +value['id'];
+          this.selectedFreelancer = this.freelancerService.getSelectedFreelancer(this.index)
+          console.log('User id >>> ', this.index)
+      })
   }
 
 }

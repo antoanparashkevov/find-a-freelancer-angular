@@ -1,12 +1,12 @@
 <div>
         <app-shared-card>
-            <h3>Antoan Parashkevov</h3>
-            <h4>$14/hour</h4>
+            <h3>{{selectedFreelancer.firstName}} {{selectedFreelancer.lastName}}</h3>
+            <h4>${{selectedFreelancer.hourlyRate}}/hour</h4>
         </app-shared-card>
         <app-shared-card>
 <!--            <app-shared-badge *ngFor="let skill of skills" [badge]="skill"></app-shared-badge>-->
             <h3>Information about the person</h3>
-            <p> simple desc</p>
+            <p> {{selectedFreelancer.description}}</p>
         </app-shared-card>
     <div>
         <app-shared-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Freelancer } from "../../models/freelancer.model";
+import {FreelancerService} from "../../services/freelancer.service";
 
 @Component({
   selector: 'app-freelancers-list',
@@ -7,32 +8,12 @@ import { Freelancer } from "../../models/freelancer.model";
   styleUrls: ['./freelancers-list.component.scss']
 })
 export class FreelancersListComponent implements OnInit {
-    freelancers: Freelancer[] = [
-        new Freelancer
-        (
-            'Antoan',
-            'Parashkevov',
-            'description', 
-            12, 
-            ['type1', 'type2', 'type3'], 
-            ['Sofia University', 'Softuni'], 
-            ['Bulgarian', 'English']
-        ),
-        new Freelancer
-        (
-            'Nadezhda',
-            'Dolashka',
-            'description',
-            20,
-            ['type1', 'type2', 'type3'],
-            ['Sofia University'],
-            ['Bulgarian', 'Spain']
-        )
-    ]
+    freelancers: Freelancer[] = []
     
-    constructor() { }
+    constructor(private freelancerService: FreelancerService) { }
 
     ngOnInit(): void {
+        this.freelancers = this.freelancerService.getFreelancer()
     }
 
 }
