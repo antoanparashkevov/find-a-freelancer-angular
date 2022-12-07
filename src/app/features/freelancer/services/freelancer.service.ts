@@ -27,7 +27,17 @@ export class FreelancerService {
             ['type1', 'type2', 'type3'],
             ['Sofia University'],
             ['Bulgarian', 'Spain']
-        )
+        ),
+        new Freelancer
+        (
+            'Antoan',
+            'Parashkevov',
+            'description',
+            12,
+            ['type5'],
+            ['Sofia University', 'Softuni'],
+            ['Bulgarian', 'English']
+        ),
     ]
     
     getFreelancer(activeFilters?: {[id: string]: boolean}) {

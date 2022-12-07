@@ -21,13 +21,12 @@ export class FreelancersListComponent implements OnInit {
     constructor(private freelancerService: FreelancerService) { }
 
     ngOnInit(): void {
-        this.freelancers = this.freelancerService.getFreelancer(this.skills)
+        this.freelancers = this.freelancerService.getFreelancer()
     }
     
     newFilterCriteria(newFilters:{[id: string]: boolean}) {
         this.skills = newFilters
         this.freelancers = this.freelancerService.getFreelancer(newFilters)
-        
     }
 
 }
