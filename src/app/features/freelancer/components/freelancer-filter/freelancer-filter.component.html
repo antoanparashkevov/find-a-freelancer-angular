@@ -1,9 +1,9 @@
 <div>
     <h2 class="main-header">Active Filters</h2>
     
-    <span class='filter-option' *ngFor="let skill of skills; let i = index">
-        <input type='checkbox' [id]='skill' checked>
-        <label [for]='skill'>{{ skill | uppercase }}</label>
+    <span class='filter-option' *ngFor="let skill of skills | keyvalue">
+        <input type='checkbox' [id]='skill.key' [checked]="skill.value" (change)="setFilter($event)">
+        <label [for]='skill.key'>{{ skill.key | uppercase }}</label>
     </span>
 
 </div>
