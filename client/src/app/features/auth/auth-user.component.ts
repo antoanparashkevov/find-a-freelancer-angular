@@ -50,10 +50,10 @@ export class AuthUserComponent implements OnInit {
             console.log('resData from Login/Register >>> ', resData )
             this.router.navigate(['/freelancers']);
         },
-          error: (errorMessage) => {
-              console.log(errorMessage);
-              this.error = errorMessage;
-          }
+        error: (errorMessage) => {
+          console.log(errorMessage);
+          this.error = errorMessage;
+        }
       })
 
       formRef.reset();
