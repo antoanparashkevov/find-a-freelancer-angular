@@ -3,6 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import { catchError, tap } from 'rxjs/operators';
 
+interface AuthResponseData {
+    accessToken: string;
+    email: string;
+    _id: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +17,9 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
     register(email: string, password: string) {
+      //will return an observable
         return this.http
-            .post<any>(
+            .post<AuthResponseData>(
                 'http://localhost:3030/users/register',
                 {
                     email: email,
@@ -23,8 +29,9 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
+        //will return an observable
         return this.http
-            .post<any>(
+            .post<AuthResponseData>(
                 'http://localhost:3030/users/login',
                 {
                     email: email,
