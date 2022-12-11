@@ -3,11 +3,12 @@ const express = require('express')
 const mongoose = require("mongoose");
 
 const port = 3030;
-const CONNECTION_STR = 'mongodb://localhost:27017/furniture'
+const CONNECTION_STR = 'mongodb://localhost:27017/freelancers'
 
 //Controllers...
 const authController = require('./controllers/authController')
-const dataController = require('./controllers/dataController')
+const freelancerController = require('./controllers/freelancerController')
+const proposalController = require('./controllers/proposalController')
 
 //Middlewares
 const cors = require('./middlewares/cors')
@@ -37,7 +38,9 @@ async function start() {
        })
     });
     app.use('/users', authController)
-    app.use('/data', dataController)
+    app.use('/freelancersData', freelancerController)
+    app.use('/proposalsData', proposalController)
+    
     app.listen(port, ()=>console.log('Server listening on port ' + port))
 }
 
