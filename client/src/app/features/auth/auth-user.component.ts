@@ -44,17 +44,17 @@ export class AuthUserComponent implements OnInit {
       } else {
           authObserver = this.authService.register(email,password)
       }
-
-      authObserver.subscribe(
-          resData => {
-              console.log('Server response Data during authentication process >>> ', resData);
-              this.router.navigate(['/freelancers']);
-          },
-          errorMessage => {
+      
+      authObserver.subscribe({
+        next: (resData) => {
+            console.log('resData from Login/Register >>> ', resData )
+            this.router.navigate(['/freelancers']);
+        },
+          error: (errorMessage) => {
               console.log(errorMessage);
               this.error = errorMessage;
           }
-      );
+      })
 
       formRef.reset();
      
