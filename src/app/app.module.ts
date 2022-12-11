@@ -19,15 +19,13 @@ import { AuthModule } from "./features/auth/auth.module";
 
 //Components
 import { AppComponent } from './app.component';
-import { TheHeaderComponent } from './core/components/the-header/the-header.component'
 
 
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-        TheHeaderComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,

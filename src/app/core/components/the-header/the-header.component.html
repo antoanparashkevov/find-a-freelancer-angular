@@ -11,15 +11,12 @@
             <li>
                 <a routerLink="/proposals" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Messages</a>
             </li>
-            
-<!--            TODO implement Authorization buttons-->
-<!--            <li>-->
-<!--                <a routerLink="/auth">Login</a>-->
-<!--            </li>-->
-<!--            -->
-<!--            <li>-->
-<!--                <app-base-button (click)="onLogout()">Logout</app-base-button>-->
-<!--            </li>-->
+            <li>
+                <a routerLink="/auth" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!isAuthenticated">Login</a>
+            </li>
+            <li>
+                <app-shared-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated">Logout</app-shared-button>
+            </li>
         </ul>
     </nav>
 </header>

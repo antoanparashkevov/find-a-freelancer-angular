@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./the-header.component.scss']
 })
 export class TheHeaderComponent implements OnInit {
-
+    //TODO make it dynamic
+    isAuthenticated: boolean = false
   constructor() { }
 
   ngOnInit(): void {
