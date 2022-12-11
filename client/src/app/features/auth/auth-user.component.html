@@ -2,7 +2,7 @@
     <form (ngSubmit)="onSubmit(formRef, emailRef, passwordRef)" #formRef="ngForm">
         <div class='form-control'>
             <label for='email' [ngClass]="{invalid_field: emailRef.invalid && emailRef.touched}">E-mail</label>
-            <input type='email' id='email' name="email" ngModel #emailRef="ngModel" required>
+            <input type='email' id='email' name="email" ngModel #emailRef="ngModel" required email>
         </div>
         <div class='form-control'>
             <label for='password' [ngClass]="{invalid_field: passwordRef.invalid && passwordRef.touched}">Password</label>

@@ -6,6 +6,7 @@ router.post('/register' ,
     body('email').isEmail().withMessage('Invalid email'),
     body('password').isLength({min: 3}).withMessage('Password must be at least 3 characters long!'),
     async(req,res)=> {
+    console.log('start')
   await authAction(req,res,register,400)
 })
 

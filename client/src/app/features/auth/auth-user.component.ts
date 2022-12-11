@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm, NgModel} from "@angular/forms";
+import {Observable} from "rxjs";
+import {AuthService} from "./services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth-user',
@@ -9,21 +12,52 @@ import {NgForm, NgModel} from "@angular/forms";
 export class AuthUserComponent implements OnInit {
     formIsValid: boolean = true;
     mode: string = 'login';
-  constructor() { }
+    error: string | null = null;
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(formRef: NgForm, emailRef: NgModel, passwordRef: NgModel) {
-      console.log('Form >>> ', formRef)
-      console.log('email >>> ', emailRef)
-      console.log('password >>> ', passwordRef)
-
-      if(formRef.form.invalid) {
+      if(!formRef.valid) {
           this.formIsValid = false
+          return;
       } else {
           this.formIsValid = true
       }
+      
+      console.log('Form >>> ', formRef)
+      // console.log('email >>> ', emailRef)
+      // console.log('password >>> ', passwordRef)
+      
+      const email = formRef.value.email;
+      const password = formRef.value.password
+      
+      console.log('email >>> ', email)
+      console.log('password >>> ', password)
+      
+      //TODO auth response data as interface
+      let authObserver: Observable<any>;
+      
+      if(this.mode === 'login') {
+          authObserver = this.authService.login(email,password)
+      } else {
+          authObserver = this.authService.register(email,password)
+      }
+
+      authObserver.subscribe(
+          resData => {
+              console.log('Server response Data during authentication process >>> ', resData);
+              this.router.navigate(['/freelancers']);
+          },
+          errorMessage => {
+              console.log(errorMessage);
+              this.error = errorMessage;
+          }
+      );
+
+      formRef.reset();
+     
   }
 
     switchAuthMode(){
