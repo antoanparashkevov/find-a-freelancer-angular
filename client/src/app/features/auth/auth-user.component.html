@@ -6,10 +6,10 @@
         </div>
         <div class='form-control'>
             <label for='password' [ngClass]="{invalid_field: passwordRef.invalid && passwordRef.touched}">Password</label>
-            <input type='password' id='password' name="password" ngModel #passwordRef="ngModel" required>
+            <input type='password' id='password' name="password" ngModel #passwordRef="ngModel" required minlength="6">
         </div>
         <p class='error' *ngIf="!formIsValid">Please enter a valid credentials</p>
-        <button type="submit">{{ submitButtonCaption() }}</button>
+        <button type="submit" [disabled]="formRef.invalid">{{ submitButtonCaption() }}</button>
         <button type="button" (click)='switchAuthMode()'>{{ switchModeCaption() }}</button>
     </form>
 </app-shared-card>
