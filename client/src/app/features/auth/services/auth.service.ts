@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import { catchError, tap } from 'rxjs/operators';
 
-interface AuthResponseData {
+export interface AuthResponseData {
     accessToken: string;
     email: string;
     _id: string;

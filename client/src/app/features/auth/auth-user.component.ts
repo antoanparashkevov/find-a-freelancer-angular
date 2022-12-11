@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm, NgModel} from "@angular/forms";
 import {Observable} from "rxjs";
-import {AuthService} from "./services/auth.service";
+import {AuthResponseData, AuthService} from "./services/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,7 +12,8 @@ import {Router} from "@angular/router";
 export class AuthUserComponent implements OnInit {
     formIsValid: boolean = true;
     mode: string = 'login';
-    error: string | null = null;
+    error: {message: string} | null = null;
+    isLoading: boolean = false;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -36,9 +37,8 @@ export class AuthUserComponent implements OnInit {
       console.log('email >>> ', email)
       console.log('password >>> ', password)
       
-      //TODO auth response data as interface
-      let authObserver: Observable<any>;
-      
+      let authObserver: Observable<AuthResponseData>;
+      this.isLoading = true;
       if(this.mode === 'login') {
           authObserver = this.authService.login(email,password)
       } else {
@@ -48,11 +48,13 @@ export class AuthUserComponent implements OnInit {
       authObserver.subscribe({
         next: (resData) => {
             console.log('resData from Login/Register >>> ', resData )
+            this.isLoading = false
             this.router.navigate(['/freelancers']);
         },
         error: (errorMessage) => {
-          console.log(errorMessage);
-          this.error = errorMessage;
+            this.error = errorMessage.error;
+            console.log('Error!! >>> ', this.error)
+            this.isLoading = false          
         }
       })
 
