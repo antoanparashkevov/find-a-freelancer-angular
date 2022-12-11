@@ -25,7 +25,9 @@ import {RouterModule} from "@angular/router";
         SharedBadgeComponent,
         SharedCardComponent,
         RouterModule,
-        SharedButtonComponent
+        SharedButtonComponent,
+        SharedDialogComponent,
+        SharedSpinnerComponent
     ]
 })
 export class SharedModule { }

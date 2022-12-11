@@ -1,1 +1,14 @@
-<p>shared-dialog works!</p>
+<div *ngIf="show" (click)="tryClose()" class='backdrop'></div>
+<dialog open *ngIf="show">
+    <header>
+        <h2>{{title}}</h2>
+    </header>
+    <section>
+        <ng-content></ng-content>
+    </section>
+    <menu *ngIf="!fixed">
+        <slot name='actions'>
+            <button (click)="tryClose()">Close</button>
+        </slot>
+    </menu>
+</dialog>

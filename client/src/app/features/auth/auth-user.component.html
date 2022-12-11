@@ -1,3 +1,9 @@
+<app-shared-dialog [show]='!!error' title='Failed to authenticate' (close)='handleError()'>
+    <p *ngIf="error !== null">{{error.message}}</p>
+</app-shared-dialog>
+<app-shared-dialog [fixed]="true" [show]='isLoading' title='Loading...'>
+    <app-shared-spinner></app-shared-spinner>
+</app-shared-dialog>
 <app-shared-card>
     <form (ngSubmit)="onSubmit(formRef, emailRef, passwordRef)" #formRef="ngForm">
         <div class='form-control'>

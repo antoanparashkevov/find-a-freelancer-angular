@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-shared-dialog',
@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shared-dialog.component.scss']
 })
 export class SharedDialogComponent implements OnInit {
+    @Input() title: string = 'Something wen wrong';
+    @Input() fixed: boolean = false
+    @Input() show: boolean = true
+    @Output('close') close = new EventEmitter<boolean>()
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
+    tryClose() {
+        if (this.fixed) {
+            return;
+        }
+        this.close.emit(this.show = false)
+    }
 }
