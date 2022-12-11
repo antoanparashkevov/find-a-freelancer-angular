@@ -9,7 +9,7 @@
             </li>
 
             <li>
-                <a routerLink="/proposals" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Messages</a>
+                <a routerLink="/proposals" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated">Messages</a>
             </li>
             <li>
                 <a routerLink="/auth" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!isAuthenticated">Login</a>

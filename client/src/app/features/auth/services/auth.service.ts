@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import { catchError, tap } from 'rxjs/operators';
+import {Subject} from "rxjs";
+import {User} from "../user.model";
 
 export interface AuthResponseData {
     accessToken: string;
@@ -13,7 +15,8 @@ export interface AuthResponseData {
   providedIn: 'root'
 })
 export class AuthService {
-
+  // user = new Subject<User>()
+    
   constructor(private http: HttpClient, private router: Router) { }
 
     register(email: string, password: string) {
