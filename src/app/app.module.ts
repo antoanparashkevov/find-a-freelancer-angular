@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FreelancerModule } from "./features/freelancer/freelancer.module";
 import { ProposalModule } from "./features/proposal/proposal.module";
 import { SharedModule } from "./shared/shared.module";
+import { AuthModule } from "./features/auth/auth.module";
 
 //Components
 import { AppComponent } from './app.component';
@@ -38,7 +39,8 @@ import { TheHeaderComponent } from './core/components/the-header/the-header.comp
         FreelancerModule,
         ProposalModule,
         SharedModule,
-        CoreModule
+        CoreModule,
+        AuthModule
     ],
     providers: [],
     bootstrap: [AppComponent]

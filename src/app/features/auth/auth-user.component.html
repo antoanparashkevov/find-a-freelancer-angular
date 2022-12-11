@@ -1,1 +1,15 @@
-<p>auth-user works!</p>
+<app-shared-card>
+    <form (ngSubmit)="onSubmit(formRef, emailRef, passwordRef)" #formRef="ngForm">
+        <div class='form-control'>
+            <label for='email' [ngClass]="{invalid_field: emailRef.invalid && emailRef.touched}">E-mail</label>
+            <input type='email' id='email' name="email" ngModel #emailRef="ngModel" required>
+        </div>
+        <div class='form-control'>
+            <label for='password' [ngClass]="{invalid_field: passwordRef.invalid && passwordRef.touched}">Password</label>
+            <input type='password' id='password' name="password" ngModel #passwordRef="ngModel" required>
+        </div>
+        <p class='error' *ngIf="!formIsValid">Please enter a valid credentials</p>
+        <button type="submit">{{ submitButtonCaption() }}</button>
+        <button type="button" (click)='switchAuthMode()'>{{ switchModeCaption() }}</button>
+    </form>
+</app-shared-card>
