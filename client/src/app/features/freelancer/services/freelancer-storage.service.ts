@@ -12,7 +12,13 @@ export class FreelancerStorage {
     }
     
     storeFreelancer(data: Freelancer) {
+        //return an observable
         return this.http.post<Freelancer>('http://localhost:3030/freelancersData/freelancers',
             data)
+    }
+    
+    getIndividualFreelancer(id: string) {
+        //return an observable
+        return this.http.get<Freelancer>('http://localhost:3030/freelancersData/freelancers/' + id)
     }
 }

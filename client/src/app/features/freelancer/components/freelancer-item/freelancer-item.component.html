@@ -1,8 +1,8 @@
 <li>
-    <h3>{{ freelancer.firstName }} {{ freelancer.lastName }}</h3>
-    <h4>${{freelancer.hourlyRate}}/hour</h4>
+    <h3>{{ firstName }} {{ lastName }}</h3>
+    <h4>${{hourlyRate}}/hour</h4>
     <div class="badges">
-        <app-shared-badge *ngFor="let skill of freelancer.skills" [badge]="skill" [type]="skill"></app-shared-badge>
+        <app-shared-badge *ngFor="let skill of skills" [badge]="skill" [type]="skill"></app-shared-badge>
     </div>
     <div class="actions">
         <app-shared-button [link]="true" [to]="index" mode="flat">Details</app-shared-button>

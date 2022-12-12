@@ -7,8 +7,13 @@ import {Freelancer} from "../../models/freelancer.model";
   styleUrls: ['./freelancer-item.component.scss']
 })
 export class FreelancerItemComponent implements OnInit {
-    @Input() freelancer!: Freelancer;
-    @Input('i') index!: number;
+    @Input() firstName!: string;
+    @Input() lastName!: string;
+    @Input() description!: string;
+    @Input() hourlyRate!: number;
+    @Input() skills!: string[];
+    @Input('i') index!: string | undefined
+    
   constructor() { }
 
   ngOnInit(): void {
