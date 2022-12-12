@@ -4,7 +4,7 @@
             <h4>${{selectedFreelancer.hourlyRate}}/hour</h4>
         </app-shared-card>
         <app-shared-card>
-<!--            <app-shared-badge *ngFor="let skill of skills" [badge]="skill"></app-shared-badge>-->
+            <app-shared-badge *ngFor="let skill of selectedFreelancer.skills" [badge]="skill"></app-shared-badge>
             <h3>Information about the person</h3>
             <p> {{selectedFreelancer.description}}</p>
         </app-shared-card>
