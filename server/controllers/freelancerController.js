@@ -8,11 +8,11 @@ router.get('/freelancers', async (req,res)=>{
     res.json(items)
 })
 
-router.post('/freelancers', hasUser(),async (req,res)  => {
+router.post('/freelancers',async (req,res)  => {
   try{
-      const data = Object.assign({_ownerId: req.user._id}, req.body)
-     const item = await create(data)
-      res.json(item)
+        const data = Object.assign( req.body)
+        const item = await create(data)
+        res.json(item)
   }catch (err) {
       const message = parseError(err)
       res.status(400).json({message})

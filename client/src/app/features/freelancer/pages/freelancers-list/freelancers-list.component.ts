@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Freelancer } from "../../models/freelancer.model";
 import {FreelancerService} from "../../services/freelancer.service";
+import {FreelancerStorage} from "../../services/freelancer-storage.service";
 
 @Component({
   selector: 'app-freelancers-list',
@@ -18,10 +19,16 @@ export class FreelancersListComponent implements OnInit {
         type5: true,
     }
     
-    constructor(private freelancerService: FreelancerService) { }
+    constructor(
+        private freelancerService: FreelancerService,
+        private freelancerStorage: FreelancerStorage
+    ) { }
 
     ngOnInit(): void {
-        this.freelancers = this.freelancerService.getFreelancer()
+        this.freelancerStorage.fetchFreelancers().subscribe(res=>{
+            this.freelancers = res
+            console.log('Freelancers from the Service >>> ', this.freelancers)
+        })
     }
     
     newFilterCriteria(newFilters:{[id: string]: boolean}) {

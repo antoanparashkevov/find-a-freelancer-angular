@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 
 //Services
 import {FreelancerService} from "../features/freelancer/services/freelancer.service";
+import {FreelancerStorage} from "../features/freelancer/services/freelancer-storage.service";
 import {ProposalService} from "../features/proposal/services/proposal.service";
 import {TheHeaderComponent} from "./components/the-header/the-header.component";
 import {SharedModule} from "../shared/shared.module";
@@ -19,7 +20,8 @@ import {RouterModule} from "@angular/router";
     ],
     providers: [
         FreelancerService,
-        ProposalService
+        ProposalService,
+        FreelancerStorage
     ],
     exports: [
         TheHeaderComponent,
