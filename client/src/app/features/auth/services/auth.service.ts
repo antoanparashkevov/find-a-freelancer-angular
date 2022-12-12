@@ -77,6 +77,7 @@ export class AuthService {
     }
     
     logout() {
-      this.user.next(null)
+        this.user.next(null)
+        localStorage.removeItem('userData')
     }
 }
