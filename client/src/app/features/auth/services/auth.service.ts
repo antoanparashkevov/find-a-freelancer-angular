@@ -18,7 +18,7 @@ export class AuthService {
   //the Subject is like a custom event emitter. It is more recommended
   user = new BehaviorSubject<User | null>(null)
     
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
     register(email: string, password: string) {
       //will return an observable
@@ -78,6 +78,7 @@ export class AuthService {
     
     logout() {
         this.user.next(null)
+        this.router.navigate(['/auth'])
         localStorage.removeItem('userData')
     }
 }
