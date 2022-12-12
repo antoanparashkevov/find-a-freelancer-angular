@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {FreelancerService} from "./freelancer.service";
 import {Freelancer} from "../models/freelancer.model";
 
 @Injectable()

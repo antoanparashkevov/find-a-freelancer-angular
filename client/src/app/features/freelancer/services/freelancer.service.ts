@@ -15,8 +15,6 @@ export class FreelancerService {
             'description',
             12,
             ['type1', 'type2', 'type3'],
-            ['Sofia University', 'Softuni'],
-            ['Bulgarian', 'English']
         ),
         new Freelancer
         (
@@ -25,8 +23,6 @@ export class FreelancerService {
             'description',
             20,
             ['type1', 'type2', 'type3'],
-            ['Sofia University'],
-            ['Bulgarian', 'Spain']
         ),
         new Freelancer
         (
@@ -35,8 +31,6 @@ export class FreelancerService {
             'description',
             12,
             ['type5'],
-            ['Sofia University', 'Softuni'],
-            ['Bulgarian', 'English']
         ),
     ]
     

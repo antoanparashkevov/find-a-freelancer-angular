@@ -11,7 +11,8 @@ const freelancerSchema = new Schema({
     },
     description:{
         type: String,
-        required: true
+        required: true,
+        min: [20, 'Description must be at least 20 characters long']
     },
     hourlyRate:{
         type: Number,
@@ -21,14 +22,6 @@ const freelancerSchema = new Schema({
         type: [],
         required: true
     },
-    education:{
-        type: String,
-        required: true
-    },
-    languages:{
-        type: [],
-        required: true
-    }
 })
 
 const Freelancer = model('Freelancer', freelancerSchema)
