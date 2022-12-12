@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm, NgModel} from "@angular/forms";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {AuthResponseData, AuthService} from "./services/auth.service";
 import {Router} from "@angular/router";
 
@@ -49,7 +49,7 @@ export class AuthUserComponent implements OnInit {
     next: (resData) => {
         console.log('resData from Login/Register >>> ', resData )
         this.isLoading = false
-        this.router.navigate(['/freelancers']);
+        this.router.navigate(['/freelancers']);//no matter if the user sign up or login
     },
     error: (errorMessage) => {
         this.error = errorMessage.error;

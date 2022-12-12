@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./shared-button.component.scss']
 })
 export class SharedButtonComponent implements OnInit {
-    @Input('to') location: string | number = '/coaches'
+    @Input('to') location: string | number = '/freelancers'
     @Input('mode') currentMode: string = 'outline'
     @Input('link') isLink: boolean = false;
     
