@@ -1,13 +1,15 @@
 <form (ngSubmit)="onSubmit(formRef, email, message)" #formRef="ngForm">
     <div class="form-control">
-        <label for='email' [ngClass]="{invalid_field: email.invalid && email.touched}">E-mail</label>
+        <label for='email' [ngClass]="{invalid_field: email.invalid && email.touched || !formIsValid && email.invalid}">E-mail</label>
         <input type='email' id='email' name="email" placeholder="example@gmail.com" email required #email="ngModel" ngModel>
+        <p *ngIf="email.invalid && email.touched || !formIsValid && email.invalid" class="errors">You must enter your email!</p>
     </div>
     <div class="form-control">
-        <label for='message' [ngClass]="{invalid_field: message.invalid && message.touched}">Message</label>
-        <textarea id='message' rows='5' name="message" required ngModel (blur)="clearInvalidClass('message')" #message="ngModel"></textarea>
+        <label for='message' [ngClass]="{invalid_field: message.invalid && message.touched || !formIsValid && message.invalid }">Message</label>
+        <textarea id='message' rows='5' name="message" required ngModel minlength="20" #message="ngModel"></textarea>
+        <p *ngIf="message.invalid && message.touched || !formIsValid && message.invalid" class="errors">Your message must not be empty and it should contain at least 20 characters long!</p>
     </div>
-    <p class='errors' *ngIf="!formIsValid">Please enter a valid email and non-empty message!</p>
+    <p class='errors' *ngIf="!formIsValid">Please fix the issues above and submit the form again!</p>
     <div class='actions'>
         <button>Send A Message</button>
     </div>

@@ -8,6 +8,7 @@ const proposalSchema = new Schema({
     },
     message:{
         type: String,
+        min: [20, 'The message must be at least 20 characters long'],
         required: true
     }
 })

@@ -28,7 +28,4 @@ export class FreelancerContactFormComponent implements OnInit {
         }
     }
     
-    clearInvalidClass(inputType: string) {
-    
-    }
 }
