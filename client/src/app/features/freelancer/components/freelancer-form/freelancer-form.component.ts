@@ -32,6 +32,9 @@ export class FreelancerFormComponent implements OnInit {
     onSubmit(formRef: NgForm, firstName: NgModel, lastName: NgModel, description: NgModel, rate: NgModel, skillsGroupRef: NgModelGroup) {
         this.formIsValid = !formRef.form.invalid;
         
+        const skillsData = Object.values(this.skillRef.value)
+        this.checkboxIsValid = !skillsData.every(f => f === '');
+        
         if(!this.formIsValid) {
             this.firstName = formRef.value.firstName !== null ? formRef.value.firstName: this.firstName;
             this.lastName = formRef.value.lastName !== null ? formRef.value.lastName: this.lastName
