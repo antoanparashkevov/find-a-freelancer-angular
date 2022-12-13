@@ -20,11 +20,11 @@
         <input type='number' id='hourlyRate' [ngModel]="hourlyRate" name="hourlyRate" #rateRef="ngModel" required>
         <p *ngIf="rateRef.invalid && rateRef.touched || !formIsValid && rateRef.invalid" class="errors">Rate must not be empty!</p>
     </div>
-    <div class='form-control' ngModelGroup="skills" #skillGroupRef="ngModelGroup" required>
+    <div class='form-control' ngModelGroup="skills" #skillGroupRef="ngModelGroup">
         <h3>Areas of Expertise</h3>
 
         <div *ngFor="let skill of skills">
-            <input type='checkbox' [id]='skill' ngModel [name]="skill" >
+            <input type='checkbox' [id]='skill' ngModel [name]="skill">
             <label [for]='skill'>{{skill | uppercase}}</label>
         </div>
 

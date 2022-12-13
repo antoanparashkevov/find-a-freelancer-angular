@@ -19,7 +19,6 @@ export class FreelancerFormComponent implements OnInit {
     formIsValid: boolean = true;
     checkboxIsValid: boolean = true;
     
-    @ViewChild('skillGroupRef') skillRef!: NgModelGroup
     @Output() saveData = new EventEmitter<Freelancer>()
     
     constructor(private freelancerStorage: FreelancerStorage,
@@ -32,8 +31,8 @@ export class FreelancerFormComponent implements OnInit {
     onSubmit(formRef: NgForm, firstName: NgModel, lastName: NgModel, description: NgModel, rate: NgModel, skillsGroupRef: NgModelGroup) {
         this.formIsValid = !formRef.form.invalid;
         
-        const skillsData = Object.values(this.skillRef.value)
-        this.checkboxIsValid = !skillsData.every(f => f === '');
+        const skillsData = Object.values(skillsGroupRef.value)
+        this.checkboxIsValid = !skillsData.every(v=>v==='');
         
         if(!this.formIsValid) {
             this.firstName = formRef.value.firstName !== null ? formRef.value.firstName: this.firstName;
@@ -42,25 +41,27 @@ export class FreelancerFormComponent implements OnInit {
             this.hourlyRate = formRef.value.hourlyRate !== null ? formRef.value.hourlyRate: this.hourlyRate
             return
         } else {
-        //TODO remove logs
-        console.log('Form >>> ', formRef)
-        console.log('firstName >>> ', firstName)
-        console.log('lastName >>> ', lastName)
-        console.log('description >>> ', description)
-        console.log('rate >>> ', rate)
-        console.log('Skills Group >>> ', skillsGroupRef)
-
-        const skillsData = Object.values(this.skillRef.value)
-        console.log('skillsData', skillsData)
-
-        this.checkboxIsValid = !skillsData.every(f => f === '');
+            
+            for(let [key,value] of Object.entries(formRef.value.skills)) {
+                if(value === '') {
+                    delete formRef.value.skills[key]
+                }
+            }
+            formRef.value.skills = Object.keys(formRef.value.skills)
+            //TODO remove logs
+            console.log('Form >>> ', formRef)
+            // console.log('firstName >>> ', firstName)
+            // console.log('lastName >>> ', lastName)
+            // console.log('description >>> ', description)
+            // console.log('rate >>> ', rate)
+            console.log('Skills Group >>> ', skillsGroupRef)
+            console.log('skillsData', skillsData)
+            
         
-        formRef.value.skills = Object.keys(formRef.value.skills)
-        this.saveData.emit(formRef.value)
-        this.router.navigate(['/freelancers'])
-        formRef.reset()
+            this.saveData.emit(formRef.value)
+            this.router.navigate(['/freelancers'])
+            formRef.reset()
         }
-        
     }
 
 }
