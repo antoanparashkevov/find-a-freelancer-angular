@@ -30,8 +30,8 @@ export class FreelancerContactFormComponent implements OnInit {
 
         //TODO remove logs
         console.log('Form >>> ', formRef)
-        console.log('Email >>> ', email)
-        console.log('Message >>> ', message)
+        // console.log('Email >>> ', email)
+        // console.log('Message >>> ', message)
         
         //todo implement post request
         
