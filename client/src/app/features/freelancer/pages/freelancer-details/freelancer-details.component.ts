@@ -22,10 +22,16 @@ export class FreelancerDetailsComponent implements OnInit {
   ngOnInit(): void {
       this.route.params.subscribe((params: Params) => {
           this.index = params['id'];
-          this.freelancerStorage.getIndividualFreelancer(this.index).subscribe(resData=>{
-              this.selectedFreelancer = resData
-          })
+          this.getIndividualFreelancer(this.index)
           console.log('User id >>> ', this.index)
+      })
+      
+  }
+  
+  private getIndividualFreelancer(index: string) {
+      this.freelancerStorage.getIndividualFreelancer(index).subscribe((resData) => {
+          this.selectedFreelancer = resData
+          console.log('selectedFreelancer >>> ', this.selectedFreelancer)
       })
   }
 }
