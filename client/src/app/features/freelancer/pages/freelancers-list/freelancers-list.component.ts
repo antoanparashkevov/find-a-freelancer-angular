@@ -3,6 +3,7 @@ import { Freelancer } from "../../models/freelancer.model";
 import {FreelancerService} from "../../services/freelancer.service";
 import {FreelancerStorage} from "../../services/freelancer-storage.service";
 import {AuthService} from "../../../auth/services/auth.service";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-freelancers-list',
@@ -12,13 +13,8 @@ import {AuthService} from "../../../auth/services/auth.service";
 export class FreelancersListComponent implements OnInit {
     freelancers: Freelancer[] = []
     isAuthenticated: boolean = false
-    skills: {[id: string] : boolean} = {
-        type1: true,
-        type2: true,
-        type3: true,
-        type4: true,
-        type5: true,
-    }
+    
+    skills: {[id: string] : boolean} = {}
     
     constructor(
         private freelancerService: FreelancerService,
@@ -27,6 +23,8 @@ export class FreelancersListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.skills = this.freelancerStorage.fetchAreas().reduce((a,v)=>({...a, [v]: true}), {})
+        
         this.freelancerStorage.fetchFreelancers().subscribe(res=>{
             this.freelancers = res
             console.log('Freelancers from the Service >>> ', this.freelancers)
@@ -37,8 +35,30 @@ export class FreelancersListComponent implements OnInit {
     }
     
     newFilterCriteria(newFilters:{[id: string]: boolean}) {
-        this.skills = newFilters
-        this.freelancers = this.freelancerService.getFreelancer(newFilters)
+        this.freelancerStorage.fetchFreelancers().subscribe(res=>{
+            this.freelancers = res
+            console.log('Freelancers from the Service >>> ', this.freelancers)
+        })
+        this.freelancers.filter(freelancer =>  {
+            if(newFilters['frontend'] && freelancer.skills.includes('frontend')) {
+                return true;
+            }
+            if(newFilters['backend'] && freelancer.skills.includes('backend')) {
+                return true;
+            }
+            if(newFilters['devops'] && freelancer.skills.includes('devops')) {
+                return true;
+            }
+            if(newFilters['pm'] && freelancer.skills.includes('pm')) {
+                return true;
+            }
+            if(this.skills['qa'] && freelancer.skills.includes('qa')) {
+                return true;
+            }
+            return false
+        })
+        //old approach with old service
+        // this.freelancers = this.freelancerService.getFreelancer(newFilters)
     }
 
 }

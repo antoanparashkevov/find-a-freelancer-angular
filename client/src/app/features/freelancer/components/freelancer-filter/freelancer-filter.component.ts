@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {filter} from "rxjs";
+import {FreelancerStorage} from "../../services/freelancer-storage.service";
 
 @Component({
   selector: 'app-freelancer-filter',
@@ -7,19 +8,14 @@ import {filter} from "rxjs";
   styleUrls: ['./freelancer-filter.component.scss']
 })
 export class FreelancerFilterComponent implements OnInit {
-        skills: {[id: string] : boolean} = {
-                type1: true,
-                type2: true,
-                type3: true,
-                type4: true,
-                type5: true,
-            }
+        skills: {[id: string] : boolean} = {}
             
         @Output() changeFilter = new EventEmitter<{[id: string]: boolean}> ()
     
-        constructor() { }
+        constructor(private freelancerStorage: FreelancerStorage) { }
         
         ngOnInit(): void {
+            this.skills = this.freelancerStorage.fetchAreas().reduce((a,v)=>({...a, [v]: true}), {})
         }
         
         setFilter(ev: Event) {

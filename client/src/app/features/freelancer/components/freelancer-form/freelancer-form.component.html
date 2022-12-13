@@ -25,7 +25,7 @@
 
         <div *ngFor="let skill of skills">
             <input type='checkbox' [id]='skill' ngModel [name]="skill" >
-            <label [for]='skill'>{{skill}}</label>
+            <label [for]='skill'>{{skill | uppercase}}</label>
         </div>
 
         <p *ngIf="!checkboxIsValid" class="errors">Click at least one area of expertise!</p>

@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {NgForm, NgModel, NgModelGroup} from "@angular/forms";
 import {Freelancer} from "../../models/freelancer.model";
+import {FreelancerStorage} from "../../services/freelancer-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-freelancer-form',
@@ -12,16 +14,19 @@ export class FreelancerFormComponent implements OnInit {
     lastName: string = ''
     description: string = ''
     hourlyRate: number = 13
-    
+    skills: string[] = []
     
     formIsValid: boolean = true;
     checkboxIsValid: boolean = true;
-    skills: string[] = ['type1', 'type2', 'type3', 'type4', 'type5']
+    
     @ViewChild('skillGroupRef') skillRef!: NgModelGroup
     @Output() saveData = new EventEmitter<Freelancer>()
-    constructor() { }
+    
+    constructor(private freelancerStorage: FreelancerStorage,
+                private router: Router) { }
 
     ngOnInit(): void {
+        this.skills = this.freelancerStorage.fetchAreas()
     }
 
     onSubmit(formRef: NgForm, firstName: NgModel, lastName: NgModel, description: NgModel, rate: NgModel, skillsGroupRef: NgModelGroup) {
@@ -32,8 +37,8 @@ export class FreelancerFormComponent implements OnInit {
             this.lastName = formRef.value.lastName !== null ? formRef.value.lastName: this.lastName
             this.description = formRef.value.description !== null ? formRef.value.description: this.description
             this.hourlyRate = formRef.value.hourlyRate !== null ? formRef.value.hourlyRate: this.hourlyRate
-        }
-        
+            return
+        } else {
         //TODO remove logs
         console.log('Form >>> ', formRef)
         console.log('firstName >>> ', firstName)
@@ -49,7 +54,10 @@ export class FreelancerFormComponent implements OnInit {
         
         formRef.value.skills = Object.keys(formRef.value.skills)
         this.saveData.emit(formRef.value)
+        this.router.navigate(['/freelancers'])
         formRef.reset()
+        }
+        
     }
 
 }

@@ -5,6 +5,17 @@ import {Freelancer} from "../models/freelancer.model";
 @Injectable()
 export class FreelancerStorage {
     constructor(private http: HttpClient) {}
+    private skills: string[] = [
+        'frontend',
+        'backend',
+        'devops',
+        'pm',
+        'qa'
+    ]
+    
+    fetchAreas() {
+        return this.skills.slice();//shallow copy, not the reference, because array is reference type of data
+    }
     
     fetchFreelancers() {
         //return an observable
