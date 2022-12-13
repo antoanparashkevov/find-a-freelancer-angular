@@ -15,7 +15,7 @@
                 <a routerLink="/auth" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!isAuthenticated">Login</a>
             </li>
             <li>
-                <app-shared-button [link]="true" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated" (click)="onLogout()">Logout</app-shared-button>
+                <app-shared-button [link]="true" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated" mode="flat" (click)="onLogout()">Logout</app-shared-button>
             </li>
         </ul>
     </nav>

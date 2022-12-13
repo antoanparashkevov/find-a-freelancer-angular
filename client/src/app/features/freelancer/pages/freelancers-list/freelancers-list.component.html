@@ -8,8 +8,8 @@
         <div class="controls">
 <!--            TODO refresh button-->
 <!--            TODO auth button-->
-            <app-shared-button *ngIf="false" [link]="true" mode="flat" to="/auth">Join us</app-shared-button>
-            <app-shared-button [link]="true" to="/register">Register now!</app-shared-button>
+            <app-shared-button *ngIf="!isAuthenticated" [link]="true"  to="/auth">Join us</app-shared-button>
+            <app-shared-button *ngIf="isAuthenticated" [link]="true"  to="/register">Register now!</app-shared-button>
         </div>
         <div>
             <ul>
