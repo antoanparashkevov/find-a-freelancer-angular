@@ -12,4 +12,11 @@ router.get('/proposals/:id', async (req,res)=>{
     res.json(item)
 })
 
+//TODO implement post request
+// router.post('/proposals/:id', async (req,res)=>{
+//     const id = req.params.id
+//     let item = await getById(id);
+//     res.json(item)
+// })
+
 module.exports = router;
