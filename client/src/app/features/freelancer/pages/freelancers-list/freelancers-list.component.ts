@@ -38,27 +38,27 @@ export class FreelancersListComponent implements OnInit {
         this.freelancerStorage.fetchFreelancers().subscribe(res=>{
             this.freelancers = res
             console.log('Freelancers from the Service >>> ', this.freelancers)
+            console.log('newFilters', newFilters)
+            
+            this.freelancers = this.freelancers.filter(freelancer =>  {
+                if(newFilters['frontend'] && freelancer.skills.includes('frontend')) {
+                    return true;
+                }
+                if(newFilters['backend'] && freelancer.skills.includes('backend')) {
+                    return true;
+                }
+                if(newFilters['devops'] && freelancer.skills.includes('devops')) {
+                    return true;
+                }
+                if(newFilters['pm'] && freelancer.skills.includes('pm')) {
+                    return true;
+                }
+                if(newFilters['qa'] && freelancer.skills.includes('qa')) {
+                    return true;
+                }
+                return false
+            })
         })
-        this.freelancers.filter(freelancer =>  {
-            if(newFilters['frontend'] && freelancer.skills.includes('frontend')) {
-                return true;
-            }
-            if(newFilters['backend'] && freelancer.skills.includes('backend')) {
-                return true;
-            }
-            if(newFilters['devops'] && freelancer.skills.includes('devops')) {
-                return true;
-            }
-            if(newFilters['pm'] && freelancer.skills.includes('pm')) {
-                return true;
-            }
-            if(this.skills['qa'] && freelancer.skills.includes('qa')) {
-                return true;
-            }
-            return false
-        })
-        //old approach with old service
-        // this.freelancers = this.freelancerService.getFreelancer(newFilters)
     }
 
 }
