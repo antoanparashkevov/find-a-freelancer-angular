@@ -9,6 +9,7 @@ import {SharedModule} from "../shared/shared.module";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {ProposalStorage} from "../features/proposal/services/proposal-storage.service";
+import {LoaderService} from "../features/freelancer/services/loader.service";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {ProposalStorage} from "../features/proposal/services/proposal-storage.se
         FreelancerService,
         ProposalService,
         FreelancerStorage,
-        ProposalStorage
+        ProposalStorage,
+        LoaderService
     ],
     exports: [
         TheHeaderComponent,

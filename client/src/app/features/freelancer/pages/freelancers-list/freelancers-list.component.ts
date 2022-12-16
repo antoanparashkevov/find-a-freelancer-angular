@@ -3,7 +3,7 @@ import { Freelancer } from "../../models/freelancer.model";
 import {FreelancerService} from "../../services/freelancer.service";
 import {FreelancerStorage} from "../../services/freelancer-storage.service";
 import {AuthService} from "../../../auth/services/auth.service";
-import {map, tap} from "rxjs/operators";
+import {LoaderService} from "../../services/loader.service";
 
 @Component({
   selector: 'app-freelancers-list',
@@ -19,7 +19,8 @@ export class FreelancersListComponent implements OnInit {
     constructor(
         private freelancerService: FreelancerService,
         private freelancerStorage: FreelancerStorage,
-        private authService: AuthService
+        private authService: AuthService,
+        public loaderService: LoaderService
     ) { }
 
     ngOnInit(): void {
@@ -39,15 +40,17 @@ export class FreelancersListComponent implements OnInit {
         this.isLoading = true
         this.freelancerStorage.fetchFreelancers().subscribe({
             next: (data)=> {
-                this.freelancers = data;
-                this.isLoading = false;
+                if(data) {
+                    this.freelancers = data;
+                    this.isLoading = false;
+                }
                 console.log('Freelancers from the Service >>> ', data)
             },
             error: (err)=> {
                 console.log('It has an error! >>> ', err)
                 this.isLoading = false;
             }
-    })
+        })
     }
     
     newFilterCriteria(newFilters:{[id: string]: boolean}) {
@@ -76,8 +79,8 @@ export class FreelancersListComponent implements OnInit {
             })
         })
     }
-    
     hasFreelancers() {
-        return !this.isLoading && this.freelancers && this.freelancers.length > 0
+        //TODO implement hasFreelancers
+        return true;
     }
 }

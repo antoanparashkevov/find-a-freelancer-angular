@@ -11,21 +11,23 @@
             <app-shared-button *ngIf="isAuthenticated" [link]="true"  to="/register">Register as a Freelancer!</app-shared-button>
         </div>
         <div>
-            <div *ngIf="isLoading">
+            <div *ngIf="loaderService.isLoading | async; else notLoading">
                 <app-shared-spinner></app-shared-spinner>
             </div>
-            <ul *ngIf="hasFreelancers">
-                <app-freelancer-item
-                    *ngFor="let freelancer of freelancers"
-                    [firstName]="freelancer.firstName"
-                    [lastName]="freelancer.lastName"
-                    [description]="freelancer.description"
-                    [hourlyRate]="freelancer.hourlyRate"
-                    [skills]="freelancer.skills"
-                    [i]="freelancer._id"
-                ></app-freelancer-item>
-            </ul>
-            <h3 class="no_freelancer" *ngIf="!hasFreelancers">No freelancers found!</h3>
+            <ng-template #notLoading>
+                <ul>
+                    <app-freelancer-item
+                        *ngFor="let freelancer of freelancers"
+                        [firstName]="freelancer.firstName"
+                        [lastName]="freelancer.lastName"
+                        [description]="freelancer.description"
+                        [hourlyRate]="freelancer.hourlyRate"
+                        [skills]="freelancer.skills"
+                        [i]="freelancer._id"
+                    ></app-freelancer-item>
+                </ul>
+            </ng-template>
+            <h3 class="no_freelancer" *ngIf="!hasFreelancers()">No freelancers found!</h3>
         </div>
        
     </app-shared-card>
