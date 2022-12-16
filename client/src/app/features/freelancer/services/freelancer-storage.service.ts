@@ -46,7 +46,7 @@ export class FreelancerStorage {
     
     private isBecomeAsFreelancer(data: Freelancer[]) {
             
-            let userId: string | null = JSON.parse(localStorage.getItem('userId') || '')
+            let userId: string | null = localStorage.getItem('userId')
             if(userId && userId.includes('"')) {
                 userId = userId.slice(1, userId.length -1)
             }

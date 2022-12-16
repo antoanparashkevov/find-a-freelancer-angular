@@ -7,7 +7,7 @@ import {AuthGuard} from "./auth.guard";
 
 
 const routes: Routes = [
-    {path: 'auth', component: AuthUserComponent, canActivate: [AuthGuard]},
+    {path: 'auth', component: AuthUserComponent},
 //    TODO Lazy-Loading implementation...
 ]
 

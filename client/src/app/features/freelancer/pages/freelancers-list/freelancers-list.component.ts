@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Freelancer } from "../../models/freelancer.model";
 import {FreelancerService} from "../../services/freelancer.service";
 import {FreelancerStorage} from "../../services/freelancer-storage.service";
 import {AuthService} from "../../../auth/services/auth.service";
 import {LoaderService} from "../../services/loader.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-freelancers-list',
   templateUrl: './freelancers-list.component.html',
   styleUrls: ['./freelancers-list.component.scss']
 })
-export class FreelancersListComponent implements OnInit {
+export class FreelancersListComponent implements OnInit, OnDestroy {
     freelancers: Freelancer[] = []
     isAuthenticated: boolean = false
-    isLoading: boolean = true;
     skills: {[id: string] : boolean} = {}
+    isAuthenticatedSubscription!: Subscription
     
     constructor(
         private freelancerService: FreelancerService,
@@ -30,25 +31,26 @@ export class FreelancersListComponent implements OnInit {
         this.isUserAuthenticated()
     }
     
+    ngOnDestroy() {
+        this.isAuthenticatedSubscription.unsubscribe()
+    }
+
     private isUserAuthenticated() {
-        this.authService.user.subscribe((user) => {
+       this.isAuthenticatedSubscription = this.authService.user.subscribe((user) => {
             this.isAuthenticated = !!user;//if it has a user data, to return boolean, not the actual user data
         })
     }
     
     fetchFreelancers() {
-        this.isLoading = true
         this.freelancerStorage.fetchFreelancers().subscribe({
             next: (data)=> {
                 if(data) {
                     this.freelancers = data;
-                    this.isLoading = false;
                 }
                 console.log('Freelancers from the Service >>> ', data)
             },
             error: (err)=> {
                 console.log('It has an error! >>> ', err)
-                this.isLoading = false;
             }
         })
     }
