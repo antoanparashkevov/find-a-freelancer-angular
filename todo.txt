@@ -2,9 +2,15 @@
 1. when a new freelancer is registered, 
 and then the router navigates us to /freelancers, the new freelancer doesn't appear to the list. It appears only when we refresh the page
 ---
-2. when it doesn't has any freelancers in the list, to display No freelancers Available
+2. when it doesn't has any freelancers in the list, to display No freelancers Available, the same for proposals
 ---
 3. a user can register only once as a freelancer
 ---
-I'm a freelancer who searches for Vue and Angular projects
+4. display the loading spinner
+---
+5. error handling for all requests
+---
+6. responsive design
+---
+7. animations
 ---

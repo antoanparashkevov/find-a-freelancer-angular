@@ -1,5 +1,4 @@
-const {getAll, getById} = require("../services/freelancerService");
-const { create } = require("../services/proposalService");
+const { create, getById } = require("../services/proposalService");
 const { hasUser } = require("../middlewares/guards");
 const parseError = require("../util/parser");
 const router = require('express').Router();

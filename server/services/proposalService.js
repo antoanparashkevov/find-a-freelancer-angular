@@ -1,8 +1,8 @@
 const Proposal = require('../models/Proposal')
 
-async function getAll () {
-    return Proposal.find({})
-}
+// async function getAll () {
+//     return Proposal.find({})
+// }
 
 async function getById(id) {
     return Proposal.find({userId: id})
@@ -13,7 +13,6 @@ async function create(item) {
 }
 
 module.exports = {
-    getAll,
     getById,
     create,
 }

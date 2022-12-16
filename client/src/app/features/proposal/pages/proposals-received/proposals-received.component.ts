@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Proposal } from "../../models/proposal.model";
 import { ProposalService } from "../../services/proposal.service";
+import { ProposalStorage } from "../../services/proposal-storage.service";
+import { Proposal } from "../../models/proposal.model";
 
 @Component({
   selector: 'app-proposals-received',
@@ -9,10 +10,22 @@ import { ProposalService } from "../../services/proposal.service";
 })
 export class ProposalsReceivedComponent implements OnInit {
     proposals: Proposal[] = []
-  constructor(private proposalService: ProposalService) { }
+    userId: string = localStorage.getItem('userId') || ''
+  constructor(
+      private proposalService: ProposalService,
+      private proposalStorage: ProposalStorage
+  ) { }
 
   ngOnInit(): void {
-        this.proposals = this.proposalService.getProposals()
+        if(this.userId) {
+            if(this.userId.includes('"')) {
+                this.userId = this.userId.slice(1, this.userId.length - 1)
+            }
+            this.proposalStorage.getIndividualProposal(this.userId).subscribe((resData)=>{
+                this.proposals = resData
+            })
+        }
+        // this.proposals = this.proposalService.getProposals()
   }
 
 }

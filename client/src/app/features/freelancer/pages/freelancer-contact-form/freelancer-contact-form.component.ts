@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgForm, NgModel} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {ProposalStorage} from "../../../proposal/services/proposal-storage.service";
+import {FreelancerStorage} from "../../services/freelancer-storage.service";
+import {Proposal} from "../../../proposal/models/proposal.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-freelancer-contact-form',
@@ -10,16 +13,19 @@ import {ProposalStorage} from "../../../proposal/services/proposal-storage.servi
   styleUrls: ['./freelancer-contact-form.component.scss']
 })
 
-export class FreelancerContactFormComponent implements OnInit {
+export class FreelancerContactFormComponent implements OnInit, OnDestroy {
     formIsValid: boolean = true;
-
+    ownerId!: Subscription
     email: string = ''
     message: string = ''
-
+    dataToSend!: Proposal
+    idToUse: string | null = ''
+    
     constructor(
         private http: HttpClient,
         private router: Router,
         private proposalStorage: ProposalStorage,
+        private freelancerStorage: FreelancerStorage,
         private currentRoute: ActivatedRoute) {
     }
 
@@ -38,14 +44,29 @@ export class FreelancerContactFormComponent implements OnInit {
         console.log('Form >>> ', formRef)
         // console.log('Email Ref >>> ', emailRef)
         // console.log('Message Ref >>> ', messageRef)
-        console.log('params', this.currentRoute.snapshot.params)
-        // const data = Object.assign({userId: this.currentRoute.snapshot.params['id']}, formRef.value)
-        // console.log('Data to Send >>> ', data)
-        // this.proposalStorage.postProposal(data).subscribe(res=>{
-        //     console.log('Response from Service >>> ', res)
-        // })
+        
+        this.dataToSend = formRef.value
+        
+        this.ownerId = this.freelancerStorage.ownerId.subscribe({
+                next: (val) => {
+                    this.idToUse = val
+                    console.log(this.idToUse)
+                    this.postProposal()
+                }
+            }
+         )
         
         this.router.navigate(['/freelancers'])
-        // formRef.reset()
+        formRef.reset()
+    }
+    
+    ngOnDestroy() {
+        this.ownerId.unsubscribe()
+    }
+    
+    private postProposal() {
+        return this.proposalStorage.postProposal(Object.assign({userId: this.idToUse}, this.dataToSend)).subscribe(res=>{
+            console.log('Response from Service >>> ', res)
+        })
     }
 }
