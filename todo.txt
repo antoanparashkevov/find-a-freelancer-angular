@@ -4,5 +4,7 @@ and then the router navigates us to /freelancers, the new freelancer doesn't app
 ---
 2. when it doesn't has any freelancers in the list, to display No freelancers Available
 ---
+3. a user can register only once as a freelancer
+---
 I'm a freelancer who searches for Vue and Angular projects
 ---
