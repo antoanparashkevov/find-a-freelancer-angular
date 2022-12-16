@@ -5,7 +5,7 @@ async function getAll () {
 }
 
 async function getById(id) {
-    return Freelancer.find({ userId: id })
+    return Freelancer.findById(id)
 }
 
 async function create(item) {

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm, NgModel} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {ProposalStorage} from "../../../proposal/services/proposal-storage.service";
 
 @Component({
   selector: 'app-freelancer-contact-form',
@@ -14,13 +16,17 @@ export class FreelancerContactFormComponent implements OnInit {
     email: string = ''
     message: string = ''
 
-    constructor(private router: Router, private currentRouter: ActivatedRoute) {
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private proposalStorage: ProposalStorage,
+        private currentRoute: ActivatedRoute) {
     }
 
     ngOnInit(): void {
     }
 
-    onSubmit(formRef: NgForm, email: NgModel, message: NgModel) {
+    onSubmit(formRef: NgForm, emailRef: NgModel, messageRef: NgModel) {
         this.formIsValid = !formRef.form.invalid;
 
         if (!this.formIsValid) {
@@ -30,12 +36,16 @@ export class FreelancerContactFormComponent implements OnInit {
 
         //TODO remove logs
         console.log('Form >>> ', formRef)
-        // console.log('Email >>> ', email)
-        // console.log('Message >>> ', message)
-        
-        //todo implement post request
+        // console.log('Email Ref >>> ', emailRef)
+        // console.log('Message Ref >>> ', messageRef)
+        console.log('params', this.currentRoute.snapshot.params)
+        // const data = Object.assign({userId: this.currentRoute.snapshot.params['id']}, formRef.value)
+        // console.log('Data to Send >>> ', data)
+        // this.proposalStorage.postProposal(data).subscribe(res=>{
+        //     console.log('Response from Service >>> ', res)
+        // })
         
         this.router.navigate(['/freelancers'])
-        formRef.reset()
+        // formRef.reset()
     }
 }

@@ -7,11 +7,13 @@ export class ProposalService {
    private proposals: Proposal[] = [
         new Proposal(
             'An example message 1',
-            'antoanparashkevov@gmail.com'
+            'antoanparashkevov@gmail.com',
+            '1'
         ),
         new Proposal(
             'An example message 2',
-            'tonkata1505@gmail.com'
+            'tonkata1505@gmail.com',
+            '2'
         )
     ]
   constructor() { }

@@ -5,7 +5,7 @@ async function getAll () {
 }
 
 async function getById(id) {
-    return Proposal.findById(id)
+    return Proposal.find({userId: id})
 }
 
 async function create(item) {
