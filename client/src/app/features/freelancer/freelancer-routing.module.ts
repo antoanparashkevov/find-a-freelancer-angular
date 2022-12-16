@@ -7,6 +7,7 @@ import {FreelancerDetailsComponent} from "./pages/freelancer-details/freelancer-
 import {FreelancerRegistrationComponent} from "./pages/freelancer-registration/freelancer-registration.component";
 import {FreelancerContactFormComponent} from "./pages/freelancer-contact-form/freelancer-contact-form.component";
 import {AuthGuard} from "../auth/auth.guard";
+import {FreelancerGuard} from "./freelancer.guard";
 
 const routes: Routes = [
     { path: 'freelancers', component: FreelancersListComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
     
         ]
     },
-    { path: 'register', canActivate: [AuthGuard], component: FreelancerRegistrationComponent },
+    { path: 'register', canActivate: [AuthGuard, FreelancerGuard], component: FreelancerRegistrationComponent },
 
 ]
 
