@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const {Schema, model, Types: {ObjectId}} = require('mongoose')
 
 const freelancerSchema = new Schema({
     firstName: {
@@ -22,6 +22,11 @@ const freelancerSchema = new Schema({
         type: [],
         required: true
     },
+    _ownerId: {
+        type: ObjectId,
+        ref: 'User',
+        required: true
+    }
 })
 
 const Freelancer = model('Freelancer', freelancerSchema)

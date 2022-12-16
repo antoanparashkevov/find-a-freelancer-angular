@@ -1,4 +1,4 @@
-const {getAll, getByUserId, create, getById, update, deleteById} = require("../services/freelancerService");
+const {getAll, create, getById} = require("../services/freelancerService");
 const parseError = require('../util/parser')
 const {hasUser} = require("../middlewares/guards");
 const router = require('express').Router();
