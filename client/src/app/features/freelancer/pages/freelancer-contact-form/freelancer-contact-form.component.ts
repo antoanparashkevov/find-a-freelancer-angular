@@ -15,18 +15,18 @@ import {Subscription} from "rxjs";
 
 export class FreelancerContactFormComponent implements OnInit, OnDestroy {
     formIsValid: boolean = true;
-    ownerId!: Subscription
+    ownerIdSubscription!: Subscription
     email: string = ''
     message: string = ''
     dataToSend!: Proposal
-    idToUse: string | null = ''
+    ownerId: string | null = ''
     
     constructor(
         private http: HttpClient,
         private router: Router,
         private proposalStorage: ProposalStorage,
-        private freelancerStorage: FreelancerStorage,
-        private currentRoute: ActivatedRoute) {
+        private freelancerStorage: FreelancerStorage
+    ) {
     }
 
     ngOnInit(): void {
@@ -47,10 +47,9 @@ export class FreelancerContactFormComponent implements OnInit, OnDestroy {
         
         this.dataToSend = formRef.value
         
-        this.ownerId = this.freelancerStorage.ownerId.subscribe({
+        this.ownerIdSubscription = this.freelancerStorage.ownerId.subscribe({
                 next: (val) => {
-                    this.idToUse = val
-                    console.log(this.idToUse)
+                    this.ownerId = val
                     this.postProposal()
                 }
             }
@@ -61,11 +60,11 @@ export class FreelancerContactFormComponent implements OnInit, OnDestroy {
     }
     
     ngOnDestroy() {
-        this.ownerId.unsubscribe()
+        this.ownerIdSubscription.unsubscribe()
     }
     
     private postProposal() {
-        return this.proposalStorage.postProposal(Object.assign({userId: this.idToUse}, this.dataToSend)).subscribe(res=>{
+        return this.proposalStorage.postProposal(Object.assign({userId: this.ownerId}, this.dataToSend)).subscribe(res=>{
             console.log('Response from Service >>> ', res)
         })
     }
