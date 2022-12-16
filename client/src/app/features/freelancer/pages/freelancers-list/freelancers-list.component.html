@@ -6,13 +6,15 @@
         </app-shared-card>
         
         <div class="controls">
-<!--            TODO refresh button-->
-<!--            TODO auth button-->
-            <app-shared-button *ngIf="!isAuthenticated" [link]="true"  to="/auth">Join us</app-shared-button>
+            <app-shared-button [link]="true" (click)="fetchFreelancers()">Refresh</app-shared-button>
+            <app-shared-button *ngIf="!isAuthenticated" [link]="true"  to="/auth">Join our community!</app-shared-button>
             <app-shared-button *ngIf="isAuthenticated" [link]="true"  to="/register">Register as a Freelancer!</app-shared-button>
         </div>
         <div>
-            <ul>
+            <div *ngIf="isLoading">
+                <app-shared-spinner></app-shared-spinner>
+            </div>
+            <ul *ngIf="hasFreelancers">
                 <app-freelancer-item
                     *ngFor="let freelancer of freelancers"
                     [firstName]="freelancer.firstName"
@@ -23,6 +25,7 @@
                     [i]="freelancer._id"
                 ></app-freelancer-item>
             </ul>
+            <h3 class="no_freelancer" *ngIf="!hasFreelancers">No freelancers found!</h3>
         </div>
        
     </app-shared-card>

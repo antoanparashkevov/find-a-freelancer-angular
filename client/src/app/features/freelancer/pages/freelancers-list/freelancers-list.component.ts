@@ -3,7 +3,7 @@ import { Freelancer } from "../../models/freelancer.model";
 import {FreelancerService} from "../../services/freelancer.service";
 import {FreelancerStorage} from "../../services/freelancer-storage.service";
 import {AuthService} from "../../../auth/services/auth.service";
-import {map} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-freelancers-list',
@@ -13,7 +13,7 @@ import {map} from "rxjs/operators";
 export class FreelancersListComponent implements OnInit {
     freelancers: Freelancer[] = []
     isAuthenticated: boolean = false
-    
+    isLoading: boolean = true;
     skills: {[id: string] : boolean} = {}
     
     constructor(
@@ -25,13 +25,29 @@ export class FreelancersListComponent implements OnInit {
     ngOnInit(): void {
         this.skills = this.freelancerStorage.fetchAreas().reduce((a,v)=>({...a, [v]: true}), {})
         
-        this.freelancerStorage.fetchFreelancers().subscribe(res=>{
-            this.freelancers = res
-            console.log('Freelancers from the Service >>> ', this.freelancers)
-        })
+        this.fetchFreelancers()
+        this.isUserAuthenticated()
+    }
+    
+    private isUserAuthenticated() {
         this.authService.user.subscribe((user) => {
             this.isAuthenticated = !!user;//if it has a user data, to return boolean, not the actual user data
         })
+    }
+    
+    fetchFreelancers() {
+        this.isLoading = true
+        this.freelancerStorage.fetchFreelancers().subscribe({
+            next: (data)=> {
+                this.freelancers = data;
+                this.isLoading = false;
+                console.log('Freelancers from the Service >>> ', data)
+            },
+            error: (err)=> {
+                console.log('It has an error! >>> ', err)
+                this.isLoading = false;
+            }
+    })
     }
     
     newFilterCriteria(newFilters:{[id: string]: boolean}) {
@@ -60,5 +76,8 @@ export class FreelancersListComponent implements OnInit {
             })
         })
     }
-
+    
+    hasFreelancers() {
+        return !this.isLoading && this.freelancers && this.freelancers.length > 0
+    }
 }
