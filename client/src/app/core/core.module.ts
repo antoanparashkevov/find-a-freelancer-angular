@@ -8,6 +8,7 @@ import {TheHeaderComponent} from "./components/the-header/the-header.component";
 import {SharedModule} from "../shared/shared.module";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
+import {ProposalStorage} from "../features/proposal/services/proposal-storage.service";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import {RouterModule} from "@angular/router";
     providers: [
         FreelancerService,
         ProposalService,
-        FreelancerStorage
+        FreelancerStorage,
+        ProposalStorage
     ],
     exports: [
         TheHeaderComponent,

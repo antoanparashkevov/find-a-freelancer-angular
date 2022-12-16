@@ -1,9 +1,23 @@
 const {getAll, getById} = require("../services/freelancerService");
+const { create } = require("../services/proposalService");
+const { hasUser } = require("../middlewares/guards");
+const parseError = require("../util/parser");
 const router = require('express').Router();
 
-router.get('/proposals', async (req,res)=>{
-    let items = await getAll();
-    res.json(items)
+// router.get('/proposals', async (req,res)=>{
+//     let items = await getAll();
+//     res.json(items)
+// })
+
+router.post('/proposals', hasUser(), async (req,res)=>{
+    try{
+        const data = req.body
+        const item = await create(data)
+        res.json(item)
+    }catch (err) {
+        const message = parseError(err)
+        res.status(400).json({message})
+    }
 })
 
 router.get('/proposals/:id', async (req,res)=>{
