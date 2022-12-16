@@ -16,9 +16,9 @@ export class FreelancerRegistrationComponent implements OnInit {
     
     saveData(data: Freelancer) {
         console.log('Data from freelancer-form', data)
-        this.freelancerStorage.storeFreelancer(data).subscribe(response=>{
-            console.log(response)
-        })
+            this.freelancerStorage.storeFreelancer(data).subscribe(response=>{
+                console.log('RESPONSE FROM SERVICE !!!IMPORTANT >>> ', response)
+            })
     }
 }
 

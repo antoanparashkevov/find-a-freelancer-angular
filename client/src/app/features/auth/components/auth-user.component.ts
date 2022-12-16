@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm, NgModel} from "@angular/forms";
-import {Observable, Subscription} from "rxjs";
-import {AuthResponseData, AuthService} from "./services/auth.service";
-import {Router} from "@angular/router";
+import { NgForm, NgModel } from "@angular/forms";
+import { Observable } from "rxjs";
+import { AuthResponseData, AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-auth-user',
@@ -28,17 +28,19 @@ export class AuthUserComponent implements OnInit {
     }
     
     console.log('Form >>> ', formRef)
-    // console.log('email >>> ', emailRef)
-    // console.log('password >>> ', passwordRef)
+    // console.log('email ref >>> ', emailRef)
+    // console.log('password ref >>> ', passwordRef)
     
     const email = formRef.value.email;
     const password = formRef.value.password
     
-    console.log('email >>> ', email)
-    console.log('password >>> ', password)
+    console.log('email from form >>> ', email)
+    console.log('password from form >>> ', password)
     
     let authObserver: Observable<AuthResponseData>;
+    
     this.isLoading = true;
+    
     if(this.mode === 'login') {
       authObserver = this.authService.login(email,password)
     } else {
@@ -52,8 +54,9 @@ export class AuthUserComponent implements OnInit {
         this.router.navigate(['/freelancers']);//no matter if the user sign up or login
     },
     error: (errorMessage) => {
+        console.log('errorMessage >>> ', errorMessage)
         this.error = errorMessage.error;
-        console.log('Error!! >>> ', this.error)
+        console.log('Error from this.error >>> ', this.error)
         this.isLoading = false          
     }
     })

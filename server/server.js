@@ -37,11 +37,12 @@ async function start() {
            message: 'REST service operational!'
        })
     });
+    
     app.use('/users', authController)
     app.use('/freelancersData', freelancerController)
     app.use('/proposalsData', proposalController)
     
-    app.listen(port, ()=>console.log('Server listening on port ' + port))
+    app.listen(port, () => console.log('Server listening on port ' + port))
 }
 
 

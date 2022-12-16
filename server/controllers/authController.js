@@ -2,12 +2,13 @@ const {register, login, logout} = require("../services/authService");
 const {body,validationResult} = require('express-validator')
 const router = require('express').Router()
 const parseError = require('../util/parser')
+
 router.post('/register' ,
     body('email').isEmail().withMessage('Invalid email'),
     body('password').isLength({min: 3}).withMessage('Password must be at least 3 characters long!'),
     async(req,res)=> {
-    console.log('start')
-  await authAction(req,res,register,400)
+    
+    await authAction(req,res,register,400)
 })
 
 router.post('/login' , async(req,res)=> {
@@ -24,7 +25,6 @@ router.get('/logout', async (req,res)=>{
 
 async function authAction(req,res, action, httpStatus) {
     const formData = req.body;
-    console.log(formData);
     try {
         const {errors} = validationResult(req)//array
         if(errors.length>0){

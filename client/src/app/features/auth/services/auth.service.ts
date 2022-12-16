@@ -56,29 +56,47 @@ export class AuthService {
     private handleAuthentication(email: string, _id: string, token: string) {
         const user = new User(email, _id, token)
         this.user.next(user)//emit this user
-        localStorage.setItem('userData', JSON.stringify(user))//converts to JSON string object
+        //converts to JSON string object
+        console.log('email', email)
+        console.log('_id', _id)
+        console.log('token', token)
+        localStorage.setItem('email', JSON.stringify(email))
+        localStorage.setItem('authToken', JSON.stringify(user.token))
+        localStorage.setItem('userId', JSON.stringify(user._id))
     }
     
     autoLogin() {
-        let userData:  {
-                email: string,
-                _id: string,
-                token: string
-        } = JSON.parse(localStorage.getItem('userData') || "{}")//convert it back to js Object
+      if(localStorage.length > 0) {
+                let email: string = JSON.parse(localStorage.getItem('email') || '')
+                let authToken: string = JSON.parse(localStorage.getItem('authToken') || '')
+                let userId: string = JSON.parse(localStorage.getItem('userId') || '')
+                
+                if(!email || !authToken || !userId) {
+                    return;
+                }
+                
+                const loadedUser = new User(email, userId, authToken)
+                
+                if(loadedUser.token) {
+                  this.user.next(loadedUser)
+                }
+            }
+      }
 
-        if(!userData) {
-            return;
-        }
-        const loadedUser = new User(userData.email, userData._id, userData.token)
-
-        if(loadedUser.token) {
-            this.user.next(loadedUser)
-        }
-    }
+        
     
     logout() {
+        this.http.get('http://localhost:3030/users/logout').subscribe(res=>{
+            console.log('Response from logging out >>> ', res)
+        })
+        
         this.user.next(null)
+        
         this.router.navigate(['/auth'])
-        localStorage.removeItem('userData')
+        
+        localStorage.removeItem('email')
+        localStorage.removeItem('authToken')
+        localStorage.removeItem('userId')
+       
     }
 }
