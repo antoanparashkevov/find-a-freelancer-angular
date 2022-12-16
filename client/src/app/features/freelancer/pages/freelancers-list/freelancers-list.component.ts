@@ -18,7 +18,7 @@ export class FreelancersListComponent implements OnInit {
     
     constructor(
         private freelancerService: FreelancerService,
-        private freelancerStorage: FreelancerStorage,
+        public freelancerStorage: FreelancerStorage,
         private authService: AuthService,
         public loaderService: LoaderService
     ) { }
