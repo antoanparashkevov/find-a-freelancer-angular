@@ -2,17 +2,23 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTre
 import {Observable} from "rxjs";
 import {FreelancerStorage} from "./services/freelancer-storage.service";
 import {Injectable} from "@angular/core";
+import {map, take} from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
 export class FreelancerGuard implements CanActivate {
-    constructor(private freelancerStorage: FreelancerStorage,private router: Router) {
+    constructor(
+        private freelancerStorage: FreelancerStorage,
+        private router: Router) {
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        let toReturn: boolean = false
-        this.freelancerStorage.isFreelancer.subscribe(val=>{
-                console.log('isFreelancer', val)
-                toReturn = !val
-        })
-        return toReturn ? toReturn : this.router.createUrlTree(['/freelancers'])
+       return this.freelancerStorage.isFreelancer.pipe(
+                take(1),
+                map(val=>{
+                    const isFreelancer = !val
+                    if(isFreelancer) {
+                        return true
+                    }
+                    return this.router.createUrlTree(['/freelancers'])
+                }))
     }
 }

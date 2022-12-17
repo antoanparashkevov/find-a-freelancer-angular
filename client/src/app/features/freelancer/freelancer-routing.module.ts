@@ -22,7 +22,7 @@ const routes: Routes = [
     
         ]
     },
-    { path: 'register', canActivate: [AuthGuard, FreelancerGuard], component: FreelancerRegistrationComponent },
+    { path: 'register', canActivate: [FreelancerGuard, AuthGuard ], component: FreelancerRegistrationComponent },
 
 ]
 

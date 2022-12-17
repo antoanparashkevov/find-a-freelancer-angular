@@ -7,3 +7,5 @@
 ---
 4. animations
 ---
+5. user to be able to register himself only once
+---
