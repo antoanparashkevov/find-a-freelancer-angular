@@ -4,8 +4,13 @@
     <div class="badges">
         <app-shared-badge *ngFor="let skill of skills" [badge]="skill" [type]="skill"></app-shared-badge>
     </div>
-    <div class="actions">
+    <div class="actions" *ngIf="!profileAction">
         <app-shared-button [link]="true" [to]="index" mode="flat">Details</app-shared-button>
         <app-shared-button [link]="true" [to]="'/freelancers/' + index + '/contact'">Contact</app-shared-button>
+    </div>
+    <div class="actions" *ngIf="profileAction">
+        <app-shared-button [link]="true" [to]="'/freelancers/' + index + '/edit'" mode="edit">Edit</app-shared-button>
+        <!--        todo add delete functionality-->
+        <app-shared-button [link]="false" text="Delete" mode="delete"></app-shared-button>
     </div>
 </li>

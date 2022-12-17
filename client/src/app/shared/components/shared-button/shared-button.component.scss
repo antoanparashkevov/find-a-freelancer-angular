@@ -1,3 +1,4 @@
+//Basic Button styles START
 button,a{
     text-decoration: none;
     padding: 0.75rem 1.75rem;
@@ -19,6 +20,9 @@ a:hover{
     border-color: #270041;
 }
 
+//Basic Button styles END
+
+//Mode Buttons styles START
 .flat {
     background-color: transparent;
     color: #3a0061;
@@ -41,6 +45,23 @@ a:hover{
     
 }
 
+.delete {
+    background-color: transparent;
+    border: 1px solid #d26b6b;
+    color: #d26b6b;
+}
+
+.edit {
+    background-color: transparent;
+    border: 1px solid darkseagreen;
+    color: darkseagreen
+}
+
+//Mode Buttons styles END
+
+//Mode Buttons actions START
+
+//square START
 .square:focus {
     outline: 0;
     background-color: #413FC5;
@@ -72,6 +93,9 @@ a:hover{
     pointer-events: none;
 }
 
+//square END
+
+//outline, flat START
 .outline:disabled {
     pointer-events: none;
     opacity: .65;
@@ -83,3 +107,23 @@ a:hover{
 .outline:active {
     background-color: #edd2ff;
 }
+
+//outline, flat END
+
+//delete, edit START
+.delete:hover,
+.delete:active {
+    background-color: transparent;
+    border: 1px solid #e07c7c;
+    opacity: .75;
+}
+
+.edit:hover,
+.edit:active {
+    background-color: transparent;
+    border: 1px solid darkolivegreen;
+    opacity: .75;
+}
+//delete, edit START
+
+//Mode Buttons actions END

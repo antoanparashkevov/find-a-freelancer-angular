@@ -3,12 +3,12 @@
        <h2>Your profile</h2>
     </div>
     <div class="sub-wrapper">
-        <li>Your email address  <span> {{email}}</span></li>
+        <li class="sub-content">Your email address  <span> {{email}}</span></li>
     </div>
     <div class="sub-header">
         <h2>You registration as a freelancer</h2>
     </div>
-    <ul>
+    <li class="main-content">
         <app-freelancer-item
             [firstName]="freelancer.firstName"
             [lastName]="freelancer.lastName"
@@ -16,6 +16,7 @@
             [hourlyRate]="freelancer.hourlyRate"
             [skills]="freelancer.skills"
             [i]="freelancer._id"
+            [profileAction]="true"
         ></app-freelancer-item>
-    </ul>
+    </li>
 </app-shared-card>

@@ -14,6 +14,8 @@ export class FreelancerItemComponent implements OnInit {
     @Input() skills!: string[];
     @Input('i') index!: string | undefined
     
+    @Input() profileAction: boolean = false
+    
   constructor() { }
 
   ngOnInit(): void {
