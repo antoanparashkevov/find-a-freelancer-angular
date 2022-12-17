@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Freelancer} from "../../../freelancer/models/freelancer.model";
 import {ProfileStorageService} from "../../services/profile-storage.service";
 import {FreelancerStorage} from "../../../freelancer/services/freelancer-storage.service";
+import {LoaderService} from "../../../freelancer/services/loader.service";
 
 @Component({
   selector: 'app-profile',
@@ -12,10 +13,11 @@ export class ProfileComponent implements OnInit {
     email: string = 'example@gmail.com'
     userId: string = ''
     error: {message: string} | null = null
-    freelancer!: Freelancer[]
+    freelancer: Freelancer[] = []
     
   constructor(
       private profileStorage: ProfileStorageService,
+      public loaderService: LoaderService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,10 @@ export class ProfileComponent implements OnInit {
 
             }
         })
+    }
+    
+    hasFreelancerRegistration() {
+        return this.freelancer && this.freelancer.length > 0;
     }
 
 }

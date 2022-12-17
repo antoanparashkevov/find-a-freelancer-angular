@@ -84,7 +84,6 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
         })
     }
     hasFreelancers() {
-        //TODO implement hasFreelancers
         return this.freelancers && this.freelancers.length > 0;
     }
     handleError() {

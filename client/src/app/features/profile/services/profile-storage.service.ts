@@ -15,18 +15,10 @@ export class ProfileStorageService {
     ) {}
     
     fetchProfileInformation() {
-        let token  = localStorage.getItem('authToken')
-
-        if(token && token.includes('"')) {
-            //cut the quotes
-            token = token.slice(1, token.length - 1)
-        }
-        
         //return an observable
         return this.http.get<User>('http://localhost:3030/profileData/userInfo').pipe(map((resData) => ({
             email: resData.email,
             id: resData._id,
-            token: token
         })))
     }
     
