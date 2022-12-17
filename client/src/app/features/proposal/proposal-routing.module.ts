@@ -9,6 +9,7 @@ const routes: Routes = [
     { path: 'proposals', canActivate: [AuthGuard], component: ProposalsReceivedComponent },
 ]
 
+
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]

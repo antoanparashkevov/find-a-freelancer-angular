@@ -8,6 +8,7 @@ import { CoreModule } from "./core/core.module";
 import { FreelancerRouting } from "./features/freelancer/freelancer-routing.module";
 import { ProposalRouting } from "./features/proposal/proposal-routing.module";
 import { AuthRouting } from "./features/auth/auth-routing.module";
+import { ProfileRouting } from "./features/profile/profile-routing.module";
 
 
 //Custom Modules
@@ -35,6 +36,7 @@ import { AuthInterceptorService } from "./features/auth/auth-interceptor.service
         FreelancerRouting,
         ProposalRouting,
         AuthRouting,
+        ProfileRouting,
         FreelancerModule,
         ProposalModule,
         SharedModule,
