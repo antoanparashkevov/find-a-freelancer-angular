@@ -1,5 +1,5 @@
 ---
-1. when it doesn't has any freelancers in the list, to display No freelancers Available, the same for proposals
+1. when it doesn't have any freelancers in the list, to display No freelancers Available, the same for proposals - done
 ---
 2. error handling for all requests - done
 ---
@@ -10,4 +10,8 @@
 5. user to be able to register himself only once - paused
 ---
 6. fix the buttons issue - done
+---
+7. caching
+---
+8. lazy loading
 ---

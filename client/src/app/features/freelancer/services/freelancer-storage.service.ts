@@ -6,7 +6,7 @@ import {BehaviorSubject, tap} from "rxjs";
 @Injectable()
 export class FreelancerStorage {
     ownerId = new BehaviorSubject<string | null>(null)
-    isFreelancer = new BehaviorSubject<boolean>(true)
+    isFreelancer = new BehaviorSubject<boolean>(false)
     constructor(private http: HttpClient) {}
     private skills: string[] = [
         'frontend',
@@ -52,8 +52,10 @@ export class FreelancerStorage {
             }
             data.forEach(freelancer=>{
             if(freelancer._ownerId === userId) {
+                console.log('isFreelancer >>>  true')
                 this.isFreelancer.next(true)
             } else {
+                console.log('isFreelancer >>>  false')
                 this.isFreelancer.next(false)
             }
         })
