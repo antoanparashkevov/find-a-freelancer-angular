@@ -9,7 +9,7 @@
         <div class="sub-wrapper">
             <li class="sub-content">Your email address  <span> {{email}}</span></li>
         </div>
-        <div class="sub-header">
+        <div class="sub-header" *ngIf="hasFreelancerRegistration() && !(loaderService.isLoading  | async)">
             <h2>You registration as a freelancer</h2>
         </div>
         <div>
@@ -29,7 +29,7 @@
                     ></app-freelancer-item>
                 </li>
             </ng-template>
-            <h3 class="no_freelancer" *ngIf="!hasFreelancerRegistration() && !(loaderService.isLoading  | async)">No freelancers found!</h3>
+            <h3 class="no_freelancer" *ngIf="!hasFreelancerRegistration() && !(loaderService.isLoading  | async)">You are not registered as a freelancer</h3>
         </div>
 
         <router-outlet></router-outlet>
