@@ -59,7 +59,14 @@ export class FreelancerFormComponent implements OnInit {
             
         
             this.saveData.emit(formRef.value)
-            this.router.navigate(['/freelancers'])
+            
+            this.freelancerStorage.freelancerId.subscribe(id=>{
+                if(id) {
+                    this.router.navigate(['/freelancers/',id])
+                } else {
+                    this.router.navigate(['/freelancers'])
+                }
+            })
             formRef.reset()
         }
     }

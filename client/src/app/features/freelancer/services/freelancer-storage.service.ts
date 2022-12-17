@@ -1,12 +1,13 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Freelancer} from "../models/freelancer.model";
-import {BehaviorSubject, tap} from "rxjs";
+import {BehaviorSubject, Subject, tap} from "rxjs";
 
 @Injectable()
 export class FreelancerStorage {
     ownerId = new BehaviorSubject<string | null>(null)
     isFreelancer = new BehaviorSubject<boolean>(false)
+    freelancerId = new Subject<string | undefined>()
     constructor(private http: HttpClient) {}
     private skills: string[] = [
         'frontend',
@@ -30,7 +31,9 @@ export class FreelancerStorage {
     storeFreelancer(data: Freelancer) {
         //return an observable
         return this.http.post<Freelancer>('http://localhost:3030/freelancersData/freelancers',
-            data)
+            data).pipe(tap((res=>{
+                this.freelancerId.next(res._id)
+        })))
     }
     
     getIndividualFreelancer(id: string) {
