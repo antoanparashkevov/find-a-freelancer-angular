@@ -11,7 +11,8 @@
 ---
 6. fix the buttons issue - done
 ---
-7. caching
----
 8. lazy loading
 ---
+9. profile
+---
+10. not found

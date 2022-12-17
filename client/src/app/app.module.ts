@@ -15,6 +15,7 @@ import { ProfileRouting } from "./features/profile/profile-routing.module";
 import { AppRoutingModule } from './app-routing.module';
 import { FreelancerModule } from "./features/freelancer/freelancer.module";
 import { ProposalModule } from "./features/proposal/proposal.module";
+import { ProfileModule } from "./features/profile/profile.module";
 import { SharedModule } from "./shared/shared.module";
 import { AuthModule } from "./features/auth/auth.module";
 
@@ -39,6 +40,7 @@ import { AuthInterceptorService } from "./features/auth/auth-interceptor.service
         ProfileRouting,
         FreelancerModule,
         ProposalModule,
+        ProfileModule,
         SharedModule,
         CoreModule,
         AuthModule

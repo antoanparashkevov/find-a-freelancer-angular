@@ -1,1 +1,21 @@
-<p>profile works!</p>
+<app-shared-card>
+    <div class="main-header">
+       <h2>Your profile</h2>
+    </div>
+    <div class="sub-wrapper">
+        <li>Your email address  <span> {{email}}</span></li>
+    </div>
+    <div class="sub-header">
+        <h2>You registration as a freelancer</h2>
+    </div>
+    <ul>
+        <app-freelancer-item
+            [firstName]="freelancer.firstName"
+            [lastName]="freelancer.lastName"
+            [description]="freelancer.description"
+            [hourlyRate]="freelancer.hourlyRate"
+            [skills]="freelancer.skills"
+            [i]="freelancer._id"
+        ></app-freelancer-item>
+    </ul>
+</app-shared-card>
