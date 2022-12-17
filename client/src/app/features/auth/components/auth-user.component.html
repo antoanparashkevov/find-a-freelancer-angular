@@ -15,7 +15,7 @@
             <input type='password' id='password' name="password" ngModel #passwordRef="ngModel" required minlength="6">
         </div>
 <!--        <p class='error' *ngIf="!formIsValid && error === null">Please enter a valid credentials</p>-->
-        <button type="submit" [disabled]="formRef.invalid">{{ submitButtonCaption() }}</button>
-        <button type="button" (click)='switchAuthMode()'>{{ switchModeCaption() }}</button>
+        <app-shared-button type="submit" [link]="false" [disabled]="formRef.invalid" [text]="submitButtonCaption()" mode="outline"></app-shared-button>
+        <app-shared-button type="button" [link]="false" (click)='switchAuthMode()' [text]="switchModeCaption()" mode="flat"></app-shared-button>
     </form>
 </app-shared-card>

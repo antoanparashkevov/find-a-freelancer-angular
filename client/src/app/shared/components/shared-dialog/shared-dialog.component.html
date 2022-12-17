@@ -8,7 +8,7 @@
     </section>
     <menu *ngIf="!fixed">
         <slot name='actions'>
-            <button (click)="tryClose()">Close</button>
+            <app-shared-button text="Close" [link]="false" (click)="tryClose()" mode="square"></app-shared-button>
         </slot>
     </menu>
 </dialog>

@@ -6,7 +6,7 @@
         </app-shared-card>
         
         <div class="controls">
-            <app-shared-button [link]="true" (click)="fetchFreelancers()">Refresh</app-shared-button>
+            <app-shared-button mode="square" [text]="'Refresh' | uppercase" (click)="fetchFreelancers()"></app-shared-button>
             <app-shared-button *ngIf="!isAuthenticated" [link]="true"  to="/auth">Join our community!</app-shared-button>
             <app-shared-button *ngIf="isAuthenticated && (!(freelancerStorage.isFreelancer | async))" [link]="true" to="/register">Register as a Freelancer!</app-shared-button>
         </div>

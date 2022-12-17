@@ -60,7 +60,9 @@ export class FreelancerContactFormComponent implements OnInit, OnDestroy {
     }
     
     ngOnDestroy() {
-        this.ownerIdSubscription.unsubscribe()
+        if(this.ownerIdSubscription) {
+            this.ownerIdSubscription.unsubscribe()
+        }
     }
     
     private postProposal() {

@@ -1,13 +1,13 @@
 ---
 1. when it doesn't has any freelancers in the list, to display No freelancers Available, the same for proposals
 ---
-2. error handling for all requests
+2. error handling for all requests - in progress
 ---
 3. responsive design
 ---
 4. animations
 ---
-5. user to be able to register himself only once - in progress
+5. user to be able to register himself only once - paused
 ---
-6. fix the buttons issue - in progress
+6. fix the buttons issue - done
 ---

@@ -1,5 +1,5 @@
-<button *ngIf="!isLink"  [ngClass]="currentMode">
-    <ng-content></ng-content>
+<button *ngIf="!isLink"  [ngClass]="currentMode" [disabled]="isDisabled">
+    {{buttonText}}
 </button>
 <a *ngIf="isLink" [routerLink]="[location]" [ngClass]="currentMode">
     <ng-content></ng-content>

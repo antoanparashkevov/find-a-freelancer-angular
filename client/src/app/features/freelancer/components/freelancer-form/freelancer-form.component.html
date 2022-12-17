@@ -31,5 +31,5 @@
         <p *ngIf="!checkboxIsValid || !formIsValid && !checkboxIsValid" class="errors">Click at least one area of expertise!</p>
     </div>
     <p *ngIf="!formIsValid" class="errors">Please fix the issues above and submit the form again!</p>
-    <button>Register</button>
+    <app-shared-button [link]="false" text="Register" mode="square" [disabled]="formRef.invalid"></app-shared-button>
 </form>
