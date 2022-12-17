@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Freelancer} from "../../../freelancer/models/freelancer.model";
+import {ProfileStorageService} from "../../services/profile-storage.service";
+import {FreelancerStorage} from "../../../freelancer/services/freelancer-storage.service";
 
 @Component({
   selector: 'app-profile',
@@ -8,21 +10,41 @@ import {Freelancer} from "../../../freelancer/models/freelancer.model";
 })
 export class ProfileComponent implements OnInit {
     email: string = 'example@gmail.com'
-    freelancer: Freelancer =
-        new Freelancer
-        (
-            'Antoan',
-            'Parashkevov',
-            'description',
-            12,
-            ['frontend', 'backend', 'pm'],
-            '12312312321312',
-            '132123321132312'
-        )
+    userId: string = ''
+    error: {message: string} | null = null
+    freelancer!: Freelancer[]
     
-  constructor() { }
+  constructor(
+      private profileStorage: ProfileStorageService,
+  ) { }
 
   ngOnInit(): void {
+        this.fetchProfileInformation()
   }
+  
+  private fetchProfileInformation() {
+      this.profileStorage.fetchProfileInformation().subscribe({
+          next: (resData)=> {
+              this.email = resData.email
+              this.userId = resData.id
+              console.log('Profile Information from service ', resData)
+              this.getIndividualFreelancer(this.userId)
+          }
+      })
+  }
+
+    private getIndividualFreelancer(index: string) {
+        this.profileStorage.getFreelancerRegistration(index).subscribe({
+            next: (resData) => {
+                this.freelancer = resData
+                console.log('freelancer >>> ', this.freelancer)
+            },
+            error: (err) => {
+                this.error = err.error
+                console.log('It has an error! >>> ', err)
+
+            }
+        })
+    }
 
 }

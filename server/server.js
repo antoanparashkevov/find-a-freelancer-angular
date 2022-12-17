@@ -9,6 +9,7 @@ const CONNECTION_STR = 'mongodb://localhost:27017/freelancers'
 const authController = require('./controllers/authController')
 const freelancerController = require('./controllers/freelancerController')
 const proposalController = require('./controllers/proposalController')
+const profileController = require('./controllers/profileController')
 
 //Middlewares
 const cors = require('./middlewares/cors')
@@ -41,6 +42,7 @@ async function start() {
     app.use('/users', authController)
     app.use('/freelancersData', freelancerController)
     app.use('/proposalsData', proposalController)
+    app.use('/profileData', profileController)
     
     app.listen(port, () => console.log('Server listening on port ' + port))
 }
