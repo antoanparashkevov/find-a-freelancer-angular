@@ -7,5 +7,7 @@
 ---
 4. animations
 ---
-5. user to be able to register himself only once
+5. user to be able to register himself only once - in progress
+---
+6. fix the buttons issue - in progress
 ---

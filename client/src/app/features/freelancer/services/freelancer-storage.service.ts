@@ -51,12 +51,9 @@ export class FreelancerStorage {
                 userId = userId.slice(1, userId.length -1)
             }
             data.forEach(freelancer=>{
-                console.log('here1')
             if(freelancer._ownerId === userId) {
-                console.log('here2')
                 this.isFreelancer.next(true)
             } else {
-                console.log('here3')
                 this.isFreelancer.next(false)
             }
         })
