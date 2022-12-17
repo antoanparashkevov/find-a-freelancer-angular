@@ -1,1 +1,38 @@
-<p>profile-freelancer-edit works!</p>
+<div *ngIf="freelancerData && freelancerData.length > 0">
+    <h2>Edit you registration as a freelancer :)</h2>
+    <form (ngSubmit)="onSubmit(formRef, skillGroupRef)" #formRef="ngForm">
+
+        <div class='form-control'>
+            <label for='firstName' [ngClass]="{invalid_field: firstNameRef.invalid && firstNameRef.touched || !formIsValid && firstNameRef.invalid}">Firstname</label>
+            <input type='text' id='firstName' [ngModel]="freelancerData[0].firstName || ''" name="firstName" #firstNameRef="ngModel" required>
+            <p *ngIf='firstNameRef.invalid && firstNameRef.touched || !formIsValid && firstNameRef.invalid' class="errors">Firstname must not be empty!</p>
+        </div>
+        <div class='form-control'>
+            <label for='lastName' [ngClass]="{invalid_field: lastNameRef.invalid && lastNameRef.touched || !formIsValid && lastNameRef.invalid}">Lastname</label>
+            <input type='text' id='lastName' [ngModel]="freelancerData[0].lastName" name="lastName" #lastNameRef="ngModel" required>
+            <p *ngIf="lastNameRef.invalid && lastNameRef.touched|| !formIsValid && lastNameRef.invalid" class="errors">Lastname must not be empty!</p>
+        </div>
+        <div class='form-control'>
+            <label for='description' [ngClass]="{invalid_field: descRef.invalid && descRef.touched || !formIsValid && descRef.invalid}">Description</label>
+            <textarea id='description' rows='5' [ngModel]="freelancerData[0].description" name="description" #descRef="ngModel" required minlength="20"></textarea>
+            <p *ngIf="descRef.invalid && descRef.touched || !formIsValid && descRef.invalid" class="errors">Description must not be empty and it should contain at least 20 characters long!</p>
+        </div>
+        <div class='form-control'>
+            <label for='hourlyRate' [ngClass]="{invalid_field: rateRef.invalid && rateRef.touched || !formIsValid && rateRef.invalid}">Hourly rate</label>
+            <input type='number' id='hourlyRate' [ngModel]="freelancerData[0].hourlyRate" name="hourlyRate" #rateRef="ngModel" required>
+            <p *ngIf="rateRef.invalid && rateRef.touched || !formIsValid && rateRef.invalid" class="errors">Rate must not be empty!</p>
+        </div>
+        <div class='form-control' ngModelGroup="skills" #skillGroupRef="ngModelGroup">
+            <h3>Areas of Expertise</h3>
+
+            <div *ngFor="let skill of skills">
+                <input type='checkbox' [id]='skill' ngModel [name]="skill">
+                <label [for]='skill'>{{skill | uppercase}}</label>
+            </div>
+
+            <p *ngIf="!checkboxIsValid || !formIsValid && !checkboxIsValid" class="errors">Click at least one area of expertise!</p>
+        </div>
+        <p *ngIf="!formIsValid" class="errors">Please fix the issues above and submit the form again!</p>
+        <app-shared-button [link]="false" text="Edit" mode="edit" [disabled]="formRef.invalid"></app-shared-button>
+    </form>
+</div>

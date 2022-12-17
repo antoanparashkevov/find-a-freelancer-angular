@@ -9,6 +9,7 @@ import { RouterModule } from "@angular/router";
 import { ProfileComponent } from './pages/profile/profile.component';
 import {FreelancerModule} from "../freelancer/freelancer.module";
 import { ProfileFreelancerEditComponent } from './pages/profile-freelancer-edit/profile-freelancer-edit.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ProfileFreelancerEditComponent } from './pages/profile-freelancer-edit/
         CommonModule,
         SharedModule,
         RouterModule,
-        FreelancerModule
+        FreelancerModule,
+        FormsModule
     ],
     exports: [
         ProfileComponent

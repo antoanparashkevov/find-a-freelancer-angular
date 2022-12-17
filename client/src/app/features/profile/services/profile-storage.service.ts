@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../auth/models/user.model";
 import {map, tap} from "rxjs/operators";
 import {Freelancer} from "../../freelancer/models/freelancer.model";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileStorageService {
-    
+    freelancerData = new Subject<Freelancer[]>()
     constructor(
         private http: HttpClient
     ) {}
@@ -23,6 +23,8 @@ export class ProfileStorageService {
     }
     
     getFreelancerRegistration(ownerId: string) {
-        return this.http.get<Freelancer[]>(`http://localhost:3030/freelancersData/freelancers?where=_ownerId%3D%22${ownerId}%22`)
+        return this.http.get<Freelancer[]>(`http://localhost:3030/freelancersData/freelancers?where=_ownerId%3D%22${ownerId}%22`).pipe(tap((resData)=>{
+            this.freelancerData.next(resData)
+        }))
     }
 }

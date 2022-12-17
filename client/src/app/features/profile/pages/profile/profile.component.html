@@ -31,7 +31,11 @@
             </ng-template>
             <h3 class="no_freelancer" *ngIf="!hasFreelancerRegistration() && !(loaderService.isLoading  | async)">You are not registered as a freelancer</h3>
         </div>
-
-        <router-outlet></router-outlet>
+        
+        <div>
+            <section>
+                <router-outlet></router-outlet>
+            </section>
+        </div>
     </app-shared-card>
 </div>
