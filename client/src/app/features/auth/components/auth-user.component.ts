@@ -56,7 +56,6 @@ export class AuthUserComponent implements OnInit {
     error: (errorMessage) => {
         console.log('errorMessage >>> ', errorMessage)
         this.error = errorMessage.error;
-        console.log('Error from this.error >>> ', this.error)
         this.isLoading = false          
     }
     })

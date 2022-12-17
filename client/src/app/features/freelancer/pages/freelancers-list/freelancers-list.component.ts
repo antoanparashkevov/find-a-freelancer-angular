@@ -16,6 +16,7 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
     isAuthenticated: boolean = false
     skills: {[id: string] : boolean} = {}
     isAuthenticatedSubscription!: Subscription
+    error: {message: string} | null = null;
     
     constructor(
         private freelancerService: FreelancerService,
@@ -50,6 +51,7 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
                 console.log('Freelancers from the Service >>> ', data)
             },
             error: (err)=> {
+                this.error = err.error
                 console.log('It has an error! >>> ', err)
             }
         })
@@ -84,5 +86,8 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
     hasFreelancers() {
         //TODO implement hasFreelancers
         return true;
+    }
+    handleError() {
+        this.error = null
     }
 }

@@ -1,4 +1,7 @@
 <div>
+    <app-shared-dialog [show]='!!error' title='Failed to authenticate' (close)='handleError()'>
+        <p *ngIf="error && error !== undefined && error.message !== null">{{error.message || 'An error occurred'}}</p>
+    </app-shared-dialog>
     <app-shared-card> 
         
         <app-shared-card>

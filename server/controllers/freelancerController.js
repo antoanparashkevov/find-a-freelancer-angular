@@ -4,8 +4,13 @@ const {hasUser} = require("../middlewares/guards");
 const router = require('express').Router();
 
 router.get('/freelancers', async (req,res)=>{
-    let items = await getAll();
-    res.json(items)
+    try {
+        let items = await getAll();
+        res.json(items)
+    } catch ( err ) {
+        const message = parseError(err)
+        res.status(400).json({message})
+    }
 })
 
 router.post('/freelancers',hasUser(),async (req,res)  => {
@@ -20,9 +25,14 @@ router.post('/freelancers',hasUser(),async (req,res)  => {
 })
 
 router.get('/freelancers/:id', async (req,res) =>{
-    const id = req.params.id
-    const item = await getById(id);
-    res.json(item)
+    try {
+        const id = req.params.id
+        const item = await getById(id);
+        res.json(item)
+    } catch ( err ) {
+        const message = parseError(err)
+        res.status(400).json({message})
+    }
 })
 
 

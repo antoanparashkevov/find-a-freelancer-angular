@@ -12,6 +12,7 @@ import {FreelancerStorage} from "../../services/freelancer-storage.service";
 export class FreelancerDetailsComponent implements OnInit {
     selectedFreelancer!: Freelancer
     index!: string;
+    error: {message: string} | null = null;
     
   constructor(
       private route: ActivatedRoute,
@@ -29,9 +30,20 @@ export class FreelancerDetailsComponent implements OnInit {
   }
   
   private getIndividualFreelancer(index: string) {
-      this.freelancerStorage.getIndividualFreelancer(index).subscribe((resData) => {
-          this.selectedFreelancer = resData
-          console.log('selectedFreelancer >>> ', this.selectedFreelancer)
+      this.freelancerStorage.getIndividualFreelancer(index).subscribe({
+          next: (resData) => {
+              this.selectedFreelancer = resData
+              console.log('selectedFreelancer >>> ', this.selectedFreelancer)
+          },
+          error: (err) => {
+              this.error = err.error
+              console.log('It has an error! >>> ', err)
+              
+          }
       })
   }
+  
+    handleError() {
+        this.error = null
+    }
 }
