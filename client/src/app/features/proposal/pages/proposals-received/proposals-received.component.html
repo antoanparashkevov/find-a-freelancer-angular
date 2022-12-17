@@ -6,12 +6,18 @@
         <h2>Messages</h2>
     </header>
     <div>
-        <ul>
-            <app-proposal-item
-                *ngFor="let proposal of proposals;let i = index"
-                [proposal]="proposal"
-                [i]="i"
-            ></app-proposal-item>
-        </ul>
+        <div *ngIf="loaderService.isLoading | async; else notLoading">
+            <app-shared-spinner></app-shared-spinner>
+        </div>
+        <ng-template #notLoading>
+            <ul>
+                <app-proposal-item
+                    *ngFor="let proposal of proposals;let i = index"
+                    [proposal]="proposal"
+                    [i]="i"
+                ></app-proposal-item>
+            </ul>
+        </ng-template>
+        <h3 class="no_proposals" *ngIf="!hasProposals() && !(loaderService.isLoading | async)">No freelancers found!</h3>
     </div>
 </app-shared-card>

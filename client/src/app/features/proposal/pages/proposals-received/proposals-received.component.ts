@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProposalService } from "../../services/proposal.service";
 import { ProposalStorage } from "../../services/proposal-storage.service";
 import { Proposal } from "../../models/proposal.model";
+import {LoaderService} from "../../../freelancer/services/loader.service";
 
 @Component({
   selector: 'app-proposals-received',
@@ -15,7 +16,8 @@ export class ProposalsReceivedComponent implements OnInit {
     
   constructor(
       private proposalService: ProposalService,
-      private proposalStorage: ProposalStorage
+      private proposalStorage: ProposalStorage,
+      public loaderService: LoaderService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,10 @@ export class ProposalsReceivedComponent implements OnInit {
 
     handleError() {
         this.error = null
+    }
+    
+    hasProposals() {
+      return this.proposals && this.proposals.length > 0
     }
 
 }
