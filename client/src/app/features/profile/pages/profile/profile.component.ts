@@ -31,6 +31,10 @@ export class ProfileComponent implements OnInit {
               this.userId = resData.id
               console.log('Profile Information from service ', resData)
               this.getIndividualFreelancer(this.userId)
+          },
+          error: (err) => {
+              this.error = err.error;
+              console.log('It has an error during fetch ProfileInformation >>> ', err)
           }
       })
   }
@@ -51,6 +55,10 @@ export class ProfileComponent implements OnInit {
     
     hasFreelancerRegistration() {
         return this.freelancer && this.freelancer.length > 0;
+    }
+
+    handleError() {
+        this.error = null
     }
 
 }

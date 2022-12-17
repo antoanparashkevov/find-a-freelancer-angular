@@ -1,32 +1,37 @@
-<app-shared-card>
-    <div class="main-header">
-       <h2>Your profile</h2>
-    </div>
-    <div class="sub-wrapper">
-        <li class="sub-content">Your email address  <span> {{email}}</span></li>
-    </div>
-    <div class="sub-header">
-        <h2>You registration as a freelancer</h2>
-    </div>
-    <div>
-        <div *ngIf="loaderService.isLoading | async">
-            <app-shared-spinner></app-shared-spinner>
+<div>
+    <app-shared-dialog [show]='!!error' title='Failed to authenticate' (close)='handleError()'>
+        <p *ngIf="error && error !== undefined && error.message !== null">{{error.message || 'An error occurred'}}</p>
+    </app-shared-dialog>
+    <app-shared-card>
+        <div class="main-header">
+            <h2>Your profile</h2>
         </div>
-        <ng-template [ngIf]="!(loaderService.isLoading | async) && hasFreelancerRegistration()">
-            <li class="main-content">
-                <app-freelancer-item
-                    [firstName]="freelancer[0].firstName"
-                    [lastName]="freelancer[0].lastName"
-                    [description]="freelancer[0].description"
-                    [hourlyRate]="freelancer[0].hourlyRate"
-                    [skills]="freelancer[0].skills"
-                    [i]="freelancer[0]._id"
-                    [profileAction]="true"
-                ></app-freelancer-item>
-            </li>
-        </ng-template>
-        <h3 class="no_freelancer" *ngIf="!hasFreelancerRegistration() && !(loaderService.isLoading  | async)">No freelancers found!</h3>
-    </div>
-    
-    <router-outlet></router-outlet>
-</app-shared-card>
+        <div class="sub-wrapper">
+            <li class="sub-content">Your email address  <span> {{email}}</span></li>
+        </div>
+        <div class="sub-header">
+            <h2>You registration as a freelancer</h2>
+        </div>
+        <div>
+            <div *ngIf="loaderService.isLoading | async">
+                <app-shared-spinner></app-shared-spinner>
+            </div>
+            <ng-template [ngIf]="!(loaderService.isLoading | async) && hasFreelancerRegistration()">
+                <li class="main-content">
+                    <app-freelancer-item
+                        [firstName]="freelancer[0].firstName"
+                        [lastName]="freelancer[0].lastName"
+                        [description]="freelancer[0].description"
+                        [hourlyRate]="freelancer[0].hourlyRate"
+                        [skills]="freelancer[0].skills"
+                        [i]="freelancer[0]._id"
+                        [profileAction]="true"
+                    ></app-freelancer-item>
+                </li>
+            </ng-template>
+            <h3 class="no_freelancer" *ngIf="!hasFreelancerRegistration() && !(loaderService.isLoading  | async)">No freelancers found!</h3>
+        </div>
+
+        <router-outlet></router-outlet>
+    </app-shared-card>
+</div>
