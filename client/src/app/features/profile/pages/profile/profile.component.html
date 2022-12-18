@@ -1,4 +1,7 @@
 <div>
+    <app-shared-dialog [show]="tryingDeleteFreelancer" title="Delete your registration" (close)="cancelDeleting()" (delete)="deleteFreelancer($event)" [bothActions]="true">
+        <p>Are you sure you want to delete your registration as a freelancer?</p>
+    </app-shared-dialog>
     <app-shared-dialog [show]='!!error' title='Failed to authenticate' (close)='handleError()'>
         <p *ngIf="error && error !== undefined && error.message !== null">{{error.message || 'An error occurred'}}</p>
     </app-shared-dialog>
@@ -26,6 +29,7 @@
                         [skills]="freelancer[0].skills"
                         [i]="freelancer[0]._id"
                         [profileAction]="true"
+                        (delete)="tryDeleteFreelancer($event)"
                     ></app-freelancer-item>
                 </li>
             </ng-template>

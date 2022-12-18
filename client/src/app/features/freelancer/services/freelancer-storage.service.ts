@@ -56,6 +56,11 @@ export class FreelancerStorage {
         })))
     }
     
+    deleteFreelancer(id: string | undefined ) { 
+        return this.http.delete('http://localhost:3030/freelancersData/freelancers/' + id)
+        
+    }
+    
     private isBecomeAsFreelancer(data: Freelancer[]) {
             
             let userId: string | null = localStorage.getItem('userId')

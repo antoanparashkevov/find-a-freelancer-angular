@@ -3,6 +3,7 @@ import {Freelancer} from "../../../freelancer/models/freelancer.model";
 import {ProfileStorageService} from "../../services/profile-storage.service";
 import {FreelancerStorage} from "../../../freelancer/services/freelancer-storage.service";
 import {LoaderService} from "../../../freelancer/services/loader.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -14,10 +15,13 @@ export class ProfileComponent implements OnInit {
     userId: string = ''
     error: {message: string} | null = null
     freelancer: Freelancer[] = []
+    tryingDeleteFreelancer: boolean = false
     
   constructor(
       private profileStorage: ProfileStorageService,
-      public loaderService: LoaderService
+      public loaderService: LoaderService,
+      private freelancerStorage: FreelancerStorage,
+      private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +63,31 @@ export class ProfileComponent implements OnInit {
 
     handleError() {
         this.error = null
+    }
+    
+    tryDeleteFreelancer(data: boolean) {
+        console.log('Data from freelancer-item', data)
+        this.tryingDeleteFreelancer = data
+    }
+
+    cancelDeleting() {
+        this.tryingDeleteFreelancer = false
+        console.log('triggered from shared-dialog')
+    }
+    
+    deleteFreelancer(data: boolean) {
+        if(data) {
+            this.tryingDeleteFreelancer = true;
+            this.freelancerStorage.deleteFreelancer(this.freelancer[0]._id).subscribe({
+                next: (resData) =>{
+                        console.log('resData from deleting',resData)
+                        this.tryingDeleteFreelancer = false
+                        this.router.navigate(['/freelancers'])
+                    }
+            })
+        }
+        
+        
     }
 
 }

@@ -28,11 +28,16 @@ async function update(itemId, modifiedItemData) {
     return await existing.save()//will return the saved Freelancer Registration
 }
 
+async function deleteById(id) {
+    return Freelancer.findByIdAndRemove(id)
+}
+
 module.exports = {
     getAll,
     getById,
     create,
     getFreelancerRegistration,
-    update
+    update,
+    deleteById
 }
 

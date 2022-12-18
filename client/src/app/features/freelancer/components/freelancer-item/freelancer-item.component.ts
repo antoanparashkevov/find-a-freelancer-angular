@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Freelancer} from "../../models/freelancer.model";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-freelancer-item',
@@ -15,10 +14,15 @@ export class FreelancerItemComponent implements OnInit {
     @Input('i') index!: string | undefined
     
     @Input() profileAction: boolean = false
+    @Output() delete = new EventEmitter<boolean>()
     
   constructor() { }
 
   ngOnInit(): void {
+  }
+  
+  deleteFreelancer() {
+        this.delete.emit(true)
   }
 
 }

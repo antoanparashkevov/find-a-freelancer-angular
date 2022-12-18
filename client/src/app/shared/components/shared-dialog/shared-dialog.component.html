@@ -6,9 +6,11 @@
     <section>
         <ng-content></ng-content>
     </section>
-    <menu *ngIf="!fixed">
-        <slot name='actions'>
+    <menu *ngIf="!fixed && !bothActions">
             <app-shared-button text="Close" [link]="false" (click)="tryClose()" mode="square"></app-shared-button>
-        </slot>
+    </menu>
+    <menu *ngIf="!fixed && bothActions">
+            <app-shared-button text="Cancel" mode="edit" (click)="tryClose()"></app-shared-button>
+            <app-shared-button text="Delete" mode="delete" (click)="handleAction()"></app-shared-button>
     </menu>
 </dialog>
