@@ -3,7 +3,7 @@ const parseError = require('../util/parser')
 const {hasUser} = require("../middlewares/guards");
 const router = require('express').Router();
 
-router.get('/freelancers', hasUser(),async(req, res)=>{
+router.get('/freelancers',async(req, res)=>{
     let items = []
     try {
         if(req.query.where) {
