@@ -22,13 +22,15 @@ import { AuthModule } from "./features/auth/auth.module";
 //Components
 import { AppComponent } from './app.component';
 import { AuthInterceptorService } from "./features/auth/auth-interceptor.service";
+import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-found.component";
 
 
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent, 
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,

@@ -1,1 +1,4 @@
-<p>page-not-found works!</p>
+<div *ngIf="errorMsg" class="error_wrapper">
+   <h1> {{ errorMsg }} </h1>
+    <app-shared-button [link]="true" to="/freelancers" mode="square">Freelancers</app-shared-button>
+</div>
