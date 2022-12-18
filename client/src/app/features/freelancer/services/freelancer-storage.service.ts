@@ -31,7 +31,8 @@ export class FreelancerStorage {
     storeFreelancer(data: Freelancer) {
         //return an observable
         return this.http.post<Freelancer>('http://localhost:3030/freelancersData/freelancers',
-            data).pipe(tap((res=>{
+            data)
+            .pipe(tap((res=>{
                 this.freelancerId.next(res._id)
         })))
     }
@@ -45,6 +46,14 @@ export class FreelancerStorage {
                     this.ownerId.next(res._ownerId)
                 }
         }))
+    }
+    
+    editIndividualFreelancer(id: string | undefined, data: Freelancer) { 
+        return this.http.put<Freelancer>('http://localhost:3030/freelancersData/freelancers/' + id,
+            data)
+            .pipe(tap((res=>{
+            this.freelancerId.next(res._id)
+        })))
     }
     
     private isBecomeAsFreelancer(data: Freelancer[]) {

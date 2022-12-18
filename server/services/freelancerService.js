@@ -16,10 +16,23 @@ async function getFreelancerRegistration(ownerId) {
     return Freelancer.find({_ownerId: ownerId})
 }
 
+async function update(itemId, modifiedItemData) {
+    let existing = await Freelancer.findById(itemId)
+    
+    existing.firstName = modifiedItemData.firstName
+    existing.lastName = modifiedItemData.lastName
+    existing.description = modifiedItemData.description
+    existing.hourlyRate = modifiedItemData.hourlyRate
+    existing.skills = modifiedItemData.skills
+    
+    return await existing.save()//will return the saved Freelancer Registration
+}
+
 module.exports = {
     getAll,
     getById,
     create,
-    getFreelancerRegistration
+    getFreelancerRegistration,
+    update
 }
 

@@ -1,4 +1,4 @@
-const {getAll, create, getById, getFreelancerRegistration} = require("../services/freelancerService");
+const {getAll, create, getById, getFreelancerRegistration, update} = require("../services/freelancerService");
 const parseError = require('../util/parser')
 const {hasUser} = require("../middlewares/guards");
 const router = require('express').Router();
@@ -54,5 +54,25 @@ router.get('/freelancers/:id', async (req,res) =>{
     }
 })
 
+router.put('/freelancers/:id', hasUser(), async (req,res) =>{
+    const id = req.params.id
+    console.log('freelancerId from Service >>> ', id)
+    const data = req.body
+    console.log('Data entered from the client >>> ', data)
+    const item = await getById(id);
+    console.log('is the correct freelancer item ? >>> ', item)
+    console.log('req user id >>> ', req.user._id)
+    console.log('owner id (from freelancer item) >>> ', item._ownerId)
+    if(req.user._id !== item._ownerId.toString()) {
+        return res.status(403).json({message: "You cannot modify this resource!"})
+    }
+    try {
+        const result = await update(id, data)
+        res.json(result)
+    }catch (err) {
+        const message = parseError(err);
+        res.status(400).json({message})
+    }
+})
 
 module.exports = router;

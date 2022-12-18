@@ -18,10 +18,11 @@ export class ProfileFreelancerEditComponent implements OnInit, OnDestroy {
     formIsValid: boolean = true;
     checkboxIsValid: boolean = true;
 
-    constructor(private freelancerStorage: FreelancerStorage,
-                private router: Router,
-                private profileStorage: ProfileStorageService,
-                private currentRoute: ActivatedRoute
+    constructor(
+        private freelancerStorage: FreelancerStorage,
+        private router: Router,
+        private profileStorage: ProfileStorageService,
+        private currentRoute: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
@@ -63,12 +64,12 @@ export class ProfileFreelancerEditComponent implements OnInit, OnDestroy {
                 }
             }
             formRef.value.skills = Object.keys(formRef.value.skills)
-            //TODO remove logs
-            console.log('Form >>> ', formRef)
-            console.log('Skills Group >>> ', skillsGroupRef)
-            console.log('skillsData', skillsData)
 
-
+            this.freelancerStorage.editIndividualFreelancer(this.freelancerData._id, formRef.value).subscribe({
+                next: (resData)=>{
+                    console.log('Response Data from Service (modified freelancer) >>> ', resData)
+                }
+            })
             this.freelancerStorage.freelancerId.subscribe(id=>{
                 if(id) {
                     this.router.navigate(['/freelancers/',id])
@@ -76,7 +77,7 @@ export class ProfileFreelancerEditComponent implements OnInit, OnDestroy {
                     this.router.navigate(['/freelancers'])
                 }
             })
-            // formRef.reset()
+            formRef.reset()
         }
     }
 
