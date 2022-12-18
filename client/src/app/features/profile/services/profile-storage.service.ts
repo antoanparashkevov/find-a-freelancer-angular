@@ -9,7 +9,6 @@ import {Subject} from "rxjs";
   providedIn: 'root'
 })
 export class ProfileStorageService {
-    freelancerData = new Subject<Freelancer[]>()
     constructor(
         private http: HttpClient
     ) {}
@@ -23,8 +22,6 @@ export class ProfileStorageService {
     }
     
     getFreelancerRegistration(ownerId: string) {
-        return this.http.get<Freelancer[]>(`http://localhost:3030/freelancersData/freelancers?where=_ownerId%3D%22${ownerId}%22`).pipe(tap((resData)=>{
-            this.freelancerData.next(resData)
-        }))
+        return this.http.get<Freelancer[]>(`http://localhost:3030/freelancersData/freelancers?where=_ownerId%3D%22${ownerId}%22`)
     }
 }

@@ -10,6 +10,7 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {ProposalStorage} from "../features/proposal/services/proposal-storage.service";
 import {LoaderService} from "../features/freelancer/services/loader.service";
+import {FreelancerRegistrationResolver} from "../features/profile/services/freelancer-registration-resolver.service";
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import {LoaderService} from "../features/freelancer/services/loader.service";
         ProposalService,
         FreelancerStorage,
         ProposalStorage,
-        LoaderService
+        LoaderService,
+        FreelancerRegistrationResolver
     ],
     exports: [
         TheHeaderComponent,
