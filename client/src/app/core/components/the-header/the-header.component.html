@@ -1,25 +1,35 @@
-<header>
-    <nav>
-        <h1>
-            <a routerLink="/">Freelancers Community</a>
-        </h1>
+<nav class="navbar" [ngClass]="{res_height: !activeClass}">
+    <div class="navbar-title">
+        <a routerLink="/">Freelancers Community</a>
+    </div>
+    <a (click)="toggleNavbar()" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links" [ngClass]="{active_links:activeClass}">
         <ul>
+            
             <li>
-                <a routerLink="/freelancers" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Freelancers</a>
+                <a class='navbar-link' routerLink="/freelancers" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Freelancers</a>
             </li>
-
+    
             <li>
-                <a routerLink="/proposals" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated">Messages</a>
+                <a class='navbar-link' routerLink="/proposals" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated">Messages</a>
             </li>
+            
             <li>
-                <a routerLink="/auth" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!isAuthenticated">Login</a>
+                <a class='navbar-link' routerLink="/auth" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!isAuthenticated">Login</a>
             </li>
+            
             <li>
-                <a routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated">Profile</a>
+                <a class='navbar-link' routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated">Profile</a>
             </li>
+            
             <li>
-                <app-shared-button [link]="true" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated" mode="square" (click)="onLogout()">Logout</app-shared-button>
+                <app-shared-button class='navbar-link' [link]="true" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated" mode="square" (click)="onLogout()">Logout</app-shared-button>
             </li>
+            
         </ul>
-    </nav>
-</header>
+    </div>
+</nav>

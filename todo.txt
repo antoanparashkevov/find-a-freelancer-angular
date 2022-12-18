@@ -3,7 +3,7 @@
 ---
 2. error handling for all requests - done
 ---
-3. responsive design
+3. responsive design - in progress
 ---
 4. animations
 ---
@@ -13,6 +13,6 @@
 ---
 8. lazy loading
 ---
-9. profile - in progress
+9. profile - in progress, only show all messages send in shared dialog
 ---
-10. not found - in progress
+10. not found - paused

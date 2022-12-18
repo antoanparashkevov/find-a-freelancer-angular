@@ -1,51 +1,94 @@
-header {
-    background-color: #dce9ff;
-    width: 100vw;
-    height: 5rem;
+.navbar {
     display: flex;
-    justify-content: center;
+    position: relative;//IMPORTANT !
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dce9ff;
+    color: #9a98ff;
+}
+
+.navbar-title {
+    font-size: 18px;
+    margin: 0.5rem;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
     align-items: center;
 }
 
-header a {
-    color: #9a98ff;
-    font-weight: 700;
-    font-size: 18px;
-    display: inline-block;
-    border: 1px solid transparent;
-    padding: 0.75rem 1.5rem;
+.navbar-links ul li .navbar-link {
+    display: block;
+    padding: 1rem;
 }
 
-li a.active {
+.navbar-links ul li a.active {
     border: 1px solid #9a98ff;
     border-radius: 5%;
 }
 
-h1 {
-    margin: 0;
+.navbar-links ul li a:hover {
+    opacity: .65;
 }
 
-h1 a {
-    color: blueviolet;
-    margin: 0;
-}
+//HAMBURGER MENU <<<START>>>
 
-header nav {
-    width: 90%;
+.toggle-button {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;//every span on top of each other
     justify-content: space-between;
-    display: flex;
-    align-items: center;
-    margin: auto;
+    width: 30px;
+    height: 20px;
 }
 
-header ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #9a98ff;
+    border-radius: 10px;
 }
 
-li {
-    margin: 0 0.5rem;
+//media query, when a certain condition is met run the code inside
+@media (max-width: 550px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .toggle-button {
+        display: flex;
+    }
+    
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+    
+    .navbar-links ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .navbar-links ul li {
+        text-align: center;
+    }
+    
+    .navbar.res_height {
+        height: 80px;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .navbar-links.active_links { 
+        display: flex;
+    }
 }

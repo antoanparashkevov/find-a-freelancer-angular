@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
 export class TheHeaderComponent implements OnInit, OnDestroy {
     private userSub!: Subscription;
     isAuthenticated: boolean = false;
-
+    activeClass: boolean = false
 
     constructor(private authService: AuthService) { }
 
@@ -29,6 +29,10 @@ export class TheHeaderComponent implements OnInit, OnDestroy {
   
   onLogout() {
         this.authService.logout()
+  }
+  
+  toggleNavbar() {
+        this.activeClass = !this.activeClass
   }
 
 }
