@@ -14,21 +14,21 @@ export class FreelancerDetailsComponent implements OnInit {
     index!: string;
     error: {message: string} | null = null;
     
-  constructor(
+    constructor(
       private route: ActivatedRoute,
       private freelancerService: FreelancerService,
       private freelancerStorage: FreelancerStorage
-  ) { }
+    ) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
       this.route.params.subscribe((params: Params) => {
           this.index = params['id'];
           this.getIndividualFreelancer(this.index)
       })
       
-  }
+    }
   
-  private getIndividualFreelancer(index: string) {
+    private getIndividualFreelancer(index: string) {
       this.freelancerStorage.getIndividualFreelancer(index).subscribe({
           next: (resData) => {
               this.selectedFreelancer = resData
@@ -38,7 +38,7 @@ export class FreelancerDetailsComponent implements OnInit {
               
           }
       })
-  }
+    }
   
     handleError() {
         this.error = null

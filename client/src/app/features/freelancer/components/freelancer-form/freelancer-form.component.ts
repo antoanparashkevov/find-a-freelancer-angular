@@ -15,7 +15,6 @@ export class FreelancerFormComponent implements OnInit {
     description: string = ''
     hourlyRate: number = 13
     skills: string[] = []
-    
     formIsValid: boolean = true;
     checkboxIsValid: boolean = true;
     
@@ -30,16 +29,17 @@ export class FreelancerFormComponent implements OnInit {
 
     onSubmit(formRef: NgForm, firstName: NgModel, lastName: NgModel, description: NgModel, rate: NgModel, skillsGroupRef: NgModelGroup) {
         this.formIsValid = !formRef.form.invalid;
-        
         const skillsData = Object.values(skillsGroupRef.value)
         this.checkboxIsValid = !skillsData.every(v=>v==='');
         
         if(!this.formIsValid) {
+            
             this.firstName = formRef.value.firstName !== null ? formRef.value.firstName: this.firstName;
             this.lastName = formRef.value.lastName !== null ? formRef.value.lastName: this.lastName
             this.description = formRef.value.description !== null ? formRef.value.description: this.description
             this.hourlyRate = formRef.value.hourlyRate !== null ? formRef.value.hourlyRate: this.hourlyRate
             return
+            
         } else {
             
             for(let [key,value] of Object.entries(formRef.value.skills)) {

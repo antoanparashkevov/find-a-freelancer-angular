@@ -1,5 +1,4 @@
 export class Proposal {
-    //we will use accessors
     public message: string
     public email: string
     public userId: string | null

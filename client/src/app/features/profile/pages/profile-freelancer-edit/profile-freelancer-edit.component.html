@@ -1,7 +1,6 @@
 <div>
     <h2>Edit you registration as a freelancer :)</h2>
     <form (ngSubmit)="onSubmit(formRef, skillGroupRef)" #formRef="ngForm">
-
         <div class='form-control'>
             <label for='firstName' [ngClass]="{invalid_field: firstNameRef.invalid && firstNameRef.touched || !formIsValid && firstNameRef.invalid}">Firstname</label>
             <input type='text' id='firstName' [ngModel]="freelancerData.firstName || ''" name="firstName" #firstNameRef="ngModel" required>

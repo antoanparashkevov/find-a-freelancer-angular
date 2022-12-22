@@ -20,47 +20,38 @@ export class AuthUserComponent implements OnInit {
     }
     
     onSubmit(formRef: NgForm, emailRef: NgModel, passwordRef: NgModel) {
-    if(!formRef.valid) {
-      this.formIsValid = false
-      return;
-    } else {
-      this.formIsValid = true
-    }
-    
-    console.log('Form >>> ', formRef)
-    // console.log('email ref >>> ', emailRef)
-    // console.log('password ref >>> ', passwordRef)
-    
-    const email = formRef.value.email;
-    const password = formRef.value.password
-    
-    console.log('email from form >>> ', email)
-    console.log('password from form >>> ', password)
-    
-    let authObserver: Observable<AuthResponseData>;
-    
-    this.isLoading = true;
-    
-    if(this.mode === 'login') {
-      authObserver = this.authService.login(email,password)
-    } else {
-      authObserver = this.authService.register(email,password)
-    }
-    
-    authObserver.subscribe({
-    next: (resData) => {
-        console.log('resData from Login/Register >>> ', resData )
-        this.isLoading = false
-        this.router.navigate(['/freelancers']);//no matter if the user sign up or login
-    },
-    error: (errorMessage) => {
-        console.log('errorMessage >>> ', errorMessage)
-        this.error = errorMessage.error;
-        this.isLoading = false          
-    }
-    })
-    
-    formRef.reset();
+        if(!formRef.valid) {
+          this.formIsValid = false
+          return;
+        } else {
+          this.formIsValid = true
+        }
+        
+        const email = formRef.value.email;
+        const password = formRef.value.password
+        
+        let authObserver: Observable<AuthResponseData>;
+        
+        this.isLoading = true;
+        
+        if(this.mode === 'login') {
+          authObserver = this.authService.login(email,password)
+        } else {
+          authObserver = this.authService.register(email,password)
+        }
+        
+        authObserver.subscribe({
+        next: (resData) => {
+            this.isLoading = false
+            this.router.navigate(['/freelancers']);//no matter if the user sign up or login
+        },
+        error: (errorMessage) => {
+            this.error = errorMessage.error;
+            this.isLoading = false          
+        }
+        })
+        
+        formRef.reset();
     
     }
     

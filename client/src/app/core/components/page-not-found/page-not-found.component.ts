@@ -8,14 +8,14 @@ import {ActivatedRoute, Data} from "@angular/router";
 })
 export class PageNotFoundComponent implements OnInit {
     errorMsg: Data | string = ''
-  constructor(private currentRouter: ActivatedRoute) { }
+    constructor(private currentRouter: ActivatedRoute) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
       this.currentRouter.data.subscribe(
           (data: Data)=>{
               this.errorMsg = data['message']
           }
       )
-  }
+    }
 
 }

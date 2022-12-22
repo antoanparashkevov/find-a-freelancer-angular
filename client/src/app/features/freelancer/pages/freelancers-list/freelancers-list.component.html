@@ -2,8 +2,7 @@
     <app-shared-dialog [show]='!!error' title='Failed to authenticate' (close)='handleError()'>
         <p *ngIf="error && error !== undefined && error.message !== null">{{error.message || 'An error occurred'}}</p>
     </app-shared-dialog>
-    <app-shared-card> 
-        
+    <app-shared-card>
         <app-shared-card>
             <app-freelancer-filter (changeFilter)="newFilterCriteria($event)"></app-freelancer-filter>
         </app-shared-card>
@@ -13,6 +12,7 @@
             <app-shared-button *ngIf="!isAuthenticated" [link]="true"  to="/auth">Join our community!</app-shared-button>
             <app-shared-button *ngIf="isAuthenticated && (!(freelancerStorage.isFreelancer | async))" [link]="true" to="/register">Register as a Freelancer!</app-shared-button>
         </div>
+        
         <div>
             <div *ngIf="loaderService.isLoading | async; else notLoading">
                 <app-shared-spinner></app-shared-spinner>
@@ -32,7 +32,6 @@
             </ng-template>
             <h3 class="no_freelancer" *ngIf="!hasFreelancers() && !(loaderService.isLoading  | async)">No freelancers found!</h3>
         </div>
-       
     </app-shared-card>
    
 </div>

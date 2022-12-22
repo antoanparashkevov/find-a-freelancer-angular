@@ -16,7 +16,7 @@ export class ProposalService {
             '2'
         )
     ]
-  constructor() { }
+    constructor() { }
     
     getProposals() {
        return this.proposals.slice()

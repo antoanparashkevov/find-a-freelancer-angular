@@ -6,14 +6,10 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
     
-    constructor(private loaderService: LoaderService) {
-    }
+    constructor(private loaderService: LoaderService) {}
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
-            console.log('Request URL  from the interceptor >>> ', req.url)
-            console.log('Request Method >>> ', req.method)
-
             this.loaderService.isLoading.next(true)
             
             if(localStorage.length > 0) {
@@ -24,7 +20,6 @@ export class AuthInterceptorService implements HttpInterceptor {
                     token = token.slice(1, token.length - 1)
                 }
 
-                console.log('Token from Auth-Interceptor >>> ', token)
                 if(token !== null) {
                     const modifiedRequest = req.clone({headers: req.headers.append('x-authorization', token)})
                     return next.handle(modifiedRequest).pipe(finalize(()=>{

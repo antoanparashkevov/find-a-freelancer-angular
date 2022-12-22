@@ -11,7 +11,6 @@ import { FreelancerItemComponent } from './components/freelancer-item/freelancer
 import { FreelancerFilterComponent } from './components/freelancer-filter/freelancer-filter.component';
 import { FreelancerDetailsComponent } from "./pages/freelancer-details/freelancer-details.component";
 import { FreelancersListComponent } from "./pages/freelancers-list/freelancers-list.component";
-import { SendProposalComponent } from "./pages/send-proposal/send-proposal.component";
 import { FreelancerContactFormComponent } from './pages/freelancer-contact-form/freelancer-contact-form.component';
 import {FreelancerRouting} from "./freelancer-routing.module";
 
@@ -26,7 +25,6 @@ import {FreelancerRouting} from "./freelancer-routing.module";
         FreelancerDetailsComponent,
         FreelancerRegistrationComponent,
         FreelancersListComponent,
-        SendProposalComponent,
         FreelancerContactFormComponent
     ],
     imports: [
@@ -43,7 +41,6 @@ import {FreelancerRouting} from "./freelancer-routing.module";
         FreelancerDetailsComponent,
         FreelancerRegistrationComponent,
         FreelancersListComponent,
-        SendProposalComponent
     ]
 })
 export class FreelancerModule { }

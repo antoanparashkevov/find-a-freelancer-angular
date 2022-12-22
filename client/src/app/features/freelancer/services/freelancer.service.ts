@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 // import { Freelancer } from "../models/freelancer.model";
-// import {filter} from "rxjs";
+// import { filter } from "rxjs";
 //
 @Injectable()
 export class FreelancerService {}

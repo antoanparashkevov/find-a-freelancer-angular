@@ -17,19 +17,19 @@ export class ProfileComponent implements OnInit {
     freelancer: Freelancer[] = []
     tryingDeleteFreelancer: boolean = false
     
-  constructor(
+    constructor(
       private profileStorage: ProfileStorageService,
       public loaderService: LoaderService,
       private freelancerStorage: FreelancerStorage,
       private router: Router
-  ) { }
-
-  ngOnInit(): void {
+    ) { }
+    
+    ngOnInit(): void {
         this.fetchProfileInformation()
-  }
-  
-  private fetchProfileInformation() {
-      this.profileStorage.fetchProfileInformation().subscribe({
+    }
+    
+    private fetchProfileInformation() {
+        this.profileStorage.fetchProfileInformation().subscribe({
           next: (resData)=> {
               this.email = resData.email
               this.userId = resData.id
@@ -38,9 +38,9 @@ export class ProfileComponent implements OnInit {
           error: (err) => {
               this.error = err.error;
           }
-      })
-  }
-
+        })
+    }
+    
     private getIndividualFreelancer(index: string) {
         this.profileStorage.getFreelancerRegistration(index).subscribe({
             next: (resData) => {
@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
     hasFreelancerRegistration() {
         return this.freelancer && this.freelancer.length > 0;
     }
-
+    
     handleError() {
         this.error = null
     }
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
     tryDeleteFreelancer(data: boolean) {
         this.tryingDeleteFreelancer = data
     }
-
+    
     cancelDeleting() {
         this.tryingDeleteFreelancer = false
     }
@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
                 next: (resData) =>{
                         this.tryingDeleteFreelancer = false
                         this.router.navigate(['/freelancers'])
-                    }
+                }
             })
         }
         

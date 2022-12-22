@@ -14,13 +14,13 @@ export class ProposalsReceivedComponent implements OnInit {
     userId: string = localStorage.getItem('userId') || ''
     error: {message: string} | null = null;
     
-  constructor(
+    constructor(
       private proposalService: ProposalService,
       private proposalStorage: ProposalStorage,
       public loaderService: LoaderService
-  ) { }
-
-  ngOnInit(): void {
+    ) { }
+    
+    ngOnInit(): void {
         if(this.userId) {
             if(this.userId.includes('"')) {
                 this.userId = this.userId.slice(1, this.userId.length - 1)
@@ -37,8 +37,8 @@ export class ProposalsReceivedComponent implements OnInit {
         }
         // the old behaviour is still here just for reference
         // this.proposals = this.proposalService.getProposals()
-  } 
-
+    } 
+    
     handleError() {
         this.error = null
     }

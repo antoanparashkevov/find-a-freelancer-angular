@@ -11,7 +11,7 @@ export class FreelancerGuard implements CanActivate {
         private router: Router) {
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-       return this.freelancerStorage.isFreelancer.pipe(
+        return this.freelancerStorage.isFreelancer.pipe(
                 take(1),
                 map(val=>{
                     const isFreelancer = !val
@@ -19,6 +19,7 @@ export class FreelancerGuard implements CanActivate {
                         return true
                     }
                     return this.router.createUrlTree(['/freelancers'])
-                }))
+                })
+        )
     }
 }

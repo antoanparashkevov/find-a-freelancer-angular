@@ -14,12 +14,12 @@ import {FreelancerRegistrationResolver} from "../features/profile/services/freel
 
 @NgModule({
     declarations: [
-      TheHeaderComponent  
+        TheHeaderComponent  
     ],
     imports: [
-      SharedModule,
-      CommonModule,
-      RouterModule  
+        SharedModule,
+        CommonModule,
+        RouterModule  
     ],
     providers: [
         FreelancerService,

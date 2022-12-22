@@ -10,9 +10,9 @@ export class ProposalItemComponent implements OnInit {
     @Input() proposal!: Proposal;
     @Input('i') index!: number;
     
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+    constructor() { }
+    
+    ngOnInit(): void {
+    }
 
 }

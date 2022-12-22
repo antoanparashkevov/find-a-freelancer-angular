@@ -57,9 +57,6 @@ export class AuthService {
         const user = new User(email, _id, token)
         this.user.next(user)//emit this user
         //converts to JSON string object
-        console.log('email', email)
-        console.log('_id', _id)
-        console.log('token', token)
         localStorage.setItem('email', JSON.stringify(email))
         localStorage.setItem('authToken', JSON.stringify(user.token))
         localStorage.setItem('userId', JSON.stringify(user._id))
