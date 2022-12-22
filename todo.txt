@@ -3,7 +3,7 @@
 ---
 2. error handling for all requests - done
 ---
-3. responsive design - in progress
+3. responsive design - done
 ---
 4. animations
 ---
