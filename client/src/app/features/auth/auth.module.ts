@@ -21,8 +21,5 @@ import {AuthRouting} from "./auth-routing.module";
         SharedModule,
         AuthRouting
     ],
-    exports: [
-        AuthUserComponent
-    ]
 })
 export class AuthModule { }

@@ -22,9 +22,5 @@ import {ProposalRouting} from "./proposal-routing.module";
         RouterModule,
         ProposalRouting
     ],
-    exports: [
-        ProposalItemComponent,
-        ProposalsReceivedComponent
-    ]
 })
 export class ProposalModule { }

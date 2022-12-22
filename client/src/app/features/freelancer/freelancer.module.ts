@@ -35,12 +35,7 @@ import {FreelancerRouting} from "./freelancer-routing.module";
         FreelancerRouting
     ],
     exports: [
-        FreelancerFilterComponent,
-        FreelancerFormComponent,
-        FreelancerItemComponent,
-        FreelancerDetailsComponent,
-        FreelancerRegistrationComponent,
-        FreelancersListComponent,
+        FreelancerItemComponent
     ]
 })
 export class FreelancerModule { }
