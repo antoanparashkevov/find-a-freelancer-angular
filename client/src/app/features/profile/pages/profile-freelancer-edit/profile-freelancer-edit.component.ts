@@ -30,7 +30,6 @@ export class ProfileFreelancerEditComponent implements OnInit, OnDestroy {
         this.currentRoute.data.subscribe({
             next: (data: Data) => {
                 this.freelancerData = data['individualFreelancer']
-                console.log('freelancerData', this.freelancerData)
             }
         })
         

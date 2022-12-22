@@ -48,11 +48,9 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
                 if(data) {
                     this.freelancers = data;
                 }
-                console.log('Freelancers from the Service >>> ', data)
             },
             error: (err)=> {
                 this.error = err.error
-                console.log('It has an error! >>> ', err)
             }
         })
     }

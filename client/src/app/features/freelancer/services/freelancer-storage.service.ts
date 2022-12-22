@@ -69,10 +69,8 @@ export class FreelancerStorage {
             }
             data.forEach(freelancer=>{
             if(freelancer._ownerId === userId) {
-                console.log('isFreelancer >>>  true')
                 this.isFreelancer.next(true)
             } else {
-                console.log('isFreelancer >>>  false')
                 this.isFreelancer.next(false)
             }
         })
