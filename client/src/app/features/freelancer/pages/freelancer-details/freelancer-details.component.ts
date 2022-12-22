@@ -24,7 +24,6 @@ export class FreelancerDetailsComponent implements OnInit {
       this.route.params.subscribe((params: Params) => {
           this.index = params['id'];
           this.getIndividualFreelancer(this.index)
-          console.log('User id >>> ', this.index)
       })
       
   }
@@ -33,11 +32,9 @@ export class FreelancerDetailsComponent implements OnInit {
       this.freelancerStorage.getIndividualFreelancer(index).subscribe({
           next: (resData) => {
               this.selectedFreelancer = resData
-              console.log('selectedFreelancer >>> ', this.selectedFreelancer)
           },
           error: (err) => {
               this.error = err.error
-              console.log('It has an error! >>> ', err)
               
           }
       })

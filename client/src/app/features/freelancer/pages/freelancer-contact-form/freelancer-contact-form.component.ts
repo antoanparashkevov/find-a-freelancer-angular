@@ -39,12 +39,6 @@ export class FreelancerContactFormComponent implements OnInit, OnDestroy {
             this.email = formRef.value.email !== null ? formRef.value.email : this.email;
             this.message = formRef.value.message !== null ? formRef.value.message : this.message;
         }
-
-        //TODO remove logs
-        console.log('Form >>> ', formRef)
-        // console.log('Email Ref >>> ', emailRef)
-        // console.log('Message Ref >>> ', messageRef)
-        
         this.dataToSend = formRef.value
         
         this.ownerIdSubscription = this.freelancerStorage.ownerId.subscribe({

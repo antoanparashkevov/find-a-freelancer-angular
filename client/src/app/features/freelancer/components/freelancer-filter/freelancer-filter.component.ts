@@ -21,13 +21,9 @@ export class FreelancerFilterComponent implements OnInit {
         setFilter(ev: Event) {
             //the change event is triggered whenever the checked property for example changes from true to false and from false to true
             
-            //TODO to remove logs
-            console.log('triggered!')
             const target = ev.target as HTMLInputElement
             const filterId = target.id;
-            console.log('id >>', target.id)
             const isChecked = target.checked
-            console.log('is checked >>> ',target.checked)
             
             const updatedFilter = {
                 ...this.skills,

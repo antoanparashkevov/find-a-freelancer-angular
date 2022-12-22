@@ -21,7 +21,6 @@ export class AppComponent implements OnInit{
     }
     
     prepareRoute(outlet: RouterOutlet) {
-        console.log('outlet template reference >>> ', outlet)
         return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']
         
     }

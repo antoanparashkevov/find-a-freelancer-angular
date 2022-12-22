@@ -5,14 +5,12 @@
 ---
 3. responsive design - done
 ---
-4. animations
+4. animations - done
 ---
 5. user to be able to register himself only once - paused
 ---
 6. fix the buttons issue - done
 ---
-8. lazy loading
+8. lazy loading - done
 ---
-9. profile - in progress, only show all messages send in shared dialog
----
-10. not found - paused
+9. not found - paused

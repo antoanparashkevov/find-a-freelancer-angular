@@ -48,15 +48,6 @@ export class FreelancerFormComponent implements OnInit {
                 }
             }
             formRef.value.skills = Object.keys(formRef.value.skills)
-            //TODO remove logs
-            console.log('Form >>> ', formRef)
-            // console.log('firstName >>> ', firstName)
-            // console.log('lastName >>> ', lastName)
-            // console.log('description >>> ', description)
-            // console.log('rate >>> ', rate)
-            console.log('Skills Group >>> ', skillsGroupRef)
-            console.log('skillsData', skillsData)
-            
         
             this.saveData.emit(formRef.value)
             
