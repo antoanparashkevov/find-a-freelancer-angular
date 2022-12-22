@@ -74,6 +74,7 @@ Find a Freelancer is a web application that allows users to look for the right f
 
 ## Desktop
 
+https://user-images.githubusercontent.com/80749603/209160538-c162e94b-9379-40b1-a1fe-2dcb61826598.png
 
 
 ## Mobile
