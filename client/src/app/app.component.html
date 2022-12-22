@@ -1,2 +1,4 @@
 <app-the-header></app-the-header>
-<router-outlet></router-outlet>
+<main [@routerAnimation]="prepareRoute(outlet)">
+    <router-outlet #outlet='outlet'></router-outlet>
+</main>

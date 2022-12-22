@@ -10,7 +10,7 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent,
         canActivate: [AuthGuard],
-        //todo add auth guard to the children
+        data: { animation: 'isLeft' },
         children: [
             {
             path: ':id/edit',

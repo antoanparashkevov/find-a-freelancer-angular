@@ -6,7 +6,7 @@ import {NgModule} from "@angular/core";
 import {AuthGuard} from "../auth/auth.guard";
 
 const routes: Routes = [
-    { path: 'proposals', canActivate: [AuthGuard], component: ProposalsReceivedComponent },
+    { path: 'proposals', canActivate: [AuthGuard], component: ProposalsReceivedComponent, data: { animation: 'isRight' } },
 ]
 
 

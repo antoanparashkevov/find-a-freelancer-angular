@@ -10,7 +10,7 @@ import {AuthGuard} from "../auth/auth.guard";
 import {FreelancerGuard} from "./freelancer.guard";
 
 const routes: Routes = [
-    { path: 'freelancers', component: FreelancersListComponent },
+    { path: 'freelancers', component: FreelancersListComponent, data: { animation: 'isLeft' } },
     { 
         path: 'freelancers/:id', 
         component: FreelancerDetailsComponent,
