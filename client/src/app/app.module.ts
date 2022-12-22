@@ -15,6 +15,7 @@ import { ProfileRouting } from "./features/profile/profile-routing.module";
 //Custom Modules
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from "./shared/shared.module";
+import { FreelancerModule } from "./features/freelancer/freelancer.module";
 
 //Components
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-f
         BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
+        FreelancerModule,
         FreelancerRouting,
         ProposalRouting,
         AuthRouting,
