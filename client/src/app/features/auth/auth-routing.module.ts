@@ -7,8 +7,8 @@ import {AuthGuard} from "./auth.guard";
 
 
 const routes: Routes = [
-    {path: 'auth', component: AuthUserComponent},
-//    TODO Lazy-Loading implementation...
+    //   /auth
+    {path: '', component: AuthUserComponent},
 ]
 
 @NgModule({

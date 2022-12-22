@@ -10,6 +10,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import {FreelancerModule} from "../freelancer/freelancer.module";
 import { ProfileFreelancerEditComponent } from './pages/profile-freelancer-edit/profile-freelancer-edit.component';
 import {FormsModule} from "@angular/forms";
+import {ProfileRouting} from "./profile-routing.module";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {FormsModule} from "@angular/forms";
         SharedModule,
         RouterModule,
         FreelancerModule,
-        FormsModule
+        FormsModule,
+        ProfileRouting
     ],
     exports: [
         ProfileComponent

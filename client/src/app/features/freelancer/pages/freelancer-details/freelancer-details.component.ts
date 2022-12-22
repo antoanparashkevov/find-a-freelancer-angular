@@ -10,7 +10,6 @@ import { fader } from "../../child-router-animation";
   templateUrl: './freelancer-details.component.html',
   styleUrls: ['./freelancer-details.component.scss'],
     animations: [
-        fader
     ]
 })
 export class FreelancerDetailsComponent implements OnInit {

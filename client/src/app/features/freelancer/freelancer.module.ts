@@ -13,6 +13,7 @@ import { FreelancerDetailsComponent } from "./pages/freelancer-details/freelance
 import { FreelancersListComponent } from "./pages/freelancers-list/freelancers-list.component";
 import { SendProposalComponent } from "./pages/send-proposal/send-proposal.component";
 import { FreelancerContactFormComponent } from './pages/freelancer-contact-form/freelancer-contact-form.component';
+import {FreelancerRouting} from "./freelancer-routing.module";
 
 
 
@@ -32,7 +33,8 @@ import { FreelancerContactFormComponent } from './pages/freelancer-contact-form/
         CommonModule,
         RouterModule,
         SharedModule,
-        FormsModule
+        FormsModule,
+        FreelancerRouting
     ],
     exports: [
         FreelancerFilterComponent,

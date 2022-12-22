@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 //Components
 import { AuthUserComponent } from './components/auth-user.component';
 import { SharedModule } from "../../shared/shared.module";
+import {AuthRouting} from "./auth-routing.module";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from "../../shared/shared.module";
         CommonModule,
         RouterModule,
         FormsModule,
-        SharedModule
+        SharedModule,
+        AuthRouting
     ],
     exports: [
         AuthUserComponent

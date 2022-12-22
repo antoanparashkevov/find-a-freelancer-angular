@@ -6,8 +6,9 @@ import {ProfileFreelancerEditComponent} from "./pages/profile-freelancer-edit/pr
 import {FreelancerRegistrationResolver} from "./services/freelancer-registration-resolver.service";
 
 const routes: Routes = [
+    //   /profile
     { 
-        path: 'profile',
+        path: '',
         component: ProfileComponent,
         canActivate: [AuthGuard],
         data: { animation: 'isLeft' },

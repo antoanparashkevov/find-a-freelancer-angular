@@ -8,6 +8,7 @@ import { SharedModule } from "../../shared/shared.module";
 //Components
 import { ProposalItemComponent } from './components/proposal-item/proposal-item.component';
 import { ProposalsReceivedComponent } from './pages/proposals-received/proposals-received.component'
+import {ProposalRouting} from "./proposal-routing.module";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ProposalsReceivedComponent } from './pages/proposals-received/proposals
     imports: [
         CommonModule,
         SharedModule,
-        RouterModule
+        RouterModule,
+        ProposalRouting
     ],
     exports: [
         ProposalItemComponent,
