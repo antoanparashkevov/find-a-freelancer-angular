@@ -58,8 +58,6 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
     newFilterCriteria(newFilters:{[id: string]: boolean}) {
         this.freelancerStorage.fetchFreelancers().subscribe(res=>{
             this.freelancers = res
-            console.log('Freelancers from the Service >>> ', this.freelancers)
-            console.log('newFilters', newFilters)
             
             this.freelancers = this.freelancers.filter(freelancer =>  {
                 if(newFilters['frontend'] && freelancer.skills.includes('frontend')) {
