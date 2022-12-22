@@ -12,7 +12,6 @@ import { FreelancerFilterComponent } from './components/freelancer-filter/freela
 import { FreelancerDetailsComponent } from "./pages/freelancer-details/freelancer-details.component";
 import { FreelancersListComponent } from "./pages/freelancers-list/freelancers-list.component";
 import { FreelancerContactFormComponent } from './pages/freelancer-contact-form/freelancer-contact-form.component';
-import {FreelancerRouting} from "./freelancer-routing.module";
 
 
 
@@ -32,7 +31,6 @@ import {FreelancerRouting} from "./freelancer-routing.module";
         RouterModule,
         SharedModule,
         FormsModule,
-        FreelancerRouting
     ],
     exports: [
         FreelancerItemComponent

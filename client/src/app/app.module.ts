@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
 //Routes
-import { FreelancerRouting } from "./features/freelancer/freelancer-routing.module";
 import { ProposalRouting } from "./features/proposal/proposal-routing.module";
 import { AuthRouting } from "./features/auth/auth-routing.module";
 import { ProfileRouting } from "./features/profile/profile-routing.module";
@@ -36,7 +35,6 @@ import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-f
         AppRoutingModule,
         HttpClientModule,
         FreelancerModule,
-        FreelancerRouting,
         ProposalRouting,
         AuthRouting,
         ProfileRouting,
