@@ -3,14 +3,11 @@ import { ActivatedRoute, Params } from "@angular/router";
 import { FreelancerService } from "../../services/freelancer.service";
 import { Freelancer } from "../../models/freelancer.model";
 import { FreelancerStorage } from "../../services/freelancer-storage.service";
-import { fader } from "../../child-router-animation";
 
 @Component({
   selector: 'app-freelancer-details',
   templateUrl: './freelancer-details.component.html',
   styleUrls: ['./freelancer-details.component.scss'],
-    animations: [
-    ]
 })
 export class FreelancerDetailsComponent implements OnInit {
     selectedFreelancer!: Freelancer
