@@ -11,7 +11,7 @@
     </div>
     <p class='errors' *ngIf="!formIsValid">Please fix the issues above and submit the form again!</p>
     <div class='actions'>
-        <app-shared-button [link]="false" mode="square" text="Send a Message"></app-shared-button>
+        <app-shared-button [link]="false" mode="square" text="Send a Message" [disabled]="formRef.invalid"></app-shared-button>
     </div>
 </form>
 

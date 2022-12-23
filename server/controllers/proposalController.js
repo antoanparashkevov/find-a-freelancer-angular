@@ -3,7 +3,7 @@ const { hasUser } = require("../middlewares/guards");
 const parseError = require("../util/parser");
 const router = require('express').Router();
 
-router.post('/proposals', hasUser(), async (req,res)=>{
+router.post('/proposals', async (req,res)=>{
     try{
         const data = req.body
         const item = await create(data)

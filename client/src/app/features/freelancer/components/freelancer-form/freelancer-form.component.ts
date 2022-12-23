@@ -32,7 +32,7 @@ export class FreelancerFormComponent implements OnInit {
         const skillsData = Object.values(skillsGroupRef.value)
         this.checkboxIsValid = !skillsData.every(v=>v==='');
         
-        if(!this.formIsValid) {
+        if(!this.formIsValid || !this.checkboxIsValid) {
             
             this.firstName = formRef.value.firstName !== null ? formRef.value.firstName: this.firstName;
             this.lastName = formRef.value.lastName !== null ? formRef.value.lastName: this.lastName

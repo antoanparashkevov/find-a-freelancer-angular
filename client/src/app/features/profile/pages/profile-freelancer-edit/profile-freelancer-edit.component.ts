@@ -48,7 +48,7 @@ export class ProfileFreelancerEditComponent implements OnInit, OnDestroy {
         const skillsData = Object.values(skillsGroupRef.value)
         this.checkboxIsValid = !skillsData.every(v=>v==='');
 
-        if(!this.formIsValid) {
+        if(!this.formIsValid || !this.checkboxIsValid) {
             this.currentRoute.data.subscribe({
                 next: (data: Data)=>{
                     this.freelancerData = data['individualFreelancer']
