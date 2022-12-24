@@ -1,12 +1,10 @@
 import {freelancersReducer, freelancerState} from "./freelancers.reducer";
 import {ActionReducerMap} from "@ngrx/store";
 
-export const rootReducer = {}
-
-export interface appState {
+export interface globalAppState {
     freelancers: freelancerState
 }
 
-export const reducers: ActionReducerMap<appState, any> = {
+export const reducers: ActionReducerMap<globalAppState, any> = {
     freelancers: freelancersReducer
 }

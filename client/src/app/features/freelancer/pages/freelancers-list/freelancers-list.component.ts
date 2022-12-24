@@ -37,8 +37,8 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
         })
         this.skills = this.freelancerStorage.fetchAreas().reduce((a,v)=>({...a, [v]: true}), {})
         
-        // this.fetchFreelancers()
-        // this.isUserAuthenticated()
+        this.fetchFreelancers()
+        this.isUserAuthenticated()
     }
     
     ngOnDestroy() {
