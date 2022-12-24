@@ -2,13 +2,17 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Freelancer} from "../models/freelancer.model";
 import {BehaviorSubject, Subject, tap} from "rxjs";
-
+import {Store} from "@ngrx/store";
+import * as FreelancerActions from "../store/freelancers.actions";
 @Injectable()
 export class FreelancerStorage {
     ownerId = new BehaviorSubject<string | null>(null)
     isFreelancer = new BehaviorSubject<boolean>(false)
     freelancerId = new Subject<string | undefined>()
-    constructor(private http: HttpClient) {}
+    constructor(
+        private http: HttpClient,
+        private store: Store<{ freelancers: {freelancers: Freelancer[]} }>
+    ) {}
     private skills: string[] = [
         'frontend',
         'backend',
@@ -48,7 +52,10 @@ export class FreelancerStorage {
         }))
     }
     
-    editIndividualFreelancer(id: string | undefined, data: Freelancer) { 
+    editIndividualFreelancer(id: string | undefined, data: Freelancer) {
+        
+        this.store.dispatch(new FreelancerActions.EditFreelancer(data))
+        
         return this.http.put<Freelancer>('http://localhost:3030/freelancersData/freelancers/' + id,
             data)
             .pipe(tap((res=>{

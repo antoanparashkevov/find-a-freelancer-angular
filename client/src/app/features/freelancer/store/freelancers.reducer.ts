@@ -12,7 +12,7 @@ const initialState: freelancerState = {
             'Parashkevov',
             'description',
             12,
-            ['type1', 'type2', 'type3'],
+            ['frontend', 'backend', 'pm'],
             'something1'
         ), 
         new Freelancer(
@@ -20,17 +20,23 @@ const initialState: freelancerState = {
             'Dolashka',
             'description',
             20,
-            ['type1', 'type2', 'type3'],
-            'something1'
+            ['devops', 'pm', 'qa'],
+            'something2'
         ),
     ]
 }
 
 export function freelancersReducer(
     state:freelancerState = initialState,
-    action: freelancersActions.StoreFreelancer): freelancerState {
+    action: freelancersActions.FreelancerActions): freelancerState {
     switch (action.type) {
         case freelancersActions.STORE_FREELANCER:
+            return {
+                ...state,
+                freelancers: [...state.freelancers, action.payload]
+            }
+            
+        case freelancersActions.EDIT_FREELANCER:
             return {
                 ...state,
                 freelancers: [...state.freelancers, action.payload]
