@@ -23,6 +23,7 @@ import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-f
 
 //Redux
 import { freelancersReducer } from "./features/freelancer/store/freelancers.reducer";
+import {reducers} from "./features/freelancer/store";
 
 
 
@@ -35,7 +36,7 @@ import { freelancersReducer } from "./features/freelancer/store/freelancers.redu
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        StoreModule.forRoot({freelancers: freelancersReducer}),
+        StoreModule.forRoot(reducers),
         HttpClientModule,
         FreelancerModule,
         ProposalRouting,

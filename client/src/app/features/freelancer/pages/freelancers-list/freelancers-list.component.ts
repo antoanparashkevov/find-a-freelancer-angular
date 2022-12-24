@@ -30,6 +30,11 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
 
     ngOnInit()  {
         this.freelancersFromRedux = this.store.select('freelancers')
+        this.freelancersFromRedux.subscribe({
+            next: value=>{
+                console.log('from ngRx >>>', value.freelancers)
+            }
+        })
         this.skills = this.freelancerStorage.fetchAreas().reduce((a,v)=>({...a, [v]: true}), {})
         
         // this.fetchFreelancers()

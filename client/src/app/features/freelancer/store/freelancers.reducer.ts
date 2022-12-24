@@ -1,18 +1,21 @@
 import * as freelancersActions from './freelancers.actions'
 import { Freelancer } from "../models/freelancer.model";
 
-const initialState = {
-    freelancers: [ new Freelancer
-        (
+export interface freelancerState {
+    freelancers: Freelancer[]
+}
+
+const initialState: freelancerState = {
+    freelancers: [ 
+        new Freelancer(
             'Antoan',
             'Parashkevov',
             'description',
             12,
             ['type1', 'type2', 'type3'],
             'something1'
-        ),
-        new Freelancer
-        (
+        ), 
+        new Freelancer(
             'Nadezhda',
             'Dolashka',
             'description',
@@ -24,8 +27,8 @@ const initialState = {
 }
 
 export function freelancersReducer(
-    state = initialState,
-    action: freelancersActions.StoreFreelancer) {
+    state:freelancerState = initialState,
+    action: freelancersActions.StoreFreelancer): freelancerState {
     switch (action.type) {
         case freelancersActions.STORE_FREELANCER:
             return {
