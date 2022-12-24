@@ -54,7 +54,7 @@ export class FreelancerStorage {
     
     editIndividualFreelancer(id: string | undefined, data: Freelancer) {
         
-        this.store.dispatch(new FreelancerActions.EditFreelancer(data))
+        this.store.dispatch(new FreelancerActions.EditFreelancer({index: id, freelancer: data}))
         
         return this.http.put<Freelancer>('http://localhost:3030/freelancersData/freelancers/' + id,
             data)
@@ -64,6 +64,7 @@ export class FreelancerStorage {
     }
     
     deleteFreelancer(id: string | undefined ) { 
+        this.store.dispatch(new FreelancerActions.DeleteFreelancer(id))
         return this.http.delete('http://localhost:3030/freelancersData/freelancers/' + id)
         
     }

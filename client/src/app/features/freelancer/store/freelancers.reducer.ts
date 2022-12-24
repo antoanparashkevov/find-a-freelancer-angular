@@ -37,9 +37,20 @@ export function freelancersReducer(
             }
             
         case freelancersActions.EDIT_FREELANCER:
+            const freelancer = state.freelancers.find(f=>f._id === action.payload.index)
+            const updatedFreelancer = {
+                ...freelancer,
+                ...action.payload.freelancer
+            }
             return {
                 ...state,
-                freelancers: [...state.freelancers, action.payload]
+                freelancers: [...state.freelancers, updatedFreelancer]
+            }
+        case freelancersActions.DELETE_FREELANCER:
+            const updatedFreelancers = state.freelancers.filter(f=>f._id !== action.payload)
+            return {
+                ...state,
+                freelancers: updatedFreelancers
             }
         default:
             return state
