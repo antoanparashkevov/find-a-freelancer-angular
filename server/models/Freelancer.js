@@ -20,7 +20,8 @@ const freelancerSchema = new Schema({
     }, 
     skills:{
         type: [],
-        required: true
+        required: true,
+        minLength: [1, 'Choose at least one area of expertise']
     },
     _ownerId: {
         type: ObjectId,
