@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CoreModule } from "./core/core.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { StoreModule } from '@ngrx/store'
 
 //Routes
 import { ProposalRouting } from "./features/proposal/proposal-routing.module";
@@ -21,6 +21,8 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from "./features/auth/auth-interceptor.service";
 import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-found.component";
 
+//Redux
+import { freelancersReducer } from "./features/freelancer/store/freelancers.reducer";
 
 
 
@@ -33,6 +35,7 @@ import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-f
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
+        StoreModule.forRoot({freelancers: freelancersReducer}),
         HttpClientModule,
         FreelancerModule,
         ProposalRouting,

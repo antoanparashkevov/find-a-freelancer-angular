@@ -4,7 +4,8 @@ import {FreelancerService} from "../../services/freelancer.service";
 import {FreelancerStorage} from "../../services/freelancer-storage.service";
 import {AuthService} from "../../../auth/services/auth.service";
 import {LoaderService} from "../../services/loader.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
+import { Store } from "@ngrx/store";
 
 @Component({
   selector: 'app-freelancers-list',
@@ -13,6 +14,7 @@ import {Subscription} from "rxjs";
 })
 export class FreelancersListComponent implements OnInit, OnDestroy {
     freelancers: Freelancer[] = []
+    freelancersFromRedux!: Observable<{ freelancers: Freelancer[] }>
     isAuthenticated: boolean = false
     skills: {[id: string] : boolean} = {}
     isAuthenticatedSubscription!: Subscription
@@ -22,14 +24,16 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
         private freelancerService: FreelancerService,
         public freelancerStorage: FreelancerStorage,
         private authService: AuthService,
-        public loaderService: LoaderService
+        public loaderService: LoaderService,
+        private store: Store<{ freelancers: { freelancers: Freelancer[] } }>
     ) { }
 
-    ngOnInit(): void {
+    ngOnInit()  {
+        this.freelancersFromRedux = this.store.select('freelancers')
         this.skills = this.freelancerStorage.fetchAreas().reduce((a,v)=>({...a, [v]: true}), {})
         
-        this.fetchFreelancers()
-        this.isUserAuthenticated()
+        // this.fetchFreelancers()
+        // this.isUserAuthenticated()
     }
     
     ngOnDestroy() {
