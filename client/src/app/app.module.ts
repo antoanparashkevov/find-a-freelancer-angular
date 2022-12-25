@@ -22,9 +22,7 @@ import { AuthInterceptorService } from "./features/auth/auth-interceptor.service
 import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-found.component";
 
 //Redux
-import { freelancersReducer } from "./features/freelancer/store/freelancers.reducer";
-import {reducers} from "./features/freelancer/store";
-
+import * as fromApp from './store/app.reducer'
 
 
 @NgModule({
@@ -36,7 +34,7 @@ import {reducers} from "./features/freelancer/store";
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        StoreModule.forRoot(reducers),
+        StoreModule.forRoot(fromApp.reducers),
         HttpClientModule,
         FreelancerModule,
         ProposalRouting,

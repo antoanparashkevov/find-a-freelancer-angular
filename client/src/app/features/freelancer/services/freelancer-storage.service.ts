@@ -2,8 +2,11 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Freelancer} from "../models/freelancer.model";
 import {BehaviorSubject, Subject, tap} from "rxjs";
-import {Store} from "@ngrx/store";
+
+//Redux
+import { Store } from "@ngrx/store";
 import * as FreelancerActions from "../store/freelancers.actions";
+import * as fromApp from '../../../store/app.reducer'
 @Injectable()
 export class FreelancerStorage {
     ownerId = new BehaviorSubject<string | null>(null)
@@ -11,7 +14,7 @@ export class FreelancerStorage {
     freelancerId = new Subject<string | undefined>()
     constructor(
         private http: HttpClient,
-        private store: Store<{ freelancers: {freelancers: Freelancer[]} }>
+        private store: Store<fromApp.GlobalAppState>
     ) {}
     private skills: string[] = [
         'frontend',

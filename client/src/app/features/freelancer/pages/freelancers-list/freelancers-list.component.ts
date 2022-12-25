@@ -5,8 +5,10 @@ import {FreelancerStorage} from "../../services/freelancer-storage.service";
 import {AuthService} from "../../../auth/services/auth.service";
 import {LoaderService} from "../../services/loader.service";
 import {Observable, Subscription} from "rxjs";
-import { Store } from "@ngrx/store";
 
+//Redux
+import { Store } from "@ngrx/store";
+import * as fromApp from '../../../../store/app.reducer'
 @Component({
   selector: 'app-freelancers-list',
   templateUrl: './freelancers-list.component.html',
@@ -25,7 +27,7 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
         public freelancerStorage: FreelancerStorage,
         private authService: AuthService,
         public loaderService: LoaderService,
-        private store: Store<{ freelancers: { freelancers: Freelancer[] } }>
+        private store: Store<fromApp.GlobalAppState>
     ) { }
 
     ngOnInit()  {
