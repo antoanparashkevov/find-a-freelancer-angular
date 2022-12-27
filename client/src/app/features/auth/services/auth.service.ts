@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import { catchError, tap } from 'rxjs/operators';
-import {BehaviorSubject, Subject} from "rxjs";
+import { tap } from 'rxjs/operators';
 import {User} from "../models/user.model";
 import {Store} from "@ngrx/store";
 import * as fromApp from '../../../store/app.reducer'
 import * as AuthActions from "../store/auth.actions";
+
 export interface AuthResponseData {
     accessToken: string;
     email: string;
