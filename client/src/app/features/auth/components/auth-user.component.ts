@@ -25,6 +25,10 @@ export class AuthUserComponent implements OnInit {
         ) { }
     
     ngOnInit(): void {
+        this.store.select('auth').subscribe(authState=>{
+            this.isLoading = authState.loading;
+            this.error = authState.authError
+        })
     }
     
     onSubmit(formRef: NgForm, emailRef: NgModel, passwordRef: NgModel) {

@@ -1,9 +1,10 @@
 import { Actions, Effect, ofType } from "@ngrx/effects";//previously, we imported Action from ngrx/store, but now this is a plural
 import * as AuthActions from './auth.actions'
-import { catchError, map, switchMap } from "rxjs/operators";
+import { catchError, map, switchMap, tap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { of } from "rxjs";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 export interface AuthResponseData {
     accessToken: string;
@@ -35,15 +36,22 @@ export class AuthEffects {
                         }))
                     }),
                     catchError(( error )=>{
-                    //todo error handling
-                        console.log('it has an error during login process', error)
-                    return of()//to create a non-error observable
+                    console.log('it has an error during login process (inside AuthEffects) >>> ', error)
+                    return of(new AuthActions.LoginFailRequest({message: error}))//to create a non-error observable
                     //!!Now return an empty observable since we don't have a proper error handling!!
                 }))
         }) 
         )
+    
+    @Effect({dispatch: false})
+    authRedirect = this.actions$.pipe(ofType(AuthActions.LOGIN),tap(()=>{
+        this.router.navigate(['/freelancers'])
+    }))
+    
     constructor(
         private actions$: Actions,
-        private http: HttpClient) {
+        private http: HttpClient,
+        private router: Router
+    ) {
     }
 }
