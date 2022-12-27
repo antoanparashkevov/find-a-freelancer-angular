@@ -4,6 +4,10 @@ import { Observable } from "rxjs";
 import { AuthResponseData, AuthService } from "../services/auth.service";
 import { Router } from "@angular/router";
 
+//Redux
+import { Store } from "@ngrx/store";
+import * as fromApp from '../../../store/app.reducer'
+import * as AuthActions from "../store/auth.actions";
 @Component({
   selector: 'app-auth-user',
   templateUrl: './auth-user.component.html',
@@ -14,7 +18,11 @@ export class AuthUserComponent implements OnInit {
     mode: string = 'login';
     error: {message: string} | null = null;
     isLoading: boolean = false;
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private store: Store<fromApp.GlobalAppState>
+        ) { }
     
     ngOnInit(): void {
     }
@@ -35,21 +43,26 @@ export class AuthUserComponent implements OnInit {
         this.isLoading = true;
         
         if(this.mode === 'login') {
-          authObserver = this.authService.login(email,password)
+          // authObserver = this.authService.login(email,password)
+            this.store.dispatch(new AuthActions.LoginStartRequest({
+                email,
+                password
+            }))
         } else {
           authObserver = this.authService.register(email,password)
         }
         
-        authObserver.subscribe({
-        next: (resData) => {
-            this.isLoading = false
-            this.router.navigate(['/freelancers']);//no matter if the user sign up or login
-        },
-        error: (errorMessage) => {
-            this.error = errorMessage.error;
-            this.isLoading = false          
-        }
-        })
+        //todo UNCOMMENT WHEN THE LoginStartRequest action is done
+        // authObserver.subscribe({
+        // next: (resData) => {
+        //     this.isLoading = false
+        //     this.router.navigate(['/freelancers']);//no matter if the user sign up or login
+        // },
+        // error: (errorMessage) => {
+        //     this.error = errorMessage.error;
+        //     this.isLoading = false          
+        // }
+        // })
         
         formRef.reset();
     

@@ -23,6 +23,8 @@ import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-f
 
 //Redux
 import * as fromApp from './store/app.reducer'
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./features/auth/store/auth.effects";
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import * as fromApp from './store/app.reducer'
         BrowserAnimationsModule,
         AppRoutingModule,
         StoreModule.forRoot(fromApp.reducers),
+        EffectsModule.forRoot([AuthEffects]),
         HttpClientModule,
         FreelancerModule,
         ProposalRouting,
