@@ -28,16 +28,16 @@ export class AuthEffects {
                     }
                 ).pipe(
                     map(resData=>{
-                        return of(new AuthActions.Login({
+                        return new AuthActions.Login({
                             //return a new action/new observable. This automatically dispatches by ngRx effects
                             email: resData.email,
                             id: resData._id,
                             token: resData.accessToken
-                        }))
+                        })
                     }),
                     catchError(( error )=>{
                     console.log('it has an error during login process (inside AuthEffects) >>> ', error)
-                    return of(new AuthActions.LoginFailRequest({message: error}))//to create a non-error observable
+                    return of(new AuthActions.LoginFailRequest({message: error.error.message}))//to create a non-error observable
                     //!!Now return an empty observable since we don't have a proper error handling!!
                 }))
         }) 

@@ -1,5 +1,5 @@
-<app-shared-dialog [show]='!!error' title='Failed to authenticate' (close)='handleError()'>
-    <p *ngIf="error && error !== undefined && error.message !== null">{{error.message || 'An error occurred'}}</p>
+<app-shared-dialog [show]='!!error && !!error.message'  title='Failed to authenticate' (close)='handleError()'>
+    <p *ngIf="error && error !== undefined && error.message !== ''">{{error.message || 'An error occurred'}}</p>
 </app-shared-dialog>
 <app-shared-dialog [fixed]="true" [show]='isLoading' title='Loading...'>
     <app-shared-spinner></app-shared-spinner>

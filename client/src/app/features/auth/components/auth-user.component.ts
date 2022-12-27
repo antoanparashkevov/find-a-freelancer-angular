@@ -27,6 +27,9 @@ export class AuthUserComponent implements OnInit {
     ngOnInit(): void {
         this.store.select('auth').subscribe(authState=>{
             this.isLoading = authState.loading;
+            this.error = null;
+            console.log('authError >>> ', authState.authError)
+            console.log('this.error >>> ', this.error)
             this.error = authState.authError
         })
     }
