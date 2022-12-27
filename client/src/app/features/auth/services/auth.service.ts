@@ -18,7 +18,7 @@ export interface AuthResponseData {
 })
 export class AuthService {
   //the Subject is like a custom event emitter. It is more recommended
-  user = new BehaviorSubject<User | null>(null)
+  // user = new BehaviorSubject<User | null>(null)
     
   constructor(
       private http: HttpClient, 
@@ -61,7 +61,7 @@ export class AuthService {
     
     private handleAuthentication(email: string, _id: string, token: string) {
         const user = new User(email, _id, token)
-        this.user.next(user)//emit this user, besides Subjects, we will use ngRx
+        // this.user.next(user)//emit this user, besides Subjects, we will use ngRx
         this.store.dispatch(new AuthActions.Login({
             email: user.email,
             id: user._id,
@@ -86,7 +86,7 @@ export class AuthService {
                 const loadedUser = new User(email, userId, authToken)
                 
                 if(loadedUser.token) {
-                  this.user.next(loadedUser)//besides Subjects, we will use ngRx
+                  // this.user.next(loadedUser)//besides Subjects, we will use ngRx
                     this.store.dispatch(new AuthActions.Login(
                         {
                             email: loadedUser.email,
@@ -104,7 +104,7 @@ export class AuthService {
             console.log('Response from logging out >>> ', res)
         })
         
-        this.user.next(null)//besides Subjects, we will use ngRx
+        // this.user.next(null)//besides Subjects, we will use ngRx
         this.store.dispatch(new AuthActions.Logout(null))
         this.router.navigate(['/auth'])
         

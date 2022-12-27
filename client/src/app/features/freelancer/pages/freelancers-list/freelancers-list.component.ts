@@ -9,6 +9,7 @@ import {Observable, Subscription} from "rxjs";
 //Redux
 import { Store } from "@ngrx/store";
 import * as fromApp from '../../../../store/app.reducer'
+import {map} from "rxjs/operators";
 @Component({
   selector: 'app-freelancers-list',
   templateUrl: './freelancers-list.component.html',
@@ -48,9 +49,14 @@ export class FreelancersListComponent implements OnInit, OnDestroy {
     }
 
     private isUserAuthenticated() {
-       this.isAuthenticatedSubscription = this.authService.user.subscribe((user) => {
-            this.isAuthenticated = !!user;//if it has a user data, to return boolean, not the actual user data
-        })
+       // this.isAuthenticatedSubscription = this.authService.user.subscribe((user) => {
+            this.isAuthenticatedSubscription = this.store.select('auth')
+                .pipe(
+                    map(authState=>authState.user)
+                )
+                .subscribe((user)=>{
+                    this.isAuthenticated = !!user;//if it has a user data, to return boolean, not the actual user data
+                })
     }
     
     fetchFreelancers() {
