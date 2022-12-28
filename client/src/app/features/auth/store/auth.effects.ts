@@ -27,6 +27,11 @@ const handleAuthentication  = (email: string, _id: string, accessToken: string) 
 }
 
 const handleLogout = () => {
+    localStorage.removeItem('email')
+    localStorage.removeItem('authToken')
+    localStorage.removeItem('userId')
+    
+    return new AuthActions.LogoutSuccess()
 }
 
 const handleError = (error: any) => {
@@ -82,13 +87,12 @@ export class AuthEffects {
                     return handleError(error)
                     //!!Now return an empty observable since we don't have a proper error handling!!
                 }))
-        }) 
-        )
+        }))
     
     @Effect()
     authLogout = this.actions$
         .pipe(
-            ofType(AuthActions.LOGOUT),
+            ofType(AuthActions.LOGOUT_START),
             switchMap((authData: AuthActions.LogoutRequest)=> {
                 return this.http.get('http://localhost:3030/users/logout')
                     .pipe(
@@ -97,17 +101,15 @@ export class AuthEffects {
                             return handleLogout()
                         }),
                         catchError( (error) => {
+                            console.log('it has an error during logout process (inside AuthEffects) >>> ', error)
                             return handleError(error)
-                        })
-                        )
-            })
-            
-        )
+                        }))
+            }))
     
     @Effect({dispatch: false})
     authRedirect = this.actions$
         .pipe(
-            ofType(AuthActions.AUTHENTICATE_SUCCESS, AuthActions.LOGOUT),
+            ofType(AuthActions.AUTHENTICATE_SUCCESS, AuthActions.LOGOUT_SUCCESS),
             tap(()=>{
         this.router.navigate(['/freelancers'])
     }))

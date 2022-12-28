@@ -26,11 +26,18 @@ export function authReducer(
                 user: user,
                 loading: false
             }
-        case authActions.LOGOUT:
+        case authActions.LOGOUT_START:
             return {
                 ...state,
                 authError: null,
-                user: null
+                user: null,
+                loading: true
+            }
+        case authActions.LOGOUT_SUCCESS:
+            return {
+                user: null,
+                authError: {message: ''},
+                loading: false
             }
         case authActions.LOGIN_START:
         case authActions.SIGNUP_START:

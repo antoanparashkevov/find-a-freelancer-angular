@@ -1,10 +1,11 @@
 import { Action } from "@ngrx/store";
 
 export const LOGIN_START = '[Auth] Login Start Request'
-export const AUTHENTICATE_SUCCESS = '[Auth] Authenticate Success'
-export const AUTHENTICATE_FAIL = '[Auth] Authenticate Fail'
+export const LOGOUT_START = '[Auth] Logout Start Request'
 export const SIGNUP_START = '[Auth] Signup Start Request'
-export const LOGOUT = '[Auth] Logout'
+export const AUTHENTICATE_SUCCESS = '[Auth] Authenticate Success'
+export const LOGOUT_SUCCESS = '[Auth] Logout Success'
+export const AUTHENTICATE_FAIL = '[Auth] Authenticate Fail'
 export const CLEAR_ERROR = '[Auth] Clear Error'
 
 interface User  {
@@ -30,7 +31,7 @@ export class SignupStartRequest implements Action {
 }
 
 export class LogoutRequest implements Action {
-    readonly type = LOGOUT;
+    readonly type = LOGOUT_START;
 
     constructor(public payload?: null) {
     }
@@ -41,6 +42,11 @@ export class AuthenticateSuccess implements Action {
     
     constructor(public payload: User) {}
     
+}
+
+export class LogoutSuccess implements Action {
+    readonly type = LOGOUT_SUCCESS
+
 }
 
 export class AuthenticateFail implements Action {
@@ -57,4 +63,4 @@ export class ClearError implements Action {
 
 
 
-export type AuthActions = AuthenticateSuccess | SignupStartRequest | LoginStartRequest | AuthenticateFail | LogoutRequest | ClearError
+export type AuthActions = AuthenticateSuccess | SignupStartRequest | LoginStartRequest | AuthenticateFail | LogoutRequest | ClearError | LogoutSuccess
