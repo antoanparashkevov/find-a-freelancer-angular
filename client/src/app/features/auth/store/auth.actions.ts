@@ -5,6 +5,7 @@ export const AUTHENTICATE_SUCCESS = '[Auth] Authenticate Success'
 export const AUTHENTICATE_FAIL = '[Auth] Authenticate Fail'
 export const SIGNUP_START = '[Auth] Signup Start Request'
 export const LOGOUT = '[Auth] Logout'
+export const CLEAR_ERROR = '[Auth] Clear Error'
 
 interface User  {
     email: string,
@@ -49,7 +50,11 @@ export class AuthenticateFail implements Action {
     }
 }
 
+export class ClearError implements Action {
+    readonly type = CLEAR_ERROR;
+}
 
 
 
-export type AuthActions = AuthenticateSuccess | SignupStartRequest | LoginStartRequest | AuthenticateFail | LogoutRequest 
+
+export type AuthActions = AuthenticateSuccess | SignupStartRequest | LoginStartRequest | AuthenticateFail | LogoutRequest | ClearError

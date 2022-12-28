@@ -33,6 +33,7 @@ export function authReducer(
                 user: null
             }
         case authActions.LOGIN_START:
+        case authActions.SIGNUP_START:
             return {
                 ...state,
                 authError: null,
@@ -44,6 +45,11 @@ export function authReducer(
                 user: null,//because the process will fail
                 authError: action.payload,//the actual error from the payload which is a string
                 loading: false
+            }
+        case authActions.CLEAR_ERROR:
+            return {
+                ...state,
+                authError: null
             }
         default: 
             return state

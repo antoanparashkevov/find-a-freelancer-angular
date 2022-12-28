@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm, NgModel } from "@angular/forms";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { AuthResponseData, AuthService } from "../services/auth.service";
 import { Router } from "@angular/router";
 
@@ -13,11 +13,13 @@ import * as AuthActions from "../store/auth.actions";
   templateUrl: './auth-user.component.html',
   styleUrls: ['./auth-user.component.scss']
 })
-export class AuthUserComponent implements OnInit {
+export class AuthUserComponent implements OnDestroy, OnInit {
     formIsValid: boolean = true;
     mode: string = 'login';
     error: {message: string} | null = null;
     isLoading: boolean = false;
+    
+    storeSub!: Subscription;
     constructor(
         private authService: AuthService,
         private router: Router,
@@ -25,7 +27,7 @@ export class AuthUserComponent implements OnInit {
         ) { }
     
     ngOnInit(): void {
-        this.store.select('auth').subscribe(authState=>{
+        this.storeSub = this.store.select('auth').subscribe(authState=>{
             this.isLoading = authState.loading;
             this.error = null;
             console.log('authError (if it has in onInit auth-user.comp) >>> ', authState.authError)
@@ -34,6 +36,12 @@ export class AuthUserComponent implements OnInit {
         })
     }
     
+    ngOnDestroy(): void {
+        if(this.storeSub) {
+            this.storeSub.unsubscribe()
+        }
+    }
+
     onSubmit(formRef: NgForm, emailRef: NgModel, passwordRef: NgModel) {
         if(!formRef.valid) {
           this.formIsValid = false
@@ -63,7 +71,7 @@ export class AuthUserComponent implements OnInit {
     }
     
     handleError() {
-      this.error = null
+        this.store.dispatch(new AuthActions.ClearError())
     }
     
     switchAuthMode(){
