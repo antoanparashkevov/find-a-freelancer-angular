@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AuthService} from "../../../features/auth/services/auth.service";
 import {Subscription} from "rxjs";
+import {map} from "rxjs/operators";
+
+//Redux
 import {Store} from "@ngrx/store";
 import * as fromApp from '../../../store/app.reducer'
-import {map} from "rxjs/operators";
+import * as AuthActions from '../../../features/auth/store/auth.actions'
 
 @Component({
   selector: 'app-the-header',
@@ -36,7 +39,8 @@ export class TheHeaderComponent implements OnInit, OnDestroy {
     }
     
     onLogout() {
-        this.authService.logout()
+        // this.authService.logout()
+        this.store.dispatch(new AuthActions.LogoutRequest())
     }
     
     toggleNavbar() {

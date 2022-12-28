@@ -26,6 +26,9 @@ const handleAuthentication  = (email: string, _id: string, accessToken: string) 
     })
 }
 
+const handleLogout = () => {
+}
+
 const handleError = (error: any) => {
     return of(new AuthActions.AuthenticateFail({message: error.error.message}))//to create a non-error observable
 
@@ -82,8 +85,30 @@ export class AuthEffects {
         }) 
         )
     
+    @Effect()
+    authLogout = this.actions$
+        .pipe(
+            ofType(AuthActions.LOGOUT),
+            switchMap((authData: AuthActions.LogoutRequest)=> {
+                return this.http.get('http://localhost:3030/users/logout')
+                    .pipe(
+                        map(resData=>{
+                            console.log('resData from logging out >>> ', resData)
+                            return handleLogout()
+                        }),
+                        catchError( (error) => {
+                            return handleError(error)
+                        })
+                        )
+            })
+            
+        )
+    
     @Effect({dispatch: false})
-    authRedirect = this.actions$.pipe(ofType(AuthActions.AUTHENTICATE_SUCCESS),tap(()=>{
+    authRedirect = this.actions$
+        .pipe(
+            ofType(AuthActions.AUTHENTICATE_SUCCESS, AuthActions.LOGOUT),
+            tap(()=>{
         this.router.navigate(['/freelancers'])
     }))
     

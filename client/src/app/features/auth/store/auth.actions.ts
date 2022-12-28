@@ -32,7 +32,7 @@ export class SignupStartRequest implements Action {
 export class LogoutRequest implements Action {
     readonly type = LOGOUT;
 
-    constructor(public payload: null) {
+    constructor(public payload?: null) {
     }
 }
 
