@@ -10,7 +10,6 @@
     </div>
     <div class="actions" *ngIf="profileAction">
         <app-shared-button [link]="true" [to]="'/profile/' + index + '/edit'" mode="edit">Edit</app-shared-button>
-        <!--        todo add delete functionality-->
         <app-shared-button [link]="false" text="Delete" mode="delete" (click)="deleteFreelancer()"></app-shared-button>
     </div>
 </li>

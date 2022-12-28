@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm, NgModel } from "@angular/forms";
-import { Observable, Subscription } from "rxjs";
-import { AuthResponseData, AuthService } from "../services/auth.service";
-import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 
 //Redux
 import { Store } from "@ngrx/store";
@@ -20,11 +18,7 @@ export class AuthUserComponent implements OnDestroy, OnInit {
     isLoading: boolean = false;
     
     storeSub!: Subscription;
-    constructor(
-        private authService: AuthService,
-        private router: Router,
-        private store: Store<fromApp.GlobalAppState>
-        ) { }
+    constructor(private store: Store<fromApp.GlobalAppState>) { }
     
     ngOnInit(): void {
         this.storeSub = this.store.select('auth').subscribe(authState=>{
@@ -54,7 +48,6 @@ export class AuthUserComponent implements OnDestroy, OnInit {
         const password = formRef.value.password
         
         if(this.mode === 'login') {
-          // authObserver = this.authService.login(email,password)
             this.store.dispatch(new AuthActions.LoginStartRequest({
                 email,
                 password
