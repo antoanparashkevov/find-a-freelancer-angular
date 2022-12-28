@@ -28,8 +28,8 @@ export class AuthUserComponent implements OnInit {
         this.store.select('auth').subscribe(authState=>{
             this.isLoading = authState.loading;
             this.error = null;
-            console.log('authError >>> ', authState.authError)
-            console.log('this.error >>> ', this.error)
+            console.log('authError (if it has in onInit auth-user.comp) >>> ', authState.authError)
+            console.log('this.error (if it has in onInit auth-user.comp) >>> ', this.error)
             this.error = authState.authError
         })
     }
@@ -45,10 +45,6 @@ export class AuthUserComponent implements OnInit {
         const email = formRef.value.email;
         const password = formRef.value.password
         
-        let authObserver: Observable<AuthResponseData>;
-        
-        this.isLoading = true;
-        
         if(this.mode === 'login') {
           // authObserver = this.authService.login(email,password)
             this.store.dispatch(new AuthActions.LoginStartRequest({
@@ -56,20 +52,11 @@ export class AuthUserComponent implements OnInit {
                 password
             }))
         } else {
-          authObserver = this.authService.register(email,password)
+            this.store.dispatch(new AuthActions.SignupStartRequest({
+                email,
+                password
+            }))
         }
-        
-        //todo UNCOMMENT WHEN THE LoginStartRequest action is done
-        // authObserver.subscribe({
-        // next: (resData) => {
-        //     this.isLoading = false
-        //     this.router.navigate(['/freelancers']);//no matter if the user sign up or login
-        // },
-        // error: (errorMessage) => {
-        //     this.error = errorMessage.error;
-        //     this.isLoading = false          
-        // }
-        // })
         
         formRef.reset();
     

@@ -12,8 +12,52 @@ export interface AuthResponseData {
     _id: string;
 }
 
+const handleAuthentication  = (email: string, _id: string, accessToken: string) => {
+
+    localStorage.setItem('email', JSON.stringify(email))
+    localStorage.setItem('authToken', JSON.stringify(accessToken))
+    localStorage.setItem('userId', JSON.stringify(_id))
+    
+    return new AuthActions.AuthenticateSuccess({
+        //return a new action/new observable. This automatically dispatches by ngRx effects
+        email: email,
+        id: _id,
+        token: accessToken
+    })
+}
+
+const handleError = (error: any) => {
+    return of(new AuthActions.AuthenticateFail({message: error.error.message}))//to create a non-error observable
+
+}
+
 @Injectable()
 export class AuthEffects {
+    @Effect()
+    authSignup = this.actions$
+        .pipe(
+            ofType(AuthActions.SIGNUP_START),
+            switchMap( (authData: AuthActions.SignupStartRequest) => {
+                return this.http
+                    .post<AuthResponseData>(
+                        'http://localhost:3030/users/register',
+                        {
+                            email: authData.payload.email,
+                            password: authData.payload.password,
+                        }
+                        //tap is an operator that allows us to perform some actions without changing the response
+                    ).pipe(
+                        map( (resData) => {
+                           return handleAuthentication(resData.email, resData._id, resData.accessToken)
+                        }),
+                        catchError((error)=>{
+                            console.log('it has an error during signup process (inside AuthEffects) >>> ', error)
+                            return handleError(error)
+                            //!!Now return an empty observable since we don't have a proper error handling!!
+                        })
+                    )
+            })
+        )
     @Effect()
     authLogin = this.actions$
         .pipe(
@@ -28,16 +72,11 @@ export class AuthEffects {
                     }
                 ).pipe(
                     map(resData=>{
-                        return new AuthActions.AuthenticateSuccess({
-                            //return a new action/new observable. This automatically dispatches by ngRx effects
-                            email: resData.email,
-                            id: resData._id,
-                            token: resData.accessToken
-                        })
+                        return handleAuthentication(resData.email, resData._id, resData.accessToken)
                     }),
                     catchError(( error )=>{
                     console.log('it has an error during login process (inside AuthEffects) >>> ', error)
-                    return of(new AuthActions.AuthenticateFail({message: error.error.message}))//to create a non-error observable
+                    return handleError(error)
                     //!!Now return an empty observable since we don't have a proper error handling!!
                 }))
         }) 
