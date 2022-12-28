@@ -62,7 +62,7 @@ export class AuthService {
     private handleAuthentication(email: string, _id: string, token: string) {
         const user = new User(email, _id, token)
         // this.user.next(user)//emit this user, besides Subjects, we will use ngRx
-        this.store.dispatch(new AuthActions.Login({
+        this.store.dispatch(new AuthActions.AuthenticateSuccess({
             email: user.email,
             id: user._id,
             token: user.token
@@ -87,7 +87,7 @@ export class AuthService {
                 
                 if(loadedUser.token) {
                   // this.user.next(loadedUser)//besides Subjects, we will use ngRx
-                    this.store.dispatch(new AuthActions.Login(
+                    this.store.dispatch(new AuthActions.AuthenticateSuccess(
                         {
                             email: loadedUser.email,
                             id: loadedUser._id,
@@ -105,7 +105,7 @@ export class AuthService {
         })
         
         // this.user.next(null)//besides Subjects, we will use ngRx
-        this.store.dispatch(new AuthActions.Logout(null))
+        this.store.dispatch(new AuthActions.LogoutRequest(null))
         this.router.navigate(['/auth'])
         
         localStorage.removeItem('email')

@@ -28,7 +28,7 @@ export class AuthEffects {
                     }
                 ).pipe(
                     map(resData=>{
-                        return new AuthActions.Login({
+                        return new AuthActions.AuthenticateSuccess({
                             //return a new action/new observable. This automatically dispatches by ngRx effects
                             email: resData.email,
                             id: resData._id,
@@ -37,14 +37,14 @@ export class AuthEffects {
                     }),
                     catchError(( error )=>{
                     console.log('it has an error during login process (inside AuthEffects) >>> ', error)
-                    return of(new AuthActions.LoginFailRequest({message: error.error.message}))//to create a non-error observable
+                    return of(new AuthActions.AuthenticateFail({message: error.error.message}))//to create a non-error observable
                     //!!Now return an empty observable since we don't have a proper error handling!!
                 }))
         }) 
         )
     
     @Effect({dispatch: false})
-    authRedirect = this.actions$.pipe(ofType(AuthActions.LOGIN),tap(()=>{
+    authRedirect = this.actions$.pipe(ofType(AuthActions.AUTHENTICATE_SUCCESS),tap(()=>{
         this.router.navigate(['/freelancers'])
     }))
     
