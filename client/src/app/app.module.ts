@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CoreModule } from "./core/core.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StoreModule } from '@ngrx/store'
+import { environment } from "../environments/environment";
 
 //Routes
 import { ProposalRouting } from "./features/proposal/proposal-routing.module";
@@ -25,6 +26,7 @@ import {PageNotFoundComponent} from "./core/components/page-not-found/page-not-f
 import * as fromApp from './store/app.reducer'
 import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./features/auth/store/auth.effects";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { AuthEffects } from "./features/auth/store/auth.effects";
         AppRoutingModule,
         StoreModule.forRoot(fromApp.reducers),
         EffectsModule.forRoot([AuthEffects]),
+        StoreDevtoolsModule.instrument({logOnly: environment.production}),
         HttpClientModule,
         FreelancerModule,
         ProposalRouting,
