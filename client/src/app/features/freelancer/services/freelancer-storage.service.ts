@@ -2,12 +2,14 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Freelancer} from "../models/freelancer.model";
 import {BehaviorSubject, Subject, tap} from "rxjs";
+import { environment } from "../../../../environments/environment";
 
 @Injectable()
 export class FreelancerStorage {
     ownerId = new BehaviorSubject<string | null>(null)
     isFreelancer = new BehaviorSubject<boolean>(false)
     freelancerId = new Subject<string | undefined>()
+    url: string = environment.app.default_url
     constructor(private http: HttpClient) {}
     private skills: string[] = [
         'frontend',
@@ -23,14 +25,14 @@ export class FreelancerStorage {
     
     fetchFreelancers() {
         //return an observable
-        return this.http.get<Freelancer[]>('http://localhost:3030/freelancersData/freelancers').pipe(tap((data)=>{
+        return this.http.get<Freelancer[]>(`${this.url}/freelancersData/freelancers`).pipe(tap((data)=>{
             this.isBecomeAsFreelancer(data)
         }))
     }
     
     storeFreelancer(data: Freelancer) {
         //return an observable
-        return this.http.post<Freelancer>('http://localhost:3030/freelancersData/freelancers',
+        return this.http.post<Freelancer>(`${this.url}/freelancersData/freelancers`,
             data)
             .pipe(tap((res=>{
                 this.freelancerId.next(res._id)
@@ -40,7 +42,7 @@ export class FreelancerStorage {
     getIndividualFreelancer(id: string) {
         //return an observable
         return this.http
-            .get<Freelancer>('http://localhost:3030/freelancersData/freelancers/' + id)
+            .get<Freelancer>(`${this.url}/freelancersData/freelancers/${id}`)
             .pipe(tap({
                 next: (res)=> {
                     this.ownerId.next(res._ownerId)
@@ -49,7 +51,7 @@ export class FreelancerStorage {
     }
     
     editIndividualFreelancer(id: string | undefined, data: Freelancer) { 
-        return this.http.put<Freelancer>('http://localhost:3030/freelancersData/freelancers/' + id,
+        return this.http.put<Freelancer>(`${this.url}/freelancersData/freelancers/${id}`,
             data)
             .pipe(tap((res=>{
             this.freelancerId.next(res._id)
@@ -57,7 +59,7 @@ export class FreelancerStorage {
     }
     
     deleteFreelancer(id: string | undefined ) { 
-        return this.http.delete('http://localhost:3030/freelancersData/freelancers/' + id)
+        return this.http.delete(`${this.url}/freelancersData/freelancers/${id}`)
         
     }
     

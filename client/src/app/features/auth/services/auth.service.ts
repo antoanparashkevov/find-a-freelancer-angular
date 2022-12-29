@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import { catchError, tap } from 'rxjs/operators';
-import {BehaviorSubject, Subject} from "rxjs";
+import { tap } from 'rxjs/operators';
+import {BehaviorSubject} from "rxjs";
 import {User} from "../models/user.model";
+import {environment} from "../../../../environments/environment";
 
 export interface AuthResponseData {
     accessToken: string;
@@ -15,16 +16,16 @@ export interface AuthResponseData {
   providedIn: 'root'
 })
 export class AuthService {
-  //the Subject is like a custom event emitter. It is more recommended
-  user = new BehaviorSubject<User | null>(null)
-    
-  constructor(private http: HttpClient, private router: Router) { }
+    //the Subject is like a custom event emitter. It is more recommended
+    user = new BehaviorSubject<User | null>(null)
+    url: string = environment.app.default_url
+    constructor(private http: HttpClient, private router: Router) { }
 
     register(email: string, password: string) {
       //will return an observable
         return this.http
             .post<AuthResponseData>(
-                'http://localhost:3030/users/register',
+                `${this.url}/users/register`,
                 {
                     email: email,
                     password: password,
@@ -41,7 +42,7 @@ export class AuthService {
         //will return an observable
         return this.http
             .post<AuthResponseData>(
-                'http://localhost:3030/users/login',
+                `${this.url}/users/login`,
                 {
                     email: email,
                     password: password,
@@ -83,7 +84,7 @@ export class AuthService {
         
     
     logout() {
-        this.http.get('http://localhost:3030/users/logout').subscribe(res=>{
+        this.http.get(`${this.url}/users/logout`).subscribe(res=>{
             console.log('Response from logging out >>> ', res)
         })
         
