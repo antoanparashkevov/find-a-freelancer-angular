@@ -21,6 +21,7 @@ async function register(email,password) {
     return createToken(user)
     
 }
+
 async function login(email,password) {
     const user = await User.findOne({email}).collation({locale: 'en', strength: 2})
     if(!user) {
@@ -34,6 +35,7 @@ async function login(email,password) {
     
     return createToken(user)
 }
+
 async function logout(token) {
     tokenBlackList.add(token);
 }

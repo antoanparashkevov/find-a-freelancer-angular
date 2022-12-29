@@ -11,6 +11,10 @@
 ---
 6. fix the buttons issue - done
 ---
-8. lazy loading - done
+7. lazy loading - done
 ---
-9. not found - in progress
+8. not found - done
+---
+9. invalid submitted form to automatically fill the inputs with old values - todo
+---
+10. remove quotes from properties inside the localStorage - todo
