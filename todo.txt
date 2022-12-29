@@ -13,4 +13,6 @@
 ---
 8. lazy loading - done
 ---
-9. not found - in progress
+9. not found - done
+---
+10. deployment - in progress
