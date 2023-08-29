@@ -1,6 +1,7 @@
 # Find A Freelancer
 
-Once you run `ng serve` or just `ng s` you can visit the web application from here: http://localhost:4200
+You can visit the project from here: https://findfreelancers.vercel.app.
+If you run the web application in development mode, run `ng serve` or just `ng s` you can visit the web application from here: http://localhost:4200
 # Table of Contents
 - <a href="#about">About</a>
 - <a href="#features">Features</a>
